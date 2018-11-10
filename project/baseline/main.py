@@ -10,7 +10,7 @@ from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
 
 # Hello
-# Lukas
+# Lukas Früchtnicht
 # Alex
 # Joris Bertens
 # setup  random state
