@@ -10,7 +10,8 @@ from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
 
 # Hello
-# Lukas 
+# Lukas
+# Alex
 # setup  random state
 seed = 1
 random_state = uls.get_random_state(seed)
