@@ -1,5 +1,5 @@
-# DataMining
-
+# CIFO
+## Next Meeting: 15.11 9:30 am @Nova IMS
 ### Task to do:
 
 * Set up git[X] - Antonio
