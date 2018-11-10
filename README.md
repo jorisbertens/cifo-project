@@ -8,5 +8,7 @@
 
 * Other stuff
 Lukas
+Antonio
+
 Once anyone starts a task they should add their name to this readme so other know.
 Each task can be subtasked to smaller ones once we get a better idea on what analysis we are doing
