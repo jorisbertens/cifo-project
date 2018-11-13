@@ -29,21 +29,24 @@ for size,radius,p_m in possible_values:
     start_time = datetime.now()
 
     run_results = []
-    for seed in range(1, 2):
+    for seed in range(0, 5):
+        algo_start_time = datetime.now()
         #setup random state
         random_state = uls.get_random_state(seed)
 
         ga = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(size),
-                              uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_c)
+                              uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
         ga.initialize()
         ga.search(n_gen, False)
-        print("Counter: "+str(counter)+" Seed:"+str(seed)+ " Time elapsed:"+str(datetime.now() - start_time))
+        print("Counter: "+str(counter)+" Seed:"+str(seed)+ " Time elapsed:"+str(datetime.now() - algo_start_time))
         ga.best_solution.print_()
         print("Training fitness of the best solution: %.2f" % ga.best_solution.fitness)
 
         run_results.append(ga.best_solution.fitness)
 
     time_elapsed = datetime.now() - start_time
+    print("Run results: "+str(np.mean(run_results)))
+    print(run_results)
     result_string = ";".join(["Run:"+str(counter),str(n_gen),str(ps),str(p_c),str(p_m),str(radius),str(size),str(np.mean(run_results)),str(time_elapsed)])
     with open("antonio_tests.csv", "a") as myfile:
         myfile.write(result_string + "\n")
