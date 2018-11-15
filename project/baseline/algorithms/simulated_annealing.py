@@ -1,4 +1,6 @@
+import logging
 import numpy as np
+
 from algorithms.hill_climbing import HillClimbing
 
 
@@ -11,7 +13,11 @@ class SimulatedAnnealing(HillClimbing):
         self.control = control
         self.update_rate = update_rate
 
-    def search(self, n_iterations, report=False):
+    def search(self, n_iterations, report=False, log=False):
+        if log:
+            log_event = [self.problem_instance.__class__, id(self._random_state), __name__]
+            logger = logging.getLogger(','.join(list(map(str, log_event))))
+
         i = self.best_solution
 
         for iteration in range(n_iterations):
@@ -23,6 +29,12 @@ class SimulatedAnnealing(HillClimbing):
 
             if report:
                 self._verbose_reporter_inner(i, iteration)
+
+            if log:
+                log_event = [iteration, i.fitness, i.validation_fitness if hasattr(i, 'validation_fitness') else None,
+                             self.neighborhood_size, self.neighborhood_function.__name__,
+                             self.control, self.update_rate]
+                logger.info(','.join(list(map(str, log_event))))
 
         self.best_solution = i
 

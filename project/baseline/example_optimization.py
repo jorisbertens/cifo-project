@@ -6,10 +6,11 @@ from main import *
 #++++++++++++++++++++++++++
 n_gen = 50
 ps = 100
-p_c = 0.50.1
+p_c = 0.50
 p_m = 0.9
 radius = 0.2
 size=0.1
+
 ga = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(size),
                       uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_c)
 ga.initialize()

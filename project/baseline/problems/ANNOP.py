@@ -1,5 +1,5 @@
 import numpy as np
-from problems.continuous import Continuous
+from continuous import Continuous
 from solutions.solution import Solution
 
 
@@ -9,7 +9,7 @@ class ANNOP(Continuous):
         self.validation_threshold = validation_threshold
 
     def evaluate(self, solution):
-        solution.fitness, solution.test_fitness = self.fitness_function(solution.representation)
+        solution.fitness, solution.validation_fitness = self.fitness_function(solution.representation)
         solution.dimensionality, solution.valid = self._validate(solution)
 
         if not solution.valid:
@@ -19,12 +19,12 @@ class ANNOP(Continuous):
                 solution.fitness = 0
 
     def _validate(self, solution):
-        if solution.test_fitness is not None and self.validation_threshold is not None:
+        if solution.validation_fitness is not None and self.validation_threshold is not None:
             return len(solution.representation), \
-                   True if np.absolute(solution.fitness - solution.test_fitness) <= self.validation_threshold else False
+                   True if np.absolute(solution.fitness - solution.validation_fitness) <= self.validation_threshold else False
         else:
             return len(solution.representation), True
 
     def sample_search_space(self, random_state):
-        return Solution(
-            random_state.uniform(low=self.search_space[0], high=self.search_space[1], size=self.search_space[2]))
+        return Solution(random_state.uniform(low=self.search_space[0], high=self.search_space[1],
+                                             size=self.search_space[2]))

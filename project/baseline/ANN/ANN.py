@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
-from ANN.Layer import Layer
+from Layer import Layer
 
 
 def sigmoid(x):
@@ -19,7 +19,7 @@ def softmax(x):
 class ANN:
     def __init__(self, hidden_architecture, output_activation,
                  fitness_function, data, random_state,
-                 test_size=0.2, target_labels=None):
+                 validation_p=0.2, target_labels=None):
         self.hidden_architecture = hidden_architecture
         self.n_input_neurons = data[0].shape[1]
         self.fitness_function = fitness_function
@@ -39,13 +39,12 @@ class ANN:
             self.output_activation = output_activation
             self.target_labels = target_labels
 
-        if 0 < test_size < 1:  # leave p out cross-validation
-            self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
-                data[0], data[1],
-                test_size=test_size, random_state=random_state)
+        if 0 < validation_p < 1:  # leave p% out cross-validation
+            self.X_train, self.X_validate, self.y_train, self.y_validate = train_test_split(data[0], data[1],
+                test_size=validation_p, random_state=random_state)
         else:  # no cross-validation
-            self.X_train, self.X_test = data[0], None
-            self.y_train, self.y_test = data[1], None
+            self.X_train, self.X_validate = data[0], None
+            self.y_train, self.y_validate = data[1], None
 
         self._initialize()
 
@@ -87,7 +86,7 @@ class ANN:
 
         fitness = []
 
-        for signals, target in zip((self.X_train, self.X_test), (self.y_train, self.y_test)):
+        for signals, target in zip((self.X_train, self.X_validate), (self.y_train, self.y_validate)):
             if signals is None or signals is None:
                 fitness.append(None)
                 break
@@ -133,4 +132,4 @@ class ANN:
         for layer in self.network:
             n = layer.n_neurons * layer.n_dendrites
             layer.set_weights(weights[i:i + n])
-            i += n
+            i+=n
