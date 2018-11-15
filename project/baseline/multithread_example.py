@@ -22,6 +22,15 @@ file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "LogFiles/
             "_" + str(datetime.datetime.now().minute) + "_log.csv"))
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
+
+file_name= "LogFiles/" + "custom_example_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
+            "_" + str(datetime.datetime.now().minute) + "_log.csv"
+
+header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
+with open(file_name, "a") as myfile:
+    myfile.write(header_string + "\n")
+
+
 # ++++++++++++++++++++++++++
 # THE DATA
 # restrictions:
@@ -36,8 +45,8 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-n_runs = [1]
-n_genes = [x for x in range(20,30)]
+n_runs = [2] # Always a single int
+n_genes = [x for x in range(10,20)]
 validation_p = .2
 validation_threshold = .07
 
@@ -53,12 +62,11 @@ ns = pss
 control = [2]
 update_rate = [0.9]
 
-def algo_run( n_gen,ps,p_c,p_m,radius,pressure,n_runs):
-
-    search_algorithms = []
+def algo_run(n_gen,ps,p_c,p_m,radius,pressure,n_runs):
 
     for seed in range(n_runs):
         random_state = uls.get_random_state(seed)
+        start_time = datetime.datetime.now()
 
         #++++++++++++++++++++++++++
         # THE ANN
@@ -88,34 +96,36 @@ def algo_run( n_gen,ps,p_c,p_m,radius,pressure,n_runs):
         # - use at least 5 runs for your benchmarks
         # * including reproduction
         #++++++++++++++++++++++++++
-        print("Seed:"+str(seed))
-        print("Values")
-        print(";".join(["Run:",str(n_gen),str(ps),str(p_c),str(p_m),str(radius),str(pressure)])
-)
         alg = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(pressure),
                           uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
         alg.initialize()
         # initialize search algorithms
+        ########Search   ############################ LOG \/ ########################
         alg.search(n_iterations=n_gen, report=False, log=True)
-        # execute search
-        print("Best solution:" + str(alg.best_solution.fitness))
+
+        ############# Evaluate unseen fitness ##################
+        ann_i._set_weights(alg.best_solution.representation)
+        y_pred = ann_i.stimulate_with(X_test, False)
+        accuracy = accuracy_score(y_test, y_pred)
+        time_elapsed = datetime.datetime.now() - start_time
+        # Create result string
+        result_string = ",".join(
+            [str(seed+1)+"/"+str(n_runs) , str(n_gen), str(ps), str(p_c), str(p_m), str(radius), str(pressure),
+             str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
+        # Write result to a file
+        with open(file_name, "a") as myfile:
+            myfile.write(result_string + "\n")
+        # Output result to terminal
+        print(header_string)
+        print(result_string)
 
 
 possible_values = list(itertools.product(*[n_genes,pss,p_cs,p_ms,radiuses,pressures,n_runs]))
 core_count = multiprocessing.cpu_count()
+print("All possible combinations generated:")
 print(possible_values)
-print(core_count)
-#splited_values = np.array_split(possible_values, core_count)
-#print(splited_values[0])
+print("Number of cpu cores: "+str(core_count))
 
+####### Magic appens here ########
 pool = multiprocessing.Pool(core_count)
 results = pool.starmap(algo_run, possible_values)
-#++++++++++++++++++++++++++
-# TEST
-# - test algorithms on unseen data
-#++++++++++++++++++++++++++
-#for algorithm in search_algorithms:
-#    ann_i._set_weights(algorithm.best_solution.representation)
-#    y_pred = ann_i.stimulate_with(X_test, False)
-#    accuracy = accuracy_score(y_test, y_pred)
-#    print("Unseen Accuracy of %s: %.2f" % (algorithm.__class__, accuracy_score(y_test, y_pred)))
