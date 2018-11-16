@@ -109,7 +109,7 @@ def algo_run(seed, n_gen, ps, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed+1)+"/"+str(n_runs) , str(n_gen), str(ps), str(p_c), str(p_m), str(radius), str(pressure),
+        [str(seed), str(n_gen), str(ps), str(p_c), str(p_m), str(radius), str(pressure),
          str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
     # Write result to a file
     with open(file_name, "a") as myfile:
