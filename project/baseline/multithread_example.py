@@ -51,7 +51,6 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-pss = [50]
 p_cs = [.8]
 p_ms = [0.9]
 radiuses= [.2]
@@ -63,10 +62,15 @@ control = [2]
 update_rate = [0.9]
 
 
-def algo_run(seed, n_gen, ps, p_c, p_m, radius, pressure):
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
+    pop_size = int(5000/n_gen)
+    if pop_size > 50:
+        with open(file_name, "a") as myfile:
+            myfile.write("Invalid parameters" + "\n")
+        return 0
     #++++++++++++++++++++++++++
     # THE ANN
     # restrictions:
@@ -95,7 +99,7 @@ def algo_run(seed, n_gen, ps, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(pressure),
+    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, uls.parametrized_tournament_selection(pressure),
                       uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
     alg.initialize()
     # initialize search algorithms
@@ -119,7 +123,7 @@ def algo_run(seed, n_gen, ps, p_c, p_m, radius, pressure):
     print(result_string)
 
 
-possible_values = list(itertools.product(*[seeds_per_run,n_genes,pss,p_cs,p_ms,radiuses,pressures]))
+possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
 core_count = multiprocessing.cpu_count()
 print("All possible combinations generated:")
 print(possible_values)
