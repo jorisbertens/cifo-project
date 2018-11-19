@@ -57,7 +57,7 @@ radiuses= [.2]
 pressures = [.2]
 
 # Simulated Annealing setup
-ns = pss
+#ns = ps
 control = [2]
 update_rate = [0.9]
 
@@ -113,7 +113,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(ps), str(p_c), str(p_m), str(radius), str(pressure),
+        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
          str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
     # Write result to a file
     with open(file_name, "a") as myfile:
@@ -122,13 +122,13 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     print(header_string)
     print(result_string)
 
+if __name__ ==  '__main__':
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+    core_count = multiprocessing.cpu_count()
+    print("All possible combinations generated:")
+    print(possible_values)
+    print("Number of cpu cores: "+str(core_count))
 
-possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
-core_count = multiprocessing.cpu_count()
-print("All possible combinations generated:")
-print(possible_values)
-print("Number of cpu cores: "+str(core_count))
-
-####### Magic appens here ########
-pool = multiprocessing.Pool(core_count)
-results = pool.starmap(algo_run, possible_values)
+    ####### Magic appens here ########
+    pool = multiprocessing.Pool(core_count)
+    results = pool.starmap(algo_run, possible_values)
