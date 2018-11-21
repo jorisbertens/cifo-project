@@ -3,6 +3,8 @@ from algorithms.hill_climbing import HillClimbing, RandomSearch
 import itertools
 from datetime import datetime
 
+import utils.utils as uls
+
 #++++++++++++++++++++++++++
 # THE OPTIMIZATION
 #++++++++++++++++++++++++++

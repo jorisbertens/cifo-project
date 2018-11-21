@@ -8,7 +8,11 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils as uls
+import utils.utils as uls
+import utils.crossovers as cross
+import utils.selections as sel
+import utils.mutations as mut
+
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -81,11 +85,11 @@ for seed in range(n_runs):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    ga1 = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(pressure),
-                          uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), 0.2)
-    ga2 = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(pressure),
-                           uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), 0.4)
-    sa1 = SimulatedAnnealing(ann_op_i, random_state, ps, uls.parametrized_ball_mutation(radius), control, update_rate)
+    ga1 = GeneticAlgorithm(ann_op_i, random_state, ps, sel.parametrized_tournament_selection(pressure),
+                          cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), 0.2)
+    ga2 = GeneticAlgorithm(ann_op_i, random_state, ps, sel.parametrized_tournament_selection(pressure),
+                           cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), 0.4)
+    sa1 = SimulatedAnnealing(ann_op_i, random_state, ps, mut.parametrized_ball_mutation(radius), control, update_rate)
     search_algorithms = [ga1, ga2, sa1]
 
     # initialize search algorithms

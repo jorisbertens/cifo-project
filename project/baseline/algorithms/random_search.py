@@ -1,6 +1,6 @@
 import logging
 
-from search_algorithm import SearchAlgorithm
+from algorithms.search_algorithm import SearchAlgorithm
 
 
 class RandomSearch(SearchAlgorithm):
@@ -19,6 +19,7 @@ class RandomSearch(SearchAlgorithm):
         i = self.best_solution
         for iteration in range(n_iterations):
             j = self._generate_random_solution()
+            self.problem_instance.evaluate(j)
             i = self._get_best(i, j)
 
             if report:

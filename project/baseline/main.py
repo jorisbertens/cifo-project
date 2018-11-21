@@ -9,7 +9,11 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils as uls
+import utils.utils as uls
+import utils.crossovers as cross
+import utils.selections as sel
+import utils.mutations as mut
+
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -94,8 +98,8 @@ p_c = .5
 p_m = .9
 radius = .2
 pressure = .2
-ga = GeneticAlgorithm(ann_op_i, random_state, ps, uls.parametrized_tournament_selection(pressure),
-                      uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
+ga = GeneticAlgorithm(ann_op_i, random_state, ps, sel.parametrized_tournament_selection(pressure),
+                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
 ga.initialize()
 ga.search(n_gen, False, True)
 
@@ -103,7 +107,7 @@ ga.best_solution.print_()
 print("Training fitness of the best solution: %.2f" % ga.best_solution.fitness)
 print("Validation fitness of the best solution: %.2f" % ga.best_solution.validation_fitness)
 
-sa = SimulatedAnnealing(ann_op_i, random_state, ps, uls.parametrized_ball_mutation(radius), 2, .9)
+sa = SimulatedAnnealing(ann_op_i, random_state, ps, mut.parametrized_ball_mutation(radius), 2, .9)
 sa.initialize()
 sa.search(n_gen, True, True)
 

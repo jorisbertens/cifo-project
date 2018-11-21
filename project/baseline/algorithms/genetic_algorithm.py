@@ -2,7 +2,7 @@ import logging
 import numpy as np
 from functools import reduce
 
-from random_search import RandomSearch
+from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
 
 

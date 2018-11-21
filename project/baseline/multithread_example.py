@@ -10,11 +10,14 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils as uls
+import utils.utils as uls
+import utils.crossovers as cross
+import utils.selections as sel
+import utils.mutations as mut
+
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.simulated_annealing import SimulatedAnnealing
 
 
 # setup logger
@@ -51,16 +54,10 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-p_cs = [.8]
-p_ms = [0.9]
-radiuses= [.2]
-pressures = [.2]
-
-# Simulated Annealing setup
-ns = pss
-control = [2]
-update_rate = [0.9]
-
+p_cs = [0.8]
+p_ms = [0.4]
+radiuses= [0.2]
+pressures = [0.2]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     random_state = uls.get_random_state(seed)
@@ -99,12 +96,12 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, uls.parametrized_tournament_selection(pressure),
-                      uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
+    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
+                      cross.one_point_crossover, p_c, mut.parametrized_random_member_mutation(radius, (-2,2)), p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=False, log=True)
+    alg.search(n_iterations=n_gen, report=False, log=False)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)
@@ -113,7 +110,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(ps), str(p_c), str(p_m), str(radius), str(pressure),
+        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
          str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
     # Write result to a file
     with open(file_name, "a") as myfile:
