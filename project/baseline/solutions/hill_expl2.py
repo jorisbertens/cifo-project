@@ -18,8 +18,8 @@ with open("joris_tests_param.csv", "a") as myfile:
     myfile.write(result_string)
 
 
-neighborhood_size = [ x for x in range(100,1000,50) ]
-n_gens = [ x for x in range(50,300,50) ]
+neighborhood_size = [ x for x in range(10,105,10) ]
+n_gens = [ x for x in range(10,55,5) ]
 prob_flips = [ x*0.1 for x in range(0,10,2)]
 
 possible_values = list(itertools.product(*[neighborhood_size,n_gens,prob_flips]))
@@ -47,7 +47,7 @@ for neighborhood_size,n_gen,prob_flip in possible_values:
     time_elapsed = datetime.now() - start_time
     print("Run results: "+str(np.mean(run_results)))
     print(run_results)
-    result_string = ";".join(["Run:"+str(counter),str(n_gen),str(neighborhood_size),str(prob_flip),str(np.mean(run_results)),str(time_elapsed)])
+    result_string = ";".join(["Run:"+str(seed),str(counter+4),str(n_gen),str(neighborhood_size),str(prob_flip),str(np.mean(run_results)),str(time_elapsed)])
     with open("joris_tests_param.csv", "a") as myfile:
         myfile.write(result_string + "\n")
     counter+=1

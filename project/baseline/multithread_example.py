@@ -119,13 +119,13 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     print(header_string)
     print(result_string)
 
+if __name__ ==  '__main__':
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+    core_count = multiprocessing.cpu_count()
+    print("All possible combinations generated:")
+    print(possible_values)
+    print("Number of cpu cores: "+str(core_count))
 
-possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
-core_count = multiprocessing.cpu_count()
-print("All possible combinations generated:")
-print(possible_values)
-print("Number of cpu cores: "+str(core_count))
-
-####### Magic appens here ########
-pool = multiprocessing.Pool(core_count)
-results = pool.starmap(algo_run, possible_values)
+    ####### Magic appens here ########
+    pool = multiprocessing.Pool(core_count)
+    results = pool.starmap(algo_run, possible_values)

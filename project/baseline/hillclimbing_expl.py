@@ -8,8 +8,8 @@ import utils.utils as uls
 #++++++++++++++++++++++++++
 # THE OPTIMIZATION
 #++++++++++++++++++++++++++
-neighborhood_size = 100
-n_gen = 50
+neighborhood_size = 10
+n_gen = 10
 #hc = HillClimbing(problem_instance=ann_op_i, random_state=random_state, neighborhood_size=neighborhood_size, neighborhood_function=uls.bit_flip)
 
 
@@ -19,8 +19,8 @@ with open("joris_tests.csv", "a") as myfile:
     myfile.write(result_string)
 
 
-neighborhood_size = [ x for x in range(100,1000,50) ]
-n_gens = [ x for x in range(50,300,50) ]
+neighborhood_size = [ x for x in range(10,105,10) ]
+n_gens = [ x for x in range(50,55,5) ]
 methods = [uls.bit_flip]
 possible_values = list(itertools.product(*[neighborhood_size,n_gens, methods]))
 print(possible_values)
@@ -47,7 +47,7 @@ for neighborhood_size,n_gen,method in possible_values:
     time_elapsed = datetime.now() - start_time
     print("Run results: "+str(np.mean(run_results)))
     print(run_results)
-    result_string = ";".join(["Run:"+str(counter),str(n_gen),str(neighborhood_size),str(np.mean(run_results)),str(time_elapsed)])
+    result_string = ";".join(["Run:"+str(counter+88),str(n_gen),str(neighborhood_size),str(np.mean(run_results)),str(time_elapsed)])
     with open("joris_tests.csv", "a") as myfile:
         myfile.write(result_string + "\n")
     counter+=1
