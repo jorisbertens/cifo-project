@@ -29,3 +29,20 @@ def roulette_selection(population, minimization, random_state):
         current += ind.fitness
         if current > pick:
             return ind
+
+
+def boltzmann_selection(pressure, n_gen):
+    gen = 0
+    def tournament_selection(population, minimization, random_state):
+        nonlocal  gen
+        factor = pressure - ((pressure / 2) * (gen/(n_gen*len(population))))
+        gen = gen + 1
+        tournament_pool_size = int(len(population)* factor)
+        tournament_pool = random_state.choice(population, size=tournament_pool_size, replace=False)
+
+        if minimization:
+            return reduce(lambda x, y: x if x.fitness <= y.fitness else y, tournament_pool)
+        else:
+            return reduce(lambda x, y: x if x.fitness >= y.fitness else y, tournament_pool)
+
+    return tournament_selection
