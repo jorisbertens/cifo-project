@@ -17,8 +17,7 @@ from algorithms.random_search import RandomSearch
 
 
 # setup logger
-file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv")
+file_path =  "LogFiles/" + "random.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
@@ -46,7 +45,7 @@ X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, 
 n_gen = 100
 validation_p = .2
 validation_threshold = .07
-seed=1183
+seed=1610
 while True:
     random_state = uls.get_random_state(seed)
 

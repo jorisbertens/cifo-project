@@ -6,7 +6,7 @@ from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
 
 
-class GeneticAlgorithmElitism(RandomSearch):
+class GeneticAlgorithmDMR(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)
@@ -38,6 +38,7 @@ class GeneticAlgorithmElitism(RandomSearch):
                 if self._random_state.uniform() < self.p_c:
                     off1, off2 = self._crossover(p1, p2)
 
+                self.p_m = 1/(2 + (((len(self.population) - 2)/n_iterations) * iteration))
                 if self._random_state.uniform() < self.p_m:
                     off1 = self._mutation(off1)
                     off2 = self._mutation(off2)
@@ -49,9 +50,6 @@ class GeneticAlgorithmElitism(RandomSearch):
 
             while len(offsprings) > len(self.population):
                 offsprings.pop()
-
-            offsprings.extend([elite, elite])
-
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
