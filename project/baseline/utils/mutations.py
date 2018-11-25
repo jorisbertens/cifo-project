@@ -5,7 +5,7 @@ def parametrized_ball_mutation(radius):
         return np.array([random_state.uniform(low=coordinate - radius, high=coordinate + radius) for coordinate in point])
     return ball_mutation
 
-def parametrized_ball_mutation2(radius, search_space):
+def parametrized_ball_mutation_with_boundries(radius, search_space):
     def ball_mutation(point, random_state):
         result = []
         for coordinate in point:
@@ -16,22 +16,35 @@ def parametrized_ball_mutation2(radius, search_space):
         return np.array(result)
     return ball_mutation
 
-def parametrized_random_member_mutation(p, search_space):
-    def SA_mutation(point, random_state):
+def parametrized_random_member_mutation_fast(p, search_space):
+    def random_member_mutation(point, random_state):
 
         indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
         new_points = point.copy()
         new_points[indexes] = random_state.uniform(low=search_space[0], high=search_space[1])
         return new_points
-    return SA_mutation
+    return random_member_mutation
 
-def parametrized_random_member_mutation2(p, search_space):
-    def SA_mutation(point, random_state):
+def parametrized_random_member_mutation(p, search_space):
+    def random_member_mutation(point, random_state):
 
         indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
         new_points = point.copy()
         for index in indexes:
             new_points[index] = random_state.uniform(low=search_space[0], high=search_space[1])
         return new_points
-    return SA_mutation
+    return random_member_mutation
+
+def parametrized_swap_mutation(p):
+    def swap_mutation(point, random_state):
+        size = int(( len(point) * p ) / 2)
+        indexes1 = random_state.randint(low = 0,high = len(point), size = size)
+        indexes2 = random_state.randint(low = 0,high = len(point), size = size)
+
+        new_points = point.copy()
+
+        new_points[indexes1], new_points[indexes2] = point[indexes2], point[indexes1]
+
+        return new_points
+    return swap_mutation
 
