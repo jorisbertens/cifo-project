@@ -35,22 +35,7 @@ def parameterized_uniformSwap(p):
     return uniformSwap
 
 
+def arithmetic_crossover(p1_r, p2_r, random_state):
+    off1_r = (p1_r + p2_r)/2
+    return off1_r, off1_r.copy()
 
-def cxPartialyMatched(p1_r, ind2):
-    """[Goldberg1985] Goldberg and Lingel, "Alleles, loci, and the traveling
-       salesman problem", 1985.
-    """
-
-
-def parameterized_UniformPartialyMatched(p):
-    def UniformPartialyMatched(p1_r, p2_r, random_state):
-        """
-         [Cicirello2000] Cicirello and Smith, "Modeling GA performance for
-         control parameter optimization", 2000.
-    """
-
-def cxOrdered(ind1, ind2):
-    """
-        [Goldberg1989] Goldberg. Genetic algorithms in search,
-       optimization and machine learning. Addison Wesley, 1989
-    """
