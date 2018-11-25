@@ -16,17 +16,25 @@ def parametrized_tournament_selection(pressure):
 def random_selection(population, minimization, random_state):
     return random_state.choice(population)
 
-def best_selection(population, minimization, random_state):
+def rank_selection(population, minimization, random_state):
     return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
 
 def roulette_selection(population, minimization, random_state):
-    ## MINIMIZATION (NOT WELL IMPLEMENTED)
+    minimization = not minimization
     max_fitness = max(ind.fitness for ind in population)
-    sum_fits = sum(max_fitness - ind.fitness for ind in population)
+    if minimization:
+        sum_fits = sum(max_fitness - ind.fitness for ind in population)
+    else:
+        sum_fits = sum(ind.fitness for ind in population)
+
     pick = random_state.uniform(0, sum_fits)
     current = 0
     for ind in population:
-        current += ind.fitness
+        if minimization:
+            current += (max_fitness - ind.fitness)
+        else:
+            current += ind.fitness
+
         if current > pick:
             return ind
 
