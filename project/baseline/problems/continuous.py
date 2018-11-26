@@ -1,6 +1,6 @@
-import utils as uls
+import utils.utils as uls
 import numpy as np
-from problem import Problem
+from problems.problem import Problem
 from solutions.solution import Solution
 
 

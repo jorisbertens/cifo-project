@@ -1,5 +1,5 @@
 import numpy as np
-from continuous import Continuous
+from problems.continuous import Continuous
 from solutions.solution import Solution
 
 

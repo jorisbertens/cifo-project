@@ -15,9 +15,11 @@ import utils.crossovers as cross
 import utils.selections as sel
 import utils.mutations as mut
 
+import utils as uls
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
+from algorithms.simulated_annealing import SimulatedAnnealing
 
 
 # setup logger
@@ -26,7 +28,7 @@ file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(date
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_example_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
+file_name= "LogFiles/" + "custom_example_lf_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv"
 
 header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
@@ -48,16 +50,23 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [x for x in range(5)]
-n_genes = [100]
+seeds_per_run = [3]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-p_cs = [0.8]
-p_ms = [0.4]
-radiuses= [0.2]
-pressures = [0.2]
+n_genes = [ x for x in range(100,270,20) ]
+p_cs = [x*0.1 for x in range(2, 11, 2) ]
+p_ms = [x*0.1 for x in range(1, 7, 2)]
+radiuses = [x*0.1 for x in range(2, 11, 2)]
+pressures = [x*0.1 for x in range(2, 11, 2)]
+
+
+# Simulated Annealing setup
+#ns = ps
+control = [2]
+update_rate = [0.9]
+
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     random_state = uls.get_random_state(seed)
@@ -97,11 +106,11 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # * including reproduction
     #++++++++++++++++++++++++++
     alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
-                      cross.one_point_crossover, p_c, mut.parametrized_random_member_mutation(radius, (-2,2)), p_m)
+                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=False, log=False)
+    alg.search(n_iterations=n_gen, report=False, log=True)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)

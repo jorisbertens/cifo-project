@@ -10,7 +10,11 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils as uls
+import utils.utils as uls
+import utils.crossovers as cross
+import utils.selections as sel
+import utils.mutations as mut
+
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -106,8 +110,8 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, uls.parametrized_tournament_selection(pressure),
-                      uls.one_point_crossover, p_c, uls.parametrized_ball_mutation(radius), p_m)
+    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
+                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################

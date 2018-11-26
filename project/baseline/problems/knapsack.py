@@ -2,7 +2,7 @@ import numpy as np
 from problem import Problem
 from solutions._item import sum_weights
 from solutions.solution import Solution
-from utils import random_boolean_1D_array
+from utils.utils import random_boolean_1D_array
 
 
 class Knapsack(Problem):
