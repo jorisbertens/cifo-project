@@ -16,8 +16,20 @@ def parametrized_tournament_selection(pressure):
 def random_selection(population, minimization, random_state):
     return random_state.choice(population)
 
-def rank_selection(population, minimization, random_state):
+def best_selection(population, minimization, random_state):
     return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
+
+def rank_selection(population, minimization, random_state):
+    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
+    length = len(sorted_pop)
+    pick = random_state.uniform(0, 1)
+    current = 0
+    for ind in sorted_pop:
+        current += length
+        if current > pick:
+            return ind
+        current += 1
+
 
 def roulette_selection(population, minimization, random_state):
     minimization = not minimization
@@ -45,7 +57,7 @@ def boltzmann_selection(pressure, n_gen):
         nonlocal  gen
         factor = pressure - ((pressure / 2) * (gen/(n_gen*len(population))))
         gen = gen + 1
-        tournament_pool_size = int(len(population)* factor)
+        tournament_pool_size = int(len(population) * factor)
         tournament_pool = random_state.choice(population, size=tournament_pool_size, replace=False)
 
         if minimization:

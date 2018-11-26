@@ -10,7 +10,7 @@ def phenotypic_entropy(population):
 
 def phenotypic_variance(population):
     average = np.mean([ind.fitness for ind in population])
-    return np.sum([(indiv.fitness - average)^2 for indiv in population]) / (len(population) - 1)
+    return np.sum([ np.power((indiv.fitness - average),2) for indiv in population]) / (len(population) - 1)
 
 
 def genotypic_entropy(population):
@@ -22,5 +22,5 @@ def genotypic_entropy(population):
 
 def genotypic_variance(population):
     avg_distance = np.sum(np.abs([ind.representation for ind in population]))
-    return np.sum([(indiv.representation - avg_distance)^2 for indiv in population]) / (len(population) - 1)
+    return np.sum( [np.power((indiv.representation - avg_distance),2) for indiv in population]) / (len(population) - 1)
 
