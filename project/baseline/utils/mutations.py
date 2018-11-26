@@ -48,3 +48,15 @@ def parametrized_swap_mutation(p):
         return new_points
     return swap_mutation
 
+def parameterized_random_mutation(ball_radius, random_member_p, swap_p, search_space):
+    def random_mutation(point, random_state):
+        mutations = [
+            parametrized_ball_mutation(ball_radius),
+            parametrized_ball_mutation_with_boundries(ball_radius, search_space),
+            parametrized_random_member_mutation_fast(random_member_p, search_space),
+            parametrized_random_member_mutation(random_member_p, search_space),
+            parametrized_swap_mutation(swap_p)
+        ]
+        mutation_algo = random_state.choice(mutations)
+        return mutation_algo(point, random_state)
+    return random_mutation

@@ -55,16 +55,23 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [1,2]
+seeds_per_run = [2]
 n_genes = [100]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-p_cs = [0.5]
-p_ms = [0.5]
-radiuses= [0.2]
+p_cs = [0.8]
+p_ms = [0.9]
+radiuses= [0.01]
 pressures = [0.2]
+
+# BEST !!!!
+
+# GeneticAlgorithmElitism(ann_op_i, 2, 100, sel.best_selection,
+#                       cross.one_point_crossover, 0.8, mut.parametrized_random_member_mutation_fast(0.01, (-2,2)), 0.9)
+
+# Fitness 0.68 <--- !!!!
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     random_state = uls.get_random_state(seed)
@@ -103,8 +110,8 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithmProgressRate(ann_op_i, random_state, pop_size, sel.boltzmann_selection(pressure, n_gen),
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
+    alg = GeneticAlgorithm2PopSeparateCM(ann_op_i, random_state, pop_size, sel.rank_selection,
+                      cross.parameterized_random_crossover(0.2), p_c, mut.parameterized_random_mutation(radius,0.01 , 0.01, (-2,2)), p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################

@@ -75,6 +75,9 @@ class GeneticAlgorithm2PopSeparateCM(RandomSearch):
             offsprings1.extend([elite2, elite2])
             offsprings2.extend([elite1, elite1])
 
+            print(elite1.fitness)
+            print(elite2.fitness)
+
             if report:
                 self._verbose_reporter_inner(elite, iteration)
 

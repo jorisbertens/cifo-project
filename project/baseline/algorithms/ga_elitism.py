@@ -55,7 +55,7 @@ class GeneticAlgorithmElitism(RandomSearch):
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
-
+            print(elite.fitness)
             if report:
                 self._verbose_reporter_inner(elite, iteration)
 
