@@ -57,30 +57,28 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [2]
-n_genes = [100]
+seeds_per_run = [0,1,2,3,4]
+n_genes = [200]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
 p_cs = [1]
-p_ms = [0.3]
+p_ms = [1]
 radiuses= [0.01]
-pressures = [0.2]
-
+pressures = [2]
+algorithms = [cross.arithmetic_crossover]
 # BEST !!!!
 
-#  GeneticAlgorithmElitism(ann_op_i, 2, 100, sel.rank_selection,
-#                       cross.two_point_crossover, 1, mut.parametrized_random_member_mutation(0.01,(-2,2)), 1)
-# 3 elites
-# Fitness 0.72 <--- !!!!
+# GeneticAlgorithmElitism(ann_op_i, 2, 100, sel.best_selection,
+#                       cross.one_point_crossover, 0.8, mut.parametrized_random_member_mutation_fast(0.01, (-2,2)), 0.9)
 
-#  GeneticAlgorithmElitism(ann_op_i, 2, 200, sel.rank_selection,
-#                       cross.arithmetic, 1, mut.parametrized_random_member_mutation(0.01,(-2,2)), 1)
-# 2 elites
-# Fitness 0.755 <--- !!!!
+# Fitness 0.68 <--- !!!!
 
-def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
+print(header_string)
+
+
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure, algo):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
@@ -115,10 +113,10 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - 5000 offsprings/run max*
     # - 50 offsprings/generation max*
     # - use at least 5 runs for your benchmarks
-    # * including reproducti    alg = GeneticAlgorithmElitism(ann_op_i, random_state, pop_size, sel.rank_selection,
+    # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm2Random(ann_op_i, random_state, pop_size, sel.rank_selection,
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(0.2), p_m)
+    alg = GeneticAlgorithmElitism(ann_op_i, random_state, pop_size, sel.rank_selection,
+                      algo, p_c, mut.parametrized_random_member_mutation(radius,(-2,2)), p_m, pressure)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
@@ -132,16 +130,18 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # Create result string
     result_string = ",".join(
         [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
-         str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
+         str(alg.best_solution.fitness), str(accuracy),str(time_elapsed), str(algo)])
     # Write result to a file
     with open(file_name, "a") as myfile:
         myfile.write(result_string + "\n")
     # Output result to terminal
-    print(header_string)
     print(result_string)
+    if alg.best_solution.fitness > 0.7:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 
 
-possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+
+possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures, algorithms]))
 core_count = multiprocessing.cpu_count()
 print("All possible combinations generated:")
 print(possible_values)
@@ -149,5 +149,5 @@ print(len(possible_values))
 print("Number of cpu cores: "+str(core_count))
 
 ####### Magic appens here ########
-pool = multiprocessing.Pool(core_count)
+pool = multiprocessing.Pool(3)
 results = pool.starmap(algo_run, possible_values)

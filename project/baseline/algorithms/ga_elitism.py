@@ -8,7 +8,7 @@ from solutions.solution import Solution
 
 class GeneticAlgorithmElitism(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
-                 selection, crossover, p_c, mutation, p_m):
+                 selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)
         self.population_size = population_size
         self.selection = selection
@@ -16,6 +16,7 @@ class GeneticAlgorithmElitism(RandomSearch):
         self.p_c = p_c
         self.mutation = mutation
         self.p_m = p_m
+        self.elite_number = elite_number
 
     def initialize(self):
         self.population = self._generate_random_valid_solutions()
@@ -50,12 +51,12 @@ class GeneticAlgorithmElitism(RandomSearch):
             while len(offsprings) > len(self.population):
                 offsprings.pop()
 
-            offsprings.extend([elite, elite])
+            offsprings.extend(self._get_x_elites(self.population, self.elite_number))
 
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
-            print(elite.fitness)
+            #print(elite.fitness)
             if report:
                 self._verbose_reporter_inner(elite, iteration)
 
@@ -92,3 +93,6 @@ class GeneticAlgorithmElitism(RandomSearch):
         solutions = np.array([self._generate_random_valid_solution()
                               for i in range(self.population_size)])
         return solutions
+
+    def _get_x_elites(self, population,x):
+        return sorted(population, key=lambda x: x.fitness, reverse=not self.problem_instance.minimization)[:x]

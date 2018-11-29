@@ -4,9 +4,9 @@ from functools import reduce
 
 from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
-import utils.diversity as diversity
 
-class GeneticAlgorithmEval(RandomSearch):
+
+class GeneticAlgorithmElitismRandom(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)
@@ -50,8 +50,19 @@ class GeneticAlgorithmEval(RandomSearch):
             while len(offsprings) > len(self.population):
                 offsprings.pop()
 
+            offsprings.extend([elite, elite])
+
+            offsprings.extend([
+                self._generate_random_valid_solution(),
+                self._generate_random_valid_solution(),
+                self._generate_random_valid_solution(),
+                self._generate_random_valid_solution()
+            ])
+
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
+
+            print(elite.fitness)
 
             if report:
                 self._verbose_reporter_inner(elite, iteration)
@@ -61,13 +72,6 @@ class GeneticAlgorithmEval(RandomSearch):
                              self.population_size, self.selection.__name__, self.crossover.__name__, self.p_c,
                              self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings)]
                 logger.info(','.join(list(map(str, log_event))))
-
-            if True:
-                print("Phenotypic entropy: " + str(diversity.phenotypic_entropy(self.population)))
-                print("Genotypic entropy: " + str(diversity.genotypic_entropy(self.population)))
-                print("Phenotypic variance: " + str(diversity.phenotypic_variance(self.population)))
-                print("Genotypic variance: " + str(diversity.genotypic_variance(self.population)))
-                print("Fitness: "+ str(elite.fitness))
 
             self.population = offsprings
 
