@@ -7,6 +7,7 @@ class ANNOP(Continuous):
     def __init__(self, search_space, fitness_function, minimization=True, validation_threshold=None):
         Continuous.__init__(self, search_space, fitness_function, minimization)
         self.validation_threshold = validation_threshold
+        self.dimensionality = search_space[2]
 
     def evaluate(self, solution):
         solution.fitness, solution.validation_fitness = self.fitness_function(solution.representation)
