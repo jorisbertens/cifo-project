@@ -24,11 +24,11 @@ from algorithms.simulated_annealing import SimulatedAnnealing
 
 # setup logger
 file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv")
+            "_" + str(datetime.datetime.now().minute) +"---02---" +"_log.csv")
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_example_lf_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
+file_name= "LogFiles/" + "custom_example_lf_02" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv"
 
 header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
@@ -50,7 +50,7 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [3]
+seeds_per_run = [2]
 validation_p = .2
 validation_threshold = .07
 
@@ -136,5 +136,5 @@ if __name__ ==  '__main__':
     print("Number of cpu cores: "+str(core_count))
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count)
+    pool = multiprocessing.Pool(10)
     results = pool.starmap(algo_run, possible_values)
