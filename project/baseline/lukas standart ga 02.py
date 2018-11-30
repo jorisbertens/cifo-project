@@ -110,7 +110,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=True, log=True)
+    alg.search(n_iterations=n_gen, report=False, log=True)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)
