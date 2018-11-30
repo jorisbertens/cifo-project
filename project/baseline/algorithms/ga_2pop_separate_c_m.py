@@ -72,8 +72,8 @@ class GeneticAlgorithm2PopSeparateCM(RandomSearch):
             elite_offspring2 = self._get_elite(offsprings2)
             elite2 = self._get_best(elite2, elite_offspring2)
 
-            offsprings1.extend([elite2, elite2])
-            offsprings2.extend([elite1, elite1])
+            offsprings1.extend(self._get_x_elites(self.population2, 2))
+            offsprings2.extend(self._get_x_elites(self.population1, 2))
 
             print(elite1.fitness)
             print(elite2.fitness)
@@ -122,3 +122,6 @@ class GeneticAlgorithm2PopSeparateCM(RandomSearch):
         solutions = np.array([self._generate_random_valid_solution()
                               for i in range(size)])
         return solutions
+
+    def _get_x_elites(self, population,x):
+        return sorted(population, key=lambda x: x.fitness, reverse=not self.problem_instance.minimization)[:x]

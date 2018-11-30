@@ -36,12 +36,12 @@ class GeneticAlgorithmElitismWorstRemoval(RandomSearch):
                 off1, off2 = p1, p2 = [
                     self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
-                if self._random_state.uniform() < self.p_m:
-                    off_m1 = self._mutation(p1)
-                    off_m2 = self._mutation(p2)
-
                 if self._random_state.uniform() < self.p_c:
-                    off1, off2 = self._crossover(off_m1, off_m2)
+                    off1, off2 = self._crossover(p1, p2)
+
+                if self._random_state.uniform() < self.p_m:
+                    off1 = self._mutation(off1)
+                    off2 = self._mutation(off2)
 
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
