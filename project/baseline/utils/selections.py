@@ -19,20 +19,32 @@ def random_selection(population, minimization, random_state):
 def best_selection(population, minimization, random_state):
     return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
 
+def parameterized_x_best_selection(x):
+    def best_x_selection(population, minimization, random_state):
+        return random_state.choice(sorted(population, key=lambda x: x.fitness, reverse=not minimization)[x])
+    return best_x_selection
+
+def parameterized_best_or_random_selection(p):
+    def best_or_random_selection(population, minimization, random_state):
+        if np.uniform(0,1) < p:
+            return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
+        return np.choice(population)
+    return best_or_random_selection
+
 def rank_selection(population, minimization, random_state):
     sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
     length = len(sorted_pop)
-    pick = random_state.uniform(0, 1)
+    gaussian_sum =  ((length-1) * length) / 2
+    pick = random_state.uniform(0, gaussian_sum)
     current = 0
-    for ind in sorted_pop:
-        current += length
-        if current > pick:
+    for i, ind in enumerate(sorted_pop):
+        current += i
+        if current >= pick:
             return ind
-        current += 1
-
 
 def roulette_selection(population, minimization, random_state):
-    minimization = not minimization
+    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
+
     max_fitness = max(ind.fitness for ind in population)
     if minimization:
         sum_fits = sum(max_fitness - ind.fitness for ind in population)
@@ -41,7 +53,7 @@ def roulette_selection(population, minimization, random_state):
 
     pick = random_state.uniform(0, sum_fits)
     current = 0
-    for ind in population:
+    for ind in sorted_pop:
         if minimization:
             current += (max_fitness - ind.fitness)
         else:
