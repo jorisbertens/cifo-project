@@ -55,11 +55,11 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-n_genes = [ x for x in range(100,270,20) ]
-p_cs = [x*0.1 for x in range(2, 11, 2) ]
-p_ms = [x*0.1 for x in range(1, 7, 2)]
-radiuses = [x*0.1 for x in range(2, 11, 2)]
-pressures = [x*0.1 for x in range(2, 11, 2)]
+n_genes = [240]
+p_cs = [.8]
+p_ms = [.8,.7,.9,1]
+radiuses = [.2]
+pressures = [.2]
 
 
 # Simulated Annealing setup
