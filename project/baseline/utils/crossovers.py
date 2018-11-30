@@ -21,6 +21,9 @@ def two_point_crossover(p1_r, p2_r, random_state):
     off2_r = np.concatenate((p2_r[0:cxpoint1], p1_r[cxpoint1:cxpoint2], p2_r[cxpoint2:size]))
     return off1_r, off2_r
 
+def n_point_crossover(p1_r, p2_r, random_state):
+    return 0
+
 def parameterized_uniformSwap(p):
     def uniformSwap(p1_r, p2_r, random_state):
         off1_r = p1_r.copy()
@@ -38,6 +41,13 @@ def parameterized_uniformSwap(p):
 def arithmetic_crossover(p1_r, p2_r, random_state):
     off1_r = (p1_r + p2_r)/2
     return off1_r, off1_r.copy()
+
+def geometric_crossover(p1_r, p2_r, random_state):
+    random_array = random_state.uniform(size=len(p1_r))
+    off1_r = ((p1_r * random_array)+ ( p2_r * (1 - random_array)))
+    off2_r = ((p1_r * (1 - random_array))+ ( p2_r * random_array))
+    return off1_r, off2_r
+
 
 def parameterized_random_crossover(swap_p):
     def random_crossover(p1_r, p2_r, random_state):
