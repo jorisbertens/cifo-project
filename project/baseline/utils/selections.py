@@ -19,16 +19,16 @@ def random_selection(population, minimization, random_state):
 def best_selection(population, minimization, random_state):
     return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
 
-def parameterized_x_best_selection(x):
+def parameterized_x_best_selection(num):
     def best_x_selection(population, minimization, random_state):
-        return random_state.choice(sorted(population, key=lambda x: x.fitness, reverse=not minimization)[x])
+        return random_state.choice(sorted(population, key=lambda x: x.fitness, reverse=not minimization)[:num])
     return best_x_selection
 
 def parameterized_best_or_random_selection(p):
     def best_or_random_selection(population, minimization, random_state):
-        if np.uniform(0,1) < p:
+        if random_state.uniform(0,1) < p:
             return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
-        return np.choice(population)
+        return random_state.choice(population)
     return best_or_random_selection
 
 def rank_selection(population, minimization, random_state):
