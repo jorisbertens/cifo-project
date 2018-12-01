@@ -27,7 +27,14 @@ from algorithms.ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
 from algorithms.ga_eval import GeneticAlgorithmEval
 from algorithms.ga_elitism import GeneticAlgorithmElitism
 from algorithms.ga_elitism_random import GeneticAlgorithmElitismRandom
+from algorithms.ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
 from algorithms.ga_2pop_random import GeneticAlgorithm2Random
+from algorithms.ga_dc import GeneticAlgorithmDeterministicCrowding
+
+
+import sys
+import os
+from subprocess import call
 
 # setup logger
 file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
@@ -35,10 +42,10 @@ file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(date
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "1pop" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
+file_name= "LogFiles/" + "custom_file" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv"
 
-header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
+header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
 
@@ -57,28 +64,19 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [0,1,2,3,4]
-n_genes = [200]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
+seeds_per_run = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+n_genes = [200]
 p_cs = [1]
-p_ms = [1]
+p_ms = [.6]
 radiuses= [0.01]
-pressures = [2]
-algorithms = [cross.arithmetic_crossover]
-# BEST !!!!
+pressures = [3]
+elite_counts = [3]
 
-# GeneticAlgorithmElitism(ann_op_i, 2, 100, sel.best_selection,
-#                       cross.one_point_crossover, 0.8, mut.parametrized_random_member_mutation_fast(0.01, (-2,2)), 0.9)
-
-# Fitness 0.68 <--- !!!!
-
-print(header_string)
-
-
-def algo_run(seed, n_gen, p_c, p_m, radius, pressure, algo):
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
@@ -115,8 +113,12 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, algo):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithmElitism(ann_op_i, random_state, pop_size, sel.rank_selection,
-                      algo, p_c, mut.parametrized_random_member_mutation(radius,(-2,2)), p_m, pressure)
+    sel_algo = sel.roulette_selection
+    cross_algo = cross.two_point_crossover
+    mut_algo = mut.parametrized_random_member_mutation(0.01,(-2,2))
+
+    alg = GeneticAlgorithmDeterministicCrowding(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m, elite_count)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
@@ -129,25 +131,32 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, algo):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
-         str(alg.best_solution.fitness), str(accuracy),str(time_elapsed), str(algo)])
+        [str(alg.best_solution.fitness), str(accuracy),
+         str(seed), str(n_gen), str(pop_size),
+         str(p_c), str(p_m), str(radius), str(pressure), str(elite_count),
+         str(time_elapsed),
+         str(alg), str(sel_algo), str(cross_algo), str(mut_algo)
+         ])
     # Write result to a file
     with open(file_name, "a") as myfile:
         myfile.write(result_string + "\n")
     # Output result to terminal
     print(result_string)
-    if alg.best_solution.fitness > 0.7:
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+    str(alg.best_solution.valid)
+    if alg.best_solution.fitness > 0.7 and alg.best_solution.valid:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 
 
+if __name__ ==  '__main__':
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures,elite_counts]))
+    core_count = multiprocessing.cpu_count()
+    print("All possible combinations generated:")
+    print(possible_values)
+    print(len(possible_values))
+    print("Number of cpu cores: "+str(core_count))
+    print()
+    print(header_string)
 
-possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures, algorithms]))
-core_count = multiprocessing.cpu_count()
-print("All possible combinations generated:")
-print(possible_values)
-print(len(possible_values))
-print("Number of cpu cores: "+str(core_count))
-
-####### Magic appens here ########
-pool = multiprocessing.Pool(3)
-results = pool.starmap(algo_run, possible_values)
+    ####### Magic appens here ########
+    pool = multiprocessing.Pool(core_count)
+    results = pool.starmap(algo_run, possible_values)
