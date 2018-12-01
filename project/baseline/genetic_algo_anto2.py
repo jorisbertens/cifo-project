@@ -35,7 +35,7 @@ from algorithms.ga_dc import GeneticAlgorithmDeterministicCrowding
 import sys
 import os
 from subprocess import call
-
+0
 # setup logger
 file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv")
@@ -142,7 +142,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
         myfile.write(result_string + "\n")
     # Output result to terminal
     print(result_string)
-    str(alg.best_solution.valid)
+    print(alg.best_solution.valid)
     if alg.best_solution.fitness > 0.7 and alg.best_solution.valid:
         print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 
