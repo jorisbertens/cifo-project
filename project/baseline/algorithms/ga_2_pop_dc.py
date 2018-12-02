@@ -6,7 +6,7 @@ from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
 
 
-class GeneticAlgorithm2Pop(RandomSearch):
+class GeneticAlgorithm2PopDeterministicCrowding(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_count):
         RandomSearch.__init__(self, problem_instance, random_state)
@@ -37,10 +37,10 @@ class GeneticAlgorithm2Pop(RandomSearch):
         for iteration in range(n_iterations):
             offsprings1 = []
             offsprings2 = []
-
             while len(offsprings1) < len(self.population1):
                 off1, off2 = p1, p2 = [
-                    self.selection(self.population1, self.problem_instance.minimization, self._random_state) for _ in range(2)]
+                    self.selection(self.population1, self.problem_instance.minimization, self._random_state) for _ in
+                    range(2)]
 
                 if self._random_state.uniform() < self.p_c:
                     off1, off2 = self._crossover(p1, p2)
@@ -54,12 +54,21 @@ class GeneticAlgorithm2Pop(RandomSearch):
                     self.problem_instance.evaluate(off2)
                     offsprings1.extend([off1, off2])
 
+                if (self._euclidian_distance(p1.representation,off1.representation) + self._euclidian_distance(p2.representation,off2.representation)) <= (
+                        self._euclidian_distance(p1.representation, off2.representation) + self._euclidian_distance(p2.representation, off1.representation)):
+                    offsprings1.extend([off1]) if off1.fitness > p1.fitness else offsprings1.extend([p1])
+                    offsprings1.extend([off2]) if off2.fitness > p2.fitness else offsprings1.extend([p2])
+                else:
+                    offsprings1.extend([off1]) if off1.fitness > p2.fitness else offsprings1.extend([p2])
+                    offsprings1.extend([off1]) if off1.fitness > p2.fitness else offsprings1.extend([p2])
+
             while len(offsprings1) > len(self.population1):
                 offsprings1.pop()
 
             while len(offsprings2) < len(self.population2):
                 off1, off2 = p1, p2 = [
-                    self.selection(self.population2, self.problem_instance.minimization, self._random_state) for _ in range(2)]
+                    self.selection(self.population2, self.problem_instance.minimization, self._random_state) for _ in
+                    range(2)]
 
                 if self._random_state.uniform() < self.p_c:
                     off1, off2 = self._crossover(p1, p2)
@@ -73,6 +82,14 @@ class GeneticAlgorithm2Pop(RandomSearch):
                     self.problem_instance.evaluate(off2)
                     offsprings2.extend([off1, off2])
 
+                if (self._euclidian_distance(p1.representation,off1.representation) + self._euclidian_distance(p2.representation,off2.representation)) <= (
+                        self._euclidian_distance(p1.representation, off2.representation) + self._euclidian_distance(p2.representation, off1.representation)):
+                    offsprings2.extend([off1]) if off1.fitness > p1.fitness else offsprings2.extend([p1])
+                    offsprings2.extend([off2]) if off2.fitness > p2.fitness else offsprings2.extend([p2])
+                else:
+                    offsprings2.extend([off1]) if off1.fitness > p2.fitness else offsprings2.extend([p2])
+                    offsprings2.extend([off1]) if off1.fitness > p2.fitness else offsprings2.extend([p2])
+
             while len(offsprings2) > len(self.population2):
                 offsprings2.pop()
 
@@ -82,17 +99,18 @@ class GeneticAlgorithm2Pop(RandomSearch):
             elite_offspring2 = self._get_elite(offsprings2)
             elite2 = self._get_best(elite2, elite_offspring2)
 
-            offsprings1.extend(self._get_x_elites(self.population2,self.elite_count))
-            offsprings2.extend(self._get_x_elites(self.population1,self.elite_count))
-
+            offsprings1.extend(self._get_x_elites(self.population2, self.elite_count))
+            offsprings2.extend(self._get_x_elites(self.population1, self.elite_count))
 
             if report:
                 self._verbose_reporter_inner(elite1, iteration)
 
             if log:
-                log_event = [iteration, elite1.fitness, elite1.validation_fitness if hasattr(off2, 'validation_fitness') else None,
+                log_event = [iteration, elite1.fitness,
+                             elite1.validation_fitness if hasattr(off2, 'validation_fitness') else None,
                              self.population_size, self.selection.__name__, self.crossover.__name__, self.p_c,
-                             self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings1)]
+                             self.mutation.__name__, None, None, self.p_m,
+                             self._phenotypic_diversity_shift(offsprings1)]
                 logger.info(','.join(list(map(str, log_event))))
 
             self.population1 = offsprings1
@@ -119,7 +137,7 @@ class GeneticAlgorithm2Pop(RandomSearch):
     def _phenotypic_diversity_shift(self, offsprings):
         fitness_parents = np.array([parent.fitness for parent in self.population])
         fitness_offsprings = np.array([offspring.fitness for offspring in offsprings])
-        return np.std(fitness_offsprings)-np.std(fitness_parents)
+        return np.std(fitness_offsprings) - np.std(fitness_parents)
 
     def _generate_random_valid_solutions(self):
         solutions = np.array([self._generate_random_valid_solution()
@@ -131,5 +149,8 @@ class GeneticAlgorithm2Pop(RandomSearch):
                               for i in range(size)])
         return solutions
 
-    def _get_x_elites(self, population,x):
+    def _get_x_elites(self, population, x):
         return sorted(population, key=lambda x: x.fitness, reverse=not self.problem_instance.minimization)[:x]
+
+    def _euclidian_distance(self, x,y):
+        return np.sqrt(np.sum((x - y) ** 2))
