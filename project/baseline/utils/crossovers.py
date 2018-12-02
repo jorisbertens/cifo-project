@@ -21,6 +21,27 @@ def two_point_crossover(p1_r, p2_r, random_state):
     off2_r = np.concatenate((p2_r[0:cxpoint1], p1_r[cxpoint1:cxpoint2], p2_r[cxpoint2:size]))
     return off1_r, off2_r
 
+def parametrized_two_point_crossover(n):
+    def two_point_crossover(p1_r, p2_r, random_state):
+        size = min(len(p1_r), len(p2_r))
+        off1_r = p1_r.copy()
+        off2_r = p2_r.copy()
+        for iteration in range(n):
+            off1_r_replica = p1_r.copy()
+            off2_r_replica = p2_r.copy()
+
+            cxpoint1 = random_state.randint(1, size)
+            cxpoint2 = random_state.randint(1, size - 1)
+            if cxpoint2 >= cxpoint1:
+                cxpoint2 += 1
+            else:  # Swap the two cx points
+                cxpoint1, cxpoint2 = cxpoint2, cxpoint1
+
+            off1_r = np.concatenate((off1_r_replica[0:cxpoint1], off2_r_replica[cxpoint1:cxpoint2], off1_r_replica[cxpoint2:size]))
+            off2_r = np.concatenate((off2_r_replica[0:cxpoint1], off1_r_replica[cxpoint1:cxpoint2], off2_r_replica[cxpoint2:size]))
+        return off1_r, off2_r
+    return two_point_crossover
+
 def n_point_crossover(p1_r, p2_r, random_state):
     return 0
 
