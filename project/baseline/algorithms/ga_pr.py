@@ -27,6 +27,7 @@ class GeneticAlgorithmProgressRate(RandomSearch):
             logger = logging.getLogger(','.join(list(map(str, log_event))))
 
         elite = self.best_solution
+        pop_size = len(self.population)
 
         for iteration in range(n_iterations):
             offsprings = []
@@ -34,7 +35,7 @@ class GeneticAlgorithmProgressRate(RandomSearch):
             mutations_after = []
             crossovers_before = []
             crossovers_after = []
-            while len(offsprings) < len(self.population):
+            while len(offsprings) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in
                     range(2)]
@@ -52,7 +53,7 @@ class GeneticAlgorithmProgressRate(RandomSearch):
 
                 offsprings.extend([off1, off2])
 
-            while len(offsprings) > len(self.population):
+            while len(offsprings) > pop_size:
                 offsprings.pop()
 
             elite_offspring = self._get_elite(offsprings)

@@ -28,11 +28,11 @@ class GeneticAlgorithmElitismWorstRemoval(RandomSearch):
             logger = logging.getLogger(','.join(list(map(str, log_event))))
 
         elite = self.best_solution
-
+        pop_size = len(self.population)
         for iteration in range(n_iterations):
             offsprings = []
 
-            while len(offsprings) < len(self.population):
+            while len(offsprings) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
@@ -49,14 +49,13 @@ class GeneticAlgorithmElitismWorstRemoval(RandomSearch):
                     self.problem_instance.evaluate(off2)
                 offsprings.extend([off1, off2])
 
-            while len(offsprings) > len(self.population):
+            while len(offsprings) > pop_size:
                 offsprings.pop()
 
             offsprings.extend(self._get_x_elites(self.population, self.elite_number))
             offsprings = self._remove_x_worst(offsprings, self.elite_number)
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
-            print(elite.fitness)
             if report:
                 self._verbose_reporter_inner(elite, iteration)
 

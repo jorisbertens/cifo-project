@@ -32,14 +32,14 @@ class GeneticAlgorithm2Random(RandomSearch):
 
         elite1 = self._get_elite(self.population1)
         elite2 = self._get_elite(self.population2)
-
+        pop_size = len(self.population1)
         for iteration in range(n_iterations):
             offsprings1 = []
             offsprings2 = []
 
             # Random Pool
 
-            while len(offsprings1) < self.population_size // 2:
+            while len(offsprings1) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population1, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
@@ -51,11 +51,11 @@ class GeneticAlgorithm2Random(RandomSearch):
                     self.problem_instance.evaluate(off2)
                     offsprings1.extend([off1, off2])
 
-            while len(offsprings1) > self.population_size // 2:
+            while len(offsprings1) > pop_size:
                 offsprings1.pop()
 
             # Mutation Population
-            while len(offsprings2) < self.population_size // 2:
+            while len(offsprings2) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population2, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
@@ -68,7 +68,7 @@ class GeneticAlgorithm2Random(RandomSearch):
                     self.problem_instance.evaluate(off2)
                     offsprings2.extend([off1, off2])
 
-            while len(offsprings2) > self.population_size // 2:
+            while len(offsprings2) > pop_size:
                 offsprings2.pop()
 
             elites1 = self._get_x_elites(offsprings1,1)

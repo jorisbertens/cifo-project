@@ -31,11 +31,12 @@ class GeneticAlgorithmDeterministicCrowding(RandomSearch):
             logger = logging.getLogger(','.join(list(map(str, log_event))))
 
         elite = self.best_solution
+        pop_size = len(self.population)
 
         for iteration in range(n_iterations):
             offsprings = []
 
-            while len(offsprings) < len(self.population):
+            while len(offsprings) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
@@ -59,7 +60,7 @@ class GeneticAlgorithmDeterministicCrowding(RandomSearch):
                     offsprings.extend([off1]) if off1.fitness > p2.fitness else offsprings.extend([p2])
 
 
-            while len(offsprings) > len(self.population):
+            while len(offsprings) > pop_size:
                 offsprings.pop()
 
             offsprings.extend(self._get_x_elites(self.population, self.elite_number))

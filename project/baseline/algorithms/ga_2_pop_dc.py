@@ -34,10 +34,11 @@ class GeneticAlgorithm2PopDeterministicCrowding(RandomSearch):
         elite1 = self._get_elite(self.population1)
         elite2 = self._get_elite(self.population2)
 
+        pop_size = len(self.population1)
         for iteration in range(n_iterations):
             offsprings1 = []
             offsprings2 = []
-            while len(offsprings1) < len(self.population1):
+            while len(offsprings1) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population1, self.problem_instance.minimization, self._random_state) for _ in
                     range(2)]
@@ -62,10 +63,10 @@ class GeneticAlgorithm2PopDeterministicCrowding(RandomSearch):
                     offsprings1.extend([off1]) if off1.fitness > p2.fitness else offsprings1.extend([p2])
                     offsprings1.extend([off1]) if off1.fitness > p2.fitness else offsprings1.extend([p2])
 
-            while len(offsprings1) > len(self.population1):
+            while len(offsprings1) > pop_size:
                 offsprings1.pop()
 
-            while len(offsprings2) < len(self.population2):
+            while len(offsprings2) < pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population2, self.problem_instance.minimization, self._random_state) for _ in
                     range(2)]
@@ -90,7 +91,7 @@ class GeneticAlgorithm2PopDeterministicCrowding(RandomSearch):
                     offsprings2.extend([off1]) if off1.fitness > p2.fitness else offsprings2.extend([p2])
                     offsprings2.extend([off1]) if off1.fitness > p2.fitness else offsprings2.extend([p2])
 
-            while len(offsprings2) > len(self.population2):
+            while len(offsprings2) > pop_size:
                 offsprings2.pop()
 
             elite_offspring1 = self._get_elite(offsprings1)
