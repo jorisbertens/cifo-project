@@ -54,11 +54,11 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-n_genes = [ x for x in range(100,270,20) ]
-p_cs = [x*0.1 for x in range(2, 11, 2) ]
-p_ms = [x*0.1 for x in range(0, 7, 2)]
-radiuses = [x*0.1 for x in range(2, 11, 2)]
-pressures = [x*0.1 for x in range(2, 11, 2)]
+n_genes = [240]
+p_cs = [0.8]
+p_ms = [0.6, 0.7, 0.8, 0.9, 1]
+radiuses = [0.2]
+pressures = [0.2]
 
 #2018-11-20-1_5_log.csv paramters settings
 #n_genes = [ x for x in range(100,270,20) ]
