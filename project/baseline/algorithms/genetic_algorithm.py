@@ -2,8 +2,8 @@ import logging
 import numpy as np
 from functools import reduce
 
-from algorithms.random_search import RandomSearch
-from solutions.solution import Solution
+from random_search import RandomSearch
+from solution import Solution
 
 
 class GeneticAlgorithm(RandomSearch):

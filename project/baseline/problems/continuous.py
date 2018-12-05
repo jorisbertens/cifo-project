@@ -1,7 +1,7 @@
 import utils as uls
 import numpy as np
-from problems.problem import Problem
-from solutions.solution import Solution
+from problem import Problem
+from solution import Solution
 
 
 class Continuous(Problem):

@@ -1,6 +1,6 @@
 import numpy as np
-from problems.continuous import Continuous
-from solutions.solution import Solution
+from continuous import Continuous
+from solution import Solution
 
 
 class ANNOP(Continuous):

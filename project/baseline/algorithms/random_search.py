@@ -1,6 +1,6 @@
 import logging
 
-from algorithms.search_algorithm import SearchAlgorithm
+from search_algorithm import SearchAlgorithm
 
 
 class RandomSearch(SearchAlgorithm):
