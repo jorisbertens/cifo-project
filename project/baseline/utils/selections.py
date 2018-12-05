@@ -42,6 +42,9 @@ def rank_selection(population, minimization, random_state):
         if current >= pick:
             return ind
 
+def stochastic_universal_sampling():
+    return 0
+
 def roulette_selection(population, minimization, random_state):
     sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
 

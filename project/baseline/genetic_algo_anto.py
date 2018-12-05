@@ -30,12 +30,9 @@ from algorithms.ga_elitism_random import GeneticAlgorithmElitismRandom
 from algorithms.ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
 from algorithms.ga_2pop_random import GeneticAlgorithm2Random
 from algorithms.ga_dc import GeneticAlgorithmDeterministicCrowding
-
-
-import sys
-import os
-from subprocess import call
-0
+from algorithms.ga_drop_worst import GeneticAlgorithmDropWorst
+from algorithms.ga_growpop import GeneticAlgorithmGrowPop
+from algorithms.ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 # setup logger
 file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv")
@@ -68,13 +65,15 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-seeds_per_run = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-n_genes = [200]
+seeds_per_run = [2]
+n_genes = [100]
 p_cs = [1]
-p_ms = [.6]
-radiuses= [0.01]
+p_ms = [1]
+radiuses= [0.2]
 pressures = [3]
 elite_counts = [3]
+
+#0.6268191268191268,0.5454545454545454,2,100,50,1,1,3,1,3,0:03:47.689362,<algorithms.ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x7f8fc59a0fd0>,<function boltzmann_selection.<locals>.tournament_selection at 0x7f8fe80ca0d0>,<function parametrized_two_point_crossover.<locals>.two_point_crossover at 0x7f8fc5c50bf8>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x7f8fc5c50c80>
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -85,6 +84,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
         with open(file_name, "a") as myfile:
             myfile.write("Invalid parameters" + "\n")
         return 0
+
     #++++++++++++++++++++++++++
     # THE ANN
     # restrictions:
@@ -113,16 +113,16 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    sel_algo = sel.roulette_selection
+    sel_algo = sel.best_selection
     cross_algo = cross.two_point_crossover
-    mut_algo = mut.parametrized_random_member_mutation(0.01,(-2,2))
+    mut_algo = mut.parametrized_random_member_mutation(0.01,(-2.5,2.5))
 
-    alg = GeneticAlgorithmDeterministicCrowding(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m, elite_count)
+    alg = GeneticAlgorithmElitismWorstRemoval(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=False, log=False)
+    alg.search(n_iterations=n_gen, report=False, log=True)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)
@@ -142,8 +142,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
         myfile.write(result_string + "\n")
     # Output result to terminal
     print(result_string)
-    print(alg.best_solution.valid)
-    if alg.best_solution.fitness > 0.7 and alg.best_solution.valid:
+    if alg.best_solution.fitness > 0.7:
         print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 
 

@@ -4,18 +4,21 @@ from functools import reduce
 
 from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
-import diversity as diversity
+import mutations as mut
 
-class GeneticAlgorithmEval(RandomSearch):
+
+class GeneticAlgorithmSingleEliteStart(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
-                 selection, crossover, p_c, mutation, p_m):
+                 selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)
-        self.population_size = population_size
+        self.population_size = 2
+        self.max_pop_size = population_size
         self.selection = selection
         self.crossover = crossover
         self.p_c = p_c
         self.mutation = mutation
         self.p_m = p_m
+        self.elite_number = elite_number
 
     def initialize(self):
         self.population = self._generate_random_valid_solutions()
@@ -25,13 +28,47 @@ class GeneticAlgorithmEval(RandomSearch):
         if log:
             log_event = [self.problem_instance.__class__, id(self._random_state), __name__]
             logger = logging.getLogger(','.join(list(map(str, log_event))))
-
-        elite = self.best_solution
+        diversities=[]
 
         for iteration in range(n_iterations):
             offsprings = []
 
-            while len(offsprings) < len(self.population):
+            off1, off2 = p1, p2 = [
+                self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in range(2)]
+
+            if self._random_state.uniform() < self.p_c:
+                off1, off2 = self._crossover(p1, p2)
+
+            if self._random_state.uniform() < self.p_m:
+                off1 = self._mutation_high(off1)
+                off2 = self._mutation_low(off2)
+
+            if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
+                self.problem_instance.evaluate(off1)
+                self.problem_instance.evaluate(off2)
+            offsprings.extend([off1, off2])
+
+            offsprings.extend(self._get_x_elites(self.population, 1))
+            elite=self._get_elite(offsprings)
+
+
+            diversities.append(self._phenotypic_diversity_shift(offsprings))
+            print("Pop size " + str(len(offsprings)))
+            print("Fitness: "+str(elite.fitness))
+            print("Diversity: "+str(sum(diversities) / len(diversities)))
+            print()
+
+            self.population = offsprings
+
+        print("Done")
+        elite = self.best_solution
+        pop_size=len(self.population)
+        n_iterations = n_iterations-2
+        print(n_iterations)
+        for iteration in range(n_iterations):
+            offsprings = []
+
+            while len(offsprings) < self.max_pop_size:
                 off1, off2 = p1, p2 = [
                     self.selection(self.population, self.problem_instance.minimization, self._random_state) for _ in range(2)]
 
@@ -39,19 +76,27 @@ class GeneticAlgorithmEval(RandomSearch):
                     off1, off2 = self._crossover(p1, p2)
 
                 if self._random_state.uniform() < self.p_m:
-                    off1 = self._mutation(off1)
-                    off2 = self._mutation(off2)
+                    off1 = self._mutation_high(off1)
+                    off2 = self._mutation_low(off2)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
                     self.problem_instance.evaluate(off2)
                 offsprings.extend([off1, off2])
 
-            while len(offsprings) > len(self.population):
+            while len(offsprings) > self.max_pop_size:
                 offsprings.pop()
+
+            offsprings.extend(self._get_x_elites(self.population, self.elite_number))
+
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
+            diversities.append(self._phenotypic_diversity_shift(offsprings))
+            print(str(iteration))
+            print("Fitness: "+str(elite.fitness))
+            print("Diversity: "+str(sum(diversities) / len(diversities)))
+            print()
 
             if report:
                 self._verbose_reporter_inner(elite, iteration)
@@ -62,13 +107,6 @@ class GeneticAlgorithmEval(RandomSearch):
                              self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings)]
                 logger.info(','.join(list(map(str, log_event))))
 
-            if True:
-                print("Phenotypic entropy: " + str(diversity.phenotypic_entropy(self.population)))
-                print("Genotypic entropy: " + str(diversity.genotypic_entropy(self.population)))
-                print("Phenotypic variance: " + str(diversity.phenotypic_variance(self.population)))
-                print("Genotypic variance: " + str(diversity.genotypic_variance(self.population)))
-                print("Fitness: "+ str(elite.fitness))
-
             self.population = offsprings
 
         self.best_solution = elite
@@ -77,6 +115,17 @@ class GeneticAlgorithmEval(RandomSearch):
         off1, off2 = self.crossover(p1.representation, p2.representation, self._random_state)
         off1, off2 = Solution(off1), Solution(off2)
         return off1, off2
+
+    def _mutation_high(self, individual):
+        mutant =  mut.parametrized_random_member_mutation(0.02, (-2,2))(individual.representation, self._random_state)
+        mutant = Solution(mutant)
+        return mutant
+
+    def _mutation_low(self, individual):
+        mutant =  mut.parametrized_random_member_mutation(0.005, (-2,2))(individual.representation, self._random_state)
+        mutant = Solution(mutant)
+        return mutant
+
 
     def _mutation(self, individual):
         mutant = self.mutation(individual.representation, self._random_state)
@@ -96,3 +145,6 @@ class GeneticAlgorithmEval(RandomSearch):
         solutions = np.array([self._generate_random_valid_solution()
                               for i in range(self.population_size)])
         return solutions
+
+    def _get_x_elites(self, population,x):
+        return sorted(population, key=lambda x: x.fitness, reverse=not self.problem_instance.minimization)[:x]

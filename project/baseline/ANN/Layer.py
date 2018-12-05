@@ -1,4 +1,4 @@
-from ANN.Neuron import Neuron
+from Neuron import Neuron
 
 class Layer:
     _id = 0

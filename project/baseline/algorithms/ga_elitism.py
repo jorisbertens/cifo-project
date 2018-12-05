@@ -4,6 +4,7 @@ from functools import reduce
 
 from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
+import mutations as mut
 
 
 class GeneticAlgorithmElitism(RandomSearch):
@@ -26,9 +27,11 @@ class GeneticAlgorithmElitism(RandomSearch):
         if log:
             log_event = [self.problem_instance.__class__, id(self._random_state), __name__]
             logger = logging.getLogger(','.join(list(map(str, log_event))))
+        diversities=[]
 
         elite = self.best_solution
-        pop_size=len(self.population)
+
+        pop_size = len(self.population)
         for iteration in range(n_iterations):
             offsprings = []
 
@@ -40,8 +43,12 @@ class GeneticAlgorithmElitism(RandomSearch):
                     off1, off2 = self._crossover(p1, p2)
 
                 if self._random_state.uniform() < self.p_m:
-                    off1 = self._mutation(off1)
-                    off2 = self._mutation(off2)
+                    if iteration < 50:
+                        off1 = self._mutation_high(off1)
+                        off2 = self._mutation_low(off2)
+                    else:
+                        off1 = self._mutation(off1)
+                        off2 = self._mutation(off2)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
@@ -56,6 +63,11 @@ class GeneticAlgorithmElitism(RandomSearch):
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)
+            diversities.append(self._phenotypic_diversity_shift(offsprings))
+            print(str(iteration))
+            print("Fitness: "+str(elite.fitness))
+            print("Diversity: "+str(sum(diversities) / len(diversities)))
+            print()
 
             if report:
                 self._verbose_reporter_inner(elite, iteration)
@@ -74,6 +86,17 @@ class GeneticAlgorithmElitism(RandomSearch):
         off1, off2 = self.crossover(p1.representation, p2.representation, self._random_state)
         off1, off2 = Solution(off1), Solution(off2)
         return off1, off2
+
+    def _mutation_high(self, individual):
+        mutant =  mut.parametrized_random_member_mutation(0.025, (-2,2))(individual.representation, self._random_state)
+        mutant = Solution(mutant)
+        return mutant
+
+    def _mutation_low(self, individual):
+        mutant =  mut.parametrized_random_member_mutation(0.005, (-2,2))(individual.representation, self._random_state)
+        mutant = Solution(mutant)
+        return mutant
+
 
     def _mutation(self, individual):
         mutant = self.mutation(individual.representation, self._random_state)

@@ -26,6 +26,9 @@ def parametrized_random_member_mutation_fast(p, search_space):
     return random_member_mutation
 
 def parametrized_random_member_mutation(p, search_space):
+    '''
+        https://www.researchgate.net/deref/http%3A%2F%2Fwww.ijcai.org%2FProceedings%2F89-1%2FPapers%2F122.pdf
+    '''
     def random_member_mutation(point, random_state):
 
         indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
@@ -34,6 +37,8 @@ def parametrized_random_member_mutation(p, search_space):
             new_points[index] = random_state.uniform(low=search_space[0], high=search_space[1])
         return new_points
     return random_member_mutation
+def parametrized_biased_random_member_mutation(p, search_space):
+    return 0
 
 def parametrized_swap_mutation(p):
     def swap_mutation(point, random_state):

@@ -17,7 +17,7 @@ def genotypic_entropy(population):
     length = len(population)
     individuals = [[str(neuron)[4] for neuron in indiv.representation ] for indiv in population]
     unique_fitnesses, counts = np.unique(individuals, return_counts=True)
-    return  np.sum([ count/length * np.log(count/length) for count in counts])
+    return np.sum([ count/length * np.log(count/length) for count in counts])
 
 
 def genotypic_variance(population):
