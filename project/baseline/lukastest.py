@@ -15,12 +15,22 @@ import utils.crossovers as cross
 import utils.selections as sel
 import utils.mutations as mut
 
-
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.simulated_annealing import SimulatedAnnealing
-
+from algorithms.ga_2pop import GeneticAlgorithm2Pop
+from algorithms.ga_dmr import GeneticAlgorithmDMR
+from algorithms.ga_pr import GeneticAlgorithmProgressRate
+from algorithms.ga_pr_random import GeneticAlgorithmProgressRateRandom
+from algorithms.ga_mating_pool import GeneticAlgorithmMatingPool
+from algorithms.ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
+from algorithms.ga_eval import GeneticAlgorithmEval
+from algorithms.ga_elitism import GeneticAlgorithmElitism
+from algorithms.ga_elitism_random import GeneticAlgorithmElitismRandom
+from algorithms.ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
+from algorithms.ga_2pop_random import GeneticAlgorithm2Random
+from algorithms.ga_dc import GeneticAlgorithmDeterministicCrowding
+from algorithms.stady_state_ga import SSGeneticAlgorithm
 
 # setup logger
 file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
@@ -28,10 +38,10 @@ file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(date
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_example_lf_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
+file_name= "LogFiles/" + "custom_file" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
             "_" + str(datetime.datetime.now().minute) + "_log.csv"
 
-header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
+header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
 
@@ -50,25 +60,20 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [2]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-n_genes = [ x for x in range(100,270,20) ]
-p_cs = [x*0.1 for x in range(2, 11, 2) ]
-p_ms = [x*0.1 for x in range(1, 7, 2)]
-radiuses = [x*0.1 for x in range(2, 11, 2)]
-pressures = [x*0.1 for x in range(2, 11, 2)]
+seeds_per_run = [0,1,2,3,4]
+n_genes = [200]
+p_cs = [1]
+p_ms = [1]
+radiuses= [0.01]
+pressures = [3]
+elite_counts = [3]
 
 
-# Simulated Annealing setup
-#ns = ps
-control = [2]
-update_rate = [0.9]
-
-
-def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
@@ -105,12 +110,16 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
+    sel_algo = sel.best_selection
+    cross_algo = cross.arithmetic_crossover
+    mut_algo = mut.parametrized_swap_mutation(0.01)
+
+    alg = SSGeneticAlgorithm(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=False, log=True)
+    alg.search(n_iterations=n_gen, report=True, log=False)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)
@@ -119,22 +128,31 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
-         str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
+        [str(alg.best_solution.fitness), str(accuracy),
+         str(seed), str(n_gen), str(pop_size),
+         str(p_c), str(p_m), str(radius), str(pressure), str(elite_count),
+         str(time_elapsed),
+         str(alg), str(sel_algo), str(cross_algo), str(mut_algo)
+         ])
     # Write result to a file
     with open(file_name, "a") as myfile:
         myfile.write(result_string + "\n")
     # Output result to terminal
-    print(header_string)
     print(result_string)
+    if alg.best_solution.fitness > 0.7:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+
 
 if __name__ ==  '__main__':
-    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures,elite_counts]))
     core_count = multiprocessing.cpu_count()
     print("All possible combinations generated:")
     print(possible_values)
+    print(len(possible_values))
     print("Number of cpu cores: "+str(core_count))
+    print()
+    print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(10)
+    pool = multiprocessing.Pool(core_count)
     results = pool.starmap(algo_run, possible_values)
