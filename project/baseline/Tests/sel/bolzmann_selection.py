@@ -67,12 +67,13 @@ validation_threshold = .07
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]#is fixed
-n_genes = [240]                                     #to change
-p_cs = [0.8]#is fixed
-p_ms = [0.6]#is fixed
-radiuses= [0.2]#is fixed
-pressures = [0.2, 0.1]                              #change
+n_genes = [180]                                     #to change
+p_cs = [1]#is fixed
+p_ms = [0.5]#is fixed
+radiuses= [0.6]#is fixed
+pressures = [0.8]                              #change
 elite_counts = [0]#is na
+
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
