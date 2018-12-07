@@ -36,11 +36,11 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../TestLog/" + os.path.basename(__file__) + "_log.csv"
+file_path =  "../../TestLog/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
@@ -66,16 +66,17 @@ validation_threshold = .07
 
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
-search_space =[-5,5]####?
-p = 0.3 ###?
+search_space =[-2,2]####?
+
 
 seeds_per_run = [0,1,2,3,4]
-n_genes = [240]
-p_cs = [0.8]
-p_ms = [0.6, 0.4]
-radiuses= [0.2]
-pressures = [0.2]
+n_genes = [180]
+p_cs = [1]
+p_ms = [0.5]
+radiuses = [0.0]#is not used here but p
+pressures = [0.8]
 elite_counts = [0]
+p = 0.01
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
