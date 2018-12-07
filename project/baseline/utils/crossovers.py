@@ -92,6 +92,7 @@ def parameterized_uniformSwap(p):
 def arithmetic_crossover(p1_r, p2_r, random_state):
     off1_r = (p1_r + p2_r)/2
     return off1_r, off1_r.copy()
+##### is it not okay to have only one ? i think thats what its all about !!!
 
 def geometric_crossover(p1_r, p2_r, random_state):
     random_array = random_state.uniform(size=len(p1_r))

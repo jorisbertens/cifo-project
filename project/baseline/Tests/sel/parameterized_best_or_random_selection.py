@@ -42,7 +42,6 @@ logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(
 
 file_name= "../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
-
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
@@ -65,14 +64,16 @@ X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, 
 validation_p = .2
 validation_threshold = .07
 
+'''USING p = 0.5'''
+
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]#is fixed
-n_genes = [240]#is fixed
+n_genes = [240]                                     #to change
 p_cs = [0.8]#is fixed
 p_ms = [0.6]#is fixed
 radiuses= [0.2]#is fixed
-pressures = [0.2, 0.1]
+pressures = [0.2, 0.1]                              #change
 elite_counts = [0]#is na
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
@@ -114,7 +115,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # * including reproduction
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
-    sel_algo = sel.random_selection()
+    sel_algo = sel.parameterized_best_or_random_selection(0.5)
     cross_algo = cross.one_point_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 

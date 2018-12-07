@@ -36,7 +36,7 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../TestLog/" +"part_algo_parameters"+ "_log.csv"
+file_path =  "../TestLog/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 

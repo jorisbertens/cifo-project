@@ -36,11 +36,12 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../TestLog/" +"part_algo_parameters"+ "_log.csv"
+file_path =  "../TestLog/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../LogFiles/" +os.path.basename(__file__) + "_log.csv"
+file_name= "../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
@@ -71,7 +72,7 @@ n_genes = [240]#is fixed
 p_cs = [0.8]#is fixed
 p_ms = [0.6]#is fixed
 radiuses= [0.2]#is fixed
-pressures = [0.2, 0.1]
+pressures = [0.2, 0.1]                  ###change
 elite_counts = [0]#is na
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
