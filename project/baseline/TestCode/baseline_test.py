@@ -68,9 +68,9 @@ validation_threshold = .07
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]
 n_genes = [180]
-p_cs = [1]
+p_cs = [0.6]
 p_ms = [0.9]
-radiuses= [0.6]
+radiuses= [0.2]
 pressures = [0.8]
 elite_counts = [0]
 

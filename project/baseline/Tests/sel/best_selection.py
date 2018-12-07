@@ -113,7 +113,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # * including reproduction
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
-    sel_algo = sel.best_selection()
+    sel_algo = sel.best_selection
     cross_algo = cross.one_point_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 
