@@ -10,13 +10,13 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils as uls
+import utils.utils as uls
 import crossovers as cross
 import selections as sel
 import mutations as mut
 
 from ANNOP import ANNOP
-from ANN import ANN, softmax, sigmoid
+from ANN import ANN, sigmoid, softmax
 from genetic_algorithm import GeneticAlgorithm
 from ga_2pop import GeneticAlgorithm2Pop
 from ga_dmr import GeneticAlgorithmDMR
@@ -36,11 +36,11 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../TestLog/" + os.path.basename(__file__) + "_log.csv"
+file_path =  "../../TestLog/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
@@ -68,11 +68,11 @@ validation_threshold = .07
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]
-n_genes = [240]
-p_cs = [0.8, 0.6]
-p_ms = [0.6]
-radiuses= [0.2]
-pressures = [0.2]
+n_genes = [180]
+p_cs = [1]
+p_ms = [0.5]
+radiuses= [0.6]
+pressures = [0.8]
 elite_counts = [0]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
@@ -158,5 +158,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(2)
+    pool = multiprocessing.Pool(6)
     results = pool.starmap(algo_run, possible_values)

@@ -36,11 +36,11 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../../TestLog/" + os.path.basename(__file__) + "_log.csv"
+file_path =  "../../../TestLog/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+file_name= "../../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
@@ -68,12 +68,12 @@ validation_threshold = .07
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]
-n_genes = [180]
-p_cs = [1.0]
-p_ms = [0.5]
-radiuses= [0.6]
-pressures = [0.8]
-elite_counts = [0]
+n_genes = [300]
+p_cs = [0.2]
+p_ms = [1]
+radiuses= [0.15]
+pressures = [1]
+elite_counts = [1]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -114,12 +114,12 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # * including reproduction
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
-    sel_algo = sel.parametrized_tournament_selection(pressure)
+    sel_algo = sel.boltzmann_selection(pressure, n_gen)
     cross_algo = cross.geometric_crossover
-    mut_algo = mut.parametrized_ball_mutation(radius)
+    mut_algo = mut.parametrized_random_member_mutation_fast(radius, [-2,2])
 
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m)
+    alg = GeneticAlgorithmGrowPop(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m, elite_count)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
