@@ -32,7 +32,7 @@ def parameterized_best_or_random_selection(p):
     return best_or_random_selection
 
 def rank_selection(population, minimization, random_state):
-    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
+    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=minimization)
     length = len(sorted_pop)
     gaussian_sum =  ((length-1) * length) / 2
     pick = random_state.uniform(0, gaussian_sum)
