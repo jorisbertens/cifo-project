@@ -115,7 +115,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
     sel_algo = sel.parametrized_tournament_selection(pressure)
-    cross_algo = cross.arithmetic_crossover()
+    cross_algo = cross.arithmetic_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 
     alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel_algo,
