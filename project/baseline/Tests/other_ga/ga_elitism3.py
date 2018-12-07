@@ -72,8 +72,8 @@ n_genes = [180]#is fixed
 p_cs = [1]#is fixed
 p_ms = [0.5]#is fixed
 radiuses= [0.6]#is fixed
-pressures = [0.8]                  ###change
-elite_counts = [0]#is na
+pressures = [0.8]  ###change
+elite_counts = [3]#is na
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -118,8 +118,8 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     cross_algo = cross.one_point_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m)
+    alg = GeneticAlgorithmElitism(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m, elite_count)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################

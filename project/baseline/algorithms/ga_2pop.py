@@ -8,7 +8,7 @@ from solution import Solution
 
 class GeneticAlgorithm2Pop(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
-                 selection, crossover, p_c, mutation, p_m, elite_count):
+                 selection, crossover, p_c, mutation, p_m, elite_count=2):
         RandomSearch.__init__(self, problem_instance, random_state)
         self.population_size = population_size
         self.selection = selection
@@ -118,7 +118,7 @@ class GeneticAlgorithm2Pop(RandomSearch):
         return elite
 
     def _phenotypic_diversity_shift(self, offsprings):
-        fitness_parents = np.array([parent.fitness for parent in self.population])
+        fitness_parents = np.array([parent.fitness for parent in self.population1])
         fitness_offsprings = np.array([offspring.fitness for offspring in offsprings])
         return np.std(fitness_offsprings)-np.std(fitness_parents)
 

@@ -1,38 +1,45 @@
 import numpy as np
 from functools import reduce
+import operator
 
 def parametrized_tournament_selection(pressure):
-    def tournament_selection(population, minimization, random_state):
+    def tournament_selection(population, minimization, random_state, fitness_sharing=False):
+        fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+
         tournament_pool_size = int(len(population)*pressure)
         tournament_pool = random_state.choice(population, size=tournament_pool_size, replace=False)
 
         if minimization:
-            return reduce(lambda x, y: x if x.fitness <= y.fitness else y, tournament_pool)
+            return min(tournament_pool, key=operator.attrgetter(fitness_name))
         else:
-            return reduce(lambda x, y: x if x.fitness >= y.fitness else y, tournament_pool)
+            return max(tournament_pool, key=operator.attrgetter(fitness_name))
 
     return tournament_selection
 
-def random_selection(population, minimization, random_state):
+def random_selection(population, minimization, random_state, fitness_sharing=False):
     return random_state.choice(population)
 
-def best_selection(population, minimization, random_state):
-    return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
+def best_selection(population, minimization, random_state, fitness_sharing=False):
+    fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+    return sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)[0]
 
 def parameterized_x_best_selection(num):
-    def best_x_selection(population, minimization, random_state):
-        return random_state.choice(sorted(population, key=lambda x: x.fitness, reverse=not minimization)[:num])
+    def best_x_selection(population, minimization, random_state, fitness_sharing=False):
+        fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+        return random_state.choice(sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)[:num])
     return best_x_selection
 
 def parameterized_best_or_random_selection(p):
-    def best_or_random_selection(population, minimization, random_state):
+    def best_or_random_selection(population, minimization, random_state, fitness_sharing=False):
         if random_state.uniform(0,1) < p:
-            return sorted(population, key=lambda x: x.fitness, reverse=not minimization)[0]
+            fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+            return sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)[0]
         return random_state.choice(population)
     return best_or_random_selection
 
-def rank_selection(population, minimization, random_state):
-    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
+def rank_selection(population, minimization, random_state, fitness_sharing=False):
+    fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+    sorted_pop = sorted(population, key=operator.attrgetter(fitness_name), reverse=minimization)
     length = len(sorted_pop)
     gaussian_sum =  ((length-1) * length) / 2
     pick = random_state.uniform(0, gaussian_sum)
@@ -45,14 +52,16 @@ def rank_selection(population, minimization, random_state):
 def stochastic_universal_sampling():
     return 0
 
-def roulette_selection(population, minimization, random_state):
-    sorted_pop = sorted(population, key=lambda x: x.fitness, reverse=not minimization)
+def roulette_selection(population, minimization, random_state, fitness_sharing=False):
+    fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
 
-    max_fitness = max(ind.fitness for ind in population)
+    sorted_pop = sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)
+
+    max_fitness = max(population, key=operator.attrgetter(fitness_name))
     if minimization:
-        sum_fits = sum(max_fitness - ind.fitness for ind in population)
+        sum_fits = sum(max_fitness - operator.attrgetter(fitness_name)(ind) for ind in population)
     else:
-        sum_fits = sum(ind.fitness for ind in population)
+        sum_fits = sum(operator.attrgetter(fitness_name)(ind) for ind in population)
 
     pick = random_state.uniform(0, sum_fits)
     current = 0
@@ -68,16 +77,18 @@ def roulette_selection(population, minimization, random_state):
 
 def boltzmann_selection(pressure, n_gen):
     gen = 0
-    def tournament_selection(population, minimization, random_state):
+    def tournament_selection(population, minimization, random_state, fitness_sharing=False):
         nonlocal  gen
+        fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
+
         factor = pressure - ((pressure / 2) * (gen/(n_gen*len(population))))
         gen = gen + 1
         tournament_pool_size = int(len(population) * factor)
         tournament_pool = random_state.choice(population, size=tournament_pool_size, replace=False)
 
         if minimization:
-            return reduce(lambda x, y: x if x.fitness <= y.fitness else y, tournament_pool)
+            return min(tournament_pool, key=operator.attrgetter(fitness_name))
         else:
-            return reduce(lambda x, y: x if x.fitness >= y.fitness else y, tournament_pool)
+            return max(tournament_pool, key=operator.attrgetter(fitness_name))
 
     return tournament_selection

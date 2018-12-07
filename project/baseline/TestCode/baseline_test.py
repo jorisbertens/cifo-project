@@ -36,7 +36,7 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../TestLog/" +"part_algo_parameters"+ "_log.csv"
+file_path =  "../TestLog/" +"part_algo_parameters"+ '_test for 0.9'+"_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
@@ -67,11 +67,11 @@ validation_threshold = .07
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]
-n_genes = [240]
-p_cs = [0.8]
-p_ms = [0.6]
+n_genes = [180]
+p_cs = [0.6]
+p_ms = [0.9]
 radiuses= [0.2]
-pressures = [0.2]
+pressures = [0.8]
 elite_counts = [0]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
@@ -157,5 +157,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(2)
+    pool = multiprocessing.Pool(10)
     results = pool.starmap(algo_run, possible_values)
