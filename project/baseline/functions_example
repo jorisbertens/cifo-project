@@ -1,0 +1,35 @@
+a = 2
+
+b = 2*2
+
+
+def double(x):
+    return x * 2
+
+def timesDouble(y):
+    def double(x):
+        return y * x * 2
+    return double
+
+c = double(2)
+
+d = double
+
+e = d(2)
+
+f = timesDouble(2)(3)
+
+g = timesDouble
+
+h = g(3)
+
+j = h(3)
+print("a:" + str(a))
+print("b:" + str(b))
+print("c:" + str(c))
+print("d:" + str(d))
+print("e:" + str(e))
+print("f:" + str(f))
+print("g:" + str(g))
+print("h:" + str(h))
+print("j:" + str(j))

@@ -80,12 +80,12 @@ class GeneticAlgorithm2PopSeparateCM(RandomSearch):
             print(elite2.fitness)
 
             if report:
-                self._verbose_reporter_inner(elite, iteration)
+                self._verbose_reporter_inner(elite1, iteration)
 
             if log:
-                log_event = [iteration, elite.fitness, elite.validation_fitness if hasattr(off2, 'validation_fitness') else None,
+                log_event = [iteration, elite1.fitness, elite1.validation_fitness if hasattr(off2, 'validation_fitness') else None,
                              self.population_size, self.selection.__name__, self.crossover.__name__, self.p_c,
-                             self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings)]
+                             self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings1)]
                 logger.info(','.join(list(map(str, log_event))))
 
             self.population1 = offsprings1
@@ -110,7 +110,7 @@ class GeneticAlgorithm2PopSeparateCM(RandomSearch):
         return elite
 
     def _phenotypic_diversity_shift(self, offsprings):
-        fitness_parents = np.array([parent.fitness for parent in self.population])
+        fitness_parents = np.array([parent.fitness for parent in self.population1])
         fitness_offsprings = np.array([offspring.fitness for offspring in offsprings])
         return np.std(fitness_offsprings)-np.std(fitness_parents)
 
