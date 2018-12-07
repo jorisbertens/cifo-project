@@ -33,7 +33,7 @@ from ga_dc import GeneticAlgorithmDeterministicCrowding
 from ga_drop_worst import GeneticAlgorithmDropWorst
 from ga_growpop import GeneticAlgorithmGrowPop
 from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
-
+from ga_fitness_sharing import  GeneticAlgorithmFitnessSharing
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
 file_path =  "../../../TestLog/" + os.path.basename(__file__) + "_log.csv"
@@ -115,11 +115,11 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
     sel_algo = sel.boltzmann_selection(pressure, n_gen)
-    cross_algo = cross.geometric_crossover
-    mut_algo = mut.parametrized_random_member_mutation_fast(radius, [-2,2])
+    cross_algo = cross.arithmetic_crossover
+    mut_algo = mut.parametrized_swap_mutation(radius)
 
-    alg = GeneticAlgorithmGrowPop(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m, elite_count)
+    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
