@@ -159,5 +159,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(2)
+    pool = multiprocessing.Pool(core_count)
     results = pool.starmap(algo_run, possible_values)
