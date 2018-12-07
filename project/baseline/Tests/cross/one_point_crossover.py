@@ -42,7 +42,6 @@ logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(
 
 file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
-
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
@@ -69,7 +68,7 @@ validation_threshold = .07
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
 seeds_per_run = [0,1,2,3,4]
 n_genes = [180]
-p_cs = [1.0]
+p_cs = [1]
 p_ms = [0.5]
 radiuses= [0.6]
 pressures = [0.8]
@@ -115,7 +114,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
     sel_algo = sel.parametrized_tournament_selection(pressure)
-    cross_algo = cross.geometric_crossover
+    cross_algo = cross.one_point_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 
     alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel_algo,
@@ -158,5 +157,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(6)
+    pool = multiprocessing.Pool(2)
     results = pool.starmap(algo_run, possible_values)
