@@ -1,0 +1,9 @@
+Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
+Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
+Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
+Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
+2,200,25,1,0.9,0.01,2,0.6663201663201663,0.5538720538720538,0:15:36.730999,<function arithmetic_crossover at 0x000001DCA9FFCB70>
+0,200,25,1,0.9,0.01,2,0.5966735966735967,0.5,0:15:38.527231,<function arithmetic_crossover at 0x000002AA1356CB70>
+1,200,25,1,0.9,0.01,2,0.682952182952183,0.5976430976430976,0:15:42.798803,<function arithmetic_crossover at 0x000002B82FB4CB70>
+3,200,25,1,0.9,0.01,2,0.37733887733887733,0.3602693602693603,0:15:21.514744,<function arithmetic_crossover at 0x000001DCA9FFCB70>
+4,200,25,1,0.9,0.01,2,0.5873180873180873,0.5067340067340067,0:15:25.383394,<function arithmetic_crossover at 0x000002AA1356CB70>

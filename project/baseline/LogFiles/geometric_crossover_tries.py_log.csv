@@ -1,0 +1,457 @@
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.262993762993763,0.2239057239057239,1,200,25,0.8,0.8,0.2,0.2,0,0:01:25.109313,<genetic_algorithm.GeneticAlgorithm object at 0x000001F700D00160>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x000001F700CD27B8>,<function geometric_crossover at 0x000001F700C7F158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x000001F700CD2950>
+0.21725571725571727,0.17845117845117844,0,200,25,0.8,0.8,0.2,0.2,0,0:01:25.434443,<genetic_algorithm.GeneticAlgorithm object at 0x00000176FEE80198>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x00000176FEE527B8>,<function geometric_crossover at 0x00000176FEDFF158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x00000176FEE52950>
+0.2234927234927235,0.1632996632996633,4,200,25,0.8,0.8,0.2,0.2,0,0:01:25.489298,<genetic_algorithm.GeneticAlgorithm object at 0x00000238B6E70198>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x00000238B6E427B8>,<function geometric_crossover at 0x00000238B6DEF158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x00000238B6E42950>
+0.25363825363825365,0.23905723905723905,2,200,25,0.8,0.8,0.2,0.2,0,0:01:25.571079,<genetic_algorithm.GeneticAlgorithm object at 0x0000011FC7240198>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x0000011FC72127B8>,<function geometric_crossover at 0x0000011FC71C3158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x0000011FC7212950>
+0.23076923076923078,0.2356902356902357,3,200,25,0.8,0.8,0.2,0.2,0,0:01:26.221339,<genetic_algorithm.GeneticAlgorithm object at 0x00000214BC260128>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x00000214BC2327B8>,<function geometric_crossover at 0x00000214BC1DF158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x00000214BC232950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.420997920997921,0.4208754208754209,3,100,50,1,1,0.01,1,3,0:01:28.129234,<ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x000001DF7C3BE160>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001DF7C3917B8>,<function two_point_crossover at 0x000001DF7C34BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001DF7C391950>
+0.49480249480249483,0.4511784511784512,1,100,50,1,1,0.01,1,3,0:01:28.565068,<ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x00000242E2F7E240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000242E2F517B8>,<function two_point_crossover at 0x00000242E2F0BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x00000242E2F51950>
+0.4376299376299376,0.35185185185185186,4,100,50,1,1,0.01,1,3,0:01:28.570054,<ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x0000026638E9E198>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000026638E717B8>,<function two_point_crossover at 0x0000026638E2BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000026638E71950>
+0.49376299376299376,0.41919191919191917,2,100,50,1,1,0.01,1,3,0:01:29.200368,<ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x00000282CE83E198>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000282CE8117B8>,<function two_point_crossover at 0x00000282CE7CBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x00000282CE811950>
+0.527027027027027,0.49326599326599324,0,100,50,1,1,0.01,1,3,0:01:29.512533,<ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x000001DEE616D240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001DEE61417B8>,<function two_point_crossover at 0x000001DEE60FBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001DEE6141950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.3991683991683992,0.32154882154882153,2,200,25,0.5,1,0.01,1,3,0:02:07.937738,<ga_pr_random.GeneticAlgorithmProgressRateRandom object at 0x000001767C50F278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001767C3E17B8>,<function two_point_crossover at 0x000001767C39BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001767C3E1950>
+0.4365904365904366,0.4107744107744108,4,200,25,0.5,1,0.01,1,3,0:02:08.131220,<ga_pr_random.GeneticAlgorithmProgressRateRandom object at 0x00000271D39FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000271D38D17B8>,<function two_point_crossover at 0x00000271D388BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x00000271D38D1950>
+0.3794178794178794,0.35353535353535354,3,200,25,0.5,1,0.01,1,3,0:02:08.885205,<ga_pr_random.GeneticAlgorithmProgressRateRandom object at 0x000002052A03F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000020529F117B8>,<function two_point_crossover at 0x0000020529ECBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000020529F11950>
+0.47193347193347196,0.43097643097643096,0,200,25,0.5,1,0.01,1,3,0:02:10.418102,<ga_pr_random.GeneticAlgorithmProgressRateRandom object at 0x0000018FFF55F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000018FFF4317B8>,<function two_point_crossover at 0x0000018FFF3EBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000018FFF431950>
+0.5395010395010394,0.49326599326599324,1,200,25,0.5,1,0.01,1,3,0:02:10.634523,<ga_pr_random.GeneticAlgorithmProgressRateRandom object at 0x000001EB0090F198>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001EB007E17B8>,<function two_point_crossover at 0x000001EB0079BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001EB007E1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.3866943866943867,0.31986531986531985,0,200,25,0.5,1,0.01,1,1,0:01:34.590948,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000012EA6CEF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000012EA6BC17B8>,<function two_point_crossover at 0x0000012EA6B7BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000012EA6BC1950>
+0.3731808731808732,0.33164983164983164,3,200,25,0.5,1,0.01,1,1,0:01:34.595935,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001A4ACA8F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A4AC9617B8>,<function two_point_crossover at 0x000001A4AC91BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001A4AC961950>
+0.5696465696465697,0.4831649831649832,2,200,25,0.5,1,0.01,1,1,0:01:35.510488,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001E612D3F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E612C117B8>,<function two_point_crossover at 0x000001E612BCBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001E612C11950>
+0.45634095634095634,0.4511784511784512,1,200,25,0.5,1,0.01,1,1,0:01:35.603239,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001B210F9F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001B210E717B8>,<function two_point_crossover at 0x000001B210E2BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001B210E71950>
+0.44594594594594594,0.41414141414141414,4,200,25,0.5,1,0.01,1,1,0:01:35.753870,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001FAC97BF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FAC96917B8>,<function two_point_crossover at 0x000001FAC964BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001FAC9691950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5509355509355509,0.4764309764309764,2,200,25,0.5,1,0.01,1,2,0:01:30.616578,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000018D2196F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000018D218417B8>,<function two_point_crossover at 0x0000018D217FBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000018D21841950>
+0.3918918918918919,0.3552188552188552,1,200,25,0.5,1,0.01,1,2,0:01:30.870901,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000025CCA86F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000025CCA7417B8>,<function two_point_crossover at 0x0000025CCA6FBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000025CCA741950>
+0.47401247401247404,0.43602693602693604,3,200,25,0.5,1,0.01,1,2,0:01:31.391506,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001BE7A13F278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001BE7A0117B8>,<function two_point_crossover at 0x000001BE79FCBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001BE7A011950>
+0.5041580041580042,0.4377104377104377,0,200,25,0.5,1,0.01,1,2,0:01:31.766503,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000021261E4F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000021261D217B8>,<function two_point_crossover at 0x0000021261CDBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000021261D21950>
+0.4584199584199584,0.43602693602693604,4,200,25,0.5,1,0.01,1,2,0:01:31.763546,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001BAB324F160>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001BAB31217B8>,<function two_point_crossover at 0x000001BAB30DBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001BAB3121950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5332640332640333,0.4175084175084175,2,200,25,0.5,1,0.01,1,0,0:01:36.083031,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002225CCDF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002225CBB17B8>,<function two_point_crossover at 0x000002225CB6BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000002225CBB1950>
+0.3814968814968815,0.3367003367003367,3,200,25,0.5,1,0.01,1,0,0:01:36.133892,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000028FE266F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000028FE25417B8>,<function two_point_crossover at 0x0000028FE24FBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000028FE2541950>
+0.4521829521829522,0.39730639730639733,1,200,25,0.5,1,0.01,1,0,0:01:36.469997,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001F9367CF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001F9366A17B8>,<function two_point_crossover at 0x000001F93665BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001F9366A1950>
+0.47505197505197505,0.3939393939393939,0,200,25,0.5,1,0.01,1,0,0:01:36.564743,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x00000192FA17F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000192FA0517B8>,<function two_point_crossover at 0x00000192FA00BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x00000192FA051950>
+0.369022869022869,0.3451178451178451,4,200,25,0.5,1,0.01,1,0,0:01:37.073381,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000016056A8F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000160569617B8>,<function two_point_crossover at 0x000001605691BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000016056961950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5488565488565489,0.4764309764309764,2,300,16,0.5,1,0.01,1,0,0:01:30.122901,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002E81A99F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002E81A8717B8>,<function two_point_crossover at 0x000002E81A82BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000002E81A871950>
+0.5051975051975052,0.4797979797979798,1,300,16,0.5,1,0.01,1,0,0:01:30.979612,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002590FD5F198>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002590FC317B8>,<function two_point_crossover at 0x000002590FBEBD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000002590FC31950>
+0.369022869022869,0.3552188552188552,3,300,16,0.5,1,0.01,1,0,0:01:31.017540,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000021F8E97F2B0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000021F8E8517B8>,<function two_point_crossover at 0x0000021F8E80BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x0000021F8E851950>
+0.37733887733887733,0.3434343434343434,4,300,16,0.5,1,0.01,1,0,0:01:31.501248,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001FC435AF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FC434817B8>,<function two_point_crossover at 0x000001FC4343BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000001FC43481950>
+0.48544698544698545,0.4208754208754209,0,300,16,0.5,1,0.01,1,0,0:01:31.628873,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002C1FAE7F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002C1FAD517B8>,<function two_point_crossover at 0x000002C1FAD0BD90>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x000002C1FAD51950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.1787941787941788,0.15488215488215487,3,200,25,1,1,0.01,2,0,0:01:21.460078,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000018FFBF4F208>,<function rank_selection at 0x0000018FFBDCF598>,<function arithmetic_crossover at 0x0000018FFBDCF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000018FFBE217B8>
+0.1683991683991684,0.14309764309764308,1,200,25,1,1,0.01,2,0,0:01:21.675503,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x00000213E856F208>,<function rank_selection at 0x00000213E83EF598>,<function arithmetic_crossover at 0x00000213E83EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000213E84417B8>
+0.15384615384615385,0.1750841750841751,0,200,25,1,1,0.01,2,0,0:01:23.242344,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002307AF8F278>,<function rank_selection at 0x000002307AE0F598>,<function arithmetic_crossover at 0x000002307AE0F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002307AE617B8>
+0.1943866943866944,0.2053872053872054,2,200,25,1,1,0.01,2,0,0:01:23.444800,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002486EDEF1D0>,<function rank_selection at 0x000002486EC6F598>,<function arithmetic_crossover at 0x000002486EC6F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002486ECC17B8>
+0.158004158004158,0.1717171717171717,4,200,25,1,1,0.01,2,0,0:01:23.896585,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001D348D0F208>,<function rank_selection at 0x000001D348B8F598>,<function arithmetic_crossover at 0x000001D348B8F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001D348BE17B8>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.43243243243243246,0.38552188552188554,1,200,25,1,1,0.01,0.2,0,0:01:31.956997,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000020684FAF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000020684E817B8>,<function arithmetic_crossover at 0x0000020684E2F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000020684E81950>
+0.39604989604989604,0.3282828282828283,3,200,25,1,1,0.01,0.2,0,0:01:32.178403,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000020F0620F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000020F060E17B8>,<function arithmetic_crossover at 0x0000020F0608F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000020F060E1950>
+0.5280665280665281,0.4797979797979798,2,200,25,1,1,0.01,0.2,0,0:01:32.747880,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x00000207B566D1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000207B55417B8>,<function arithmetic_crossover at 0x00000207B54EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000207B5541950>
+0.4282744282744283,0.37542087542087543,4,200,25,1,1,0.01,0.2,0,0:01:32.863607,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x00000195696FF198>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000195695D17B8>,<function arithmetic_crossover at 0x000001956957F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000195695D1950>
+0.44490644490644493,0.3771043771043771,0,200,25,1,1,0.01,0.2,0,0:01:32.936404,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001C889B0D240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001C8899E17B8>,<function arithmetic_crossover at 0x000001C88998F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001C8899E1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5166320166320166,0.44107744107744107,2,200,25,1,1,0.01,0.2,1,0:01:25.465360,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001E994A4F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E9949217B8>,<function arithmetic_crossover at 0x000001E9948CF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E994921950>
+0.43451143451143454,0.4090909090909091,1,200,25,1,1,0.01,0.2,1,0:01:26.364954,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000012F6C48F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000012F6C3617B8>,<function arithmetic_crossover at 0x0000012F6C30F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000012F6C361950>
+0.3981288981288981,0.36363636363636365,0,200,25,1,1,0.01,0.2,1,0:01:26.605311,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002204834F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000220482217B8>,<function arithmetic_crossover at 0x00000220481CF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000022048221950>
+0.36694386694386694,0.3265993265993266,3,200,25,1,1,0.01,0.2,1,0:01:26.982301,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000027642AEE240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000276429C17B8>,<function arithmetic_crossover at 0x000002764296F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000276429C1950>
+0.3877338877338877,0.3569023569023569,4,200,25,1,1,0.01,0.2,1,0:01:27.260589,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000021204F5D208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000021204E317B8>,<function arithmetic_crossover at 0x0000021204DDF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000021204E31950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.37422037422037424,0.33164983164983164,3,200,25,1,1,0.02,0.2,0,0:01:30.527922,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002551D43F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002551D3117B8>,<function arithmetic_crossover at 0x000002551D2BF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002551D311950>
+0.36694386694386694,0.3164983164983165,2,200,25,1,1,0.02,0.2,0,0:01:31.256973,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000016569DFF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000016569CD17B8>,<function arithmetic_crossover at 0x0000016569C7F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000016569CD1950>
+0.4594594594594595,0.4175084175084175,4,200,25,1,1,0.02,0.2,0,0:01:31.884293,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002156F66F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002156F5417B8>,<function arithmetic_crossover at 0x000002156F4EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002156F541950>
+0.4594594594594595,0.4292929292929293,1,200,25,1,1,0.02,0.2,0,0:01:32.093765,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x0000029382F9F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000029382E717B8>,<function arithmetic_crossover at 0x0000029382E1F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000029382E71950>
+0.47193347193347196,0.4090909090909091,0,200,25,1,1,0.02,0.2,0,0:01:32.853719,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001FD9407F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FD93F517B8>,<function arithmetic_crossover at 0x000001FD93EFF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001FD93F51950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5426195426195426,0.49326599326599324,2,160,31,1,1,0.01,0.2,0,0:01:35.364877,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001823C3FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001823C2D17B8>,<function arithmetic_crossover at 0x000001823C27F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001823C2D1950>
+0.3898128898128898,0.3484848484848485,3,160,31,1,1,0.01,0.2,0,0:01:35.834621,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x00000267E215F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000267E20317B8>,<function arithmetic_crossover at 0x00000267E1FDF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000267E2031950>
+0.3866943866943867,0.3501683501683502,1,160,31,1,1,0.01,0.2,0,0:01:36.143795,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001B75E7FF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001B75E6D17B8>,<function arithmetic_crossover at 0x000001B75E67F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001B75E6D1950>
+0.4293139293139293,0.3872053872053872,4,160,31,1,1,0.01,0.2,0,0:01:36.513835,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000001DB9501F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001DB94EF17B8>,<function arithmetic_crossover at 0x000001DB94E9F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001DB94EF1950>
+0.367983367983368,0.35858585858585856,0,160,31,1,1,0.01,0.2,0,0:01:36.904790,<ga_dc.GeneticAlgorithmDeterministicCrowding object at 0x000002B01DFAF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002B01DE817B8>,<function arithmetic_crossover at 0x000002B01DE2F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002B01DE81950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.40332640332640335,0.35353535353535354,1,200,25,1,0.5,0.01,1,0,0:01:32.505701,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E63217F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E6320517B8>,<function arithmetic_crossover at 0x000001E631FFF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E632051950>
+0.3471933471933472,0.32154882154882153,4,200,25,1,0.5,0.01,1,0,0:01:32.947514,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001795640F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000179562E17B8>,<function arithmetic_crossover at 0x000001795628F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000179562E1950>
+0.36382536382536385,0.3367003367003367,2,200,25,1,0.5,0.01,1,0,0:01:33.276637,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002A62BDBF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002A62BC917B8>,<function arithmetic_crossover at 0x000002A62BC3F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002A62BC91950>
+0.48232848232848236,0.39730639730639733,3,200,25,1,0.5,0.01,1,0,0:01:33.634681,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000023EBB8EF198>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000023EBB7C17B8>,<function arithmetic_crossover at 0x0000023EBB76F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000023EBB7C1950>
+0.3866943866943867,0.3501683501683502,0,200,25,1,0.5,0.01,1,0,0:01:33.820224,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001A600FFF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A600ED17B8>,<function arithmetic_crossover at 0x000001A600E7F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001A600ED1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.3711018711018711,0.35353535353535354,4,300,16,0.5,0.8,0.02,1,0,0:01:26.209371,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000028B67F4F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000028B67E217B8>,<function arithmetic_crossover at 0x0000028B67DCF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000028B67E21950>
+0.4417879417879418,0.3686868686868687,1,300,16,0.5,0.8,0.02,1,0,0:01:26.999257,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000264E464F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000264E45217B8>,<function arithmetic_crossover at 0x00000264E44CF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000264E4521950>
+0.3607068607068607,0.3484848484848485,2,300,16,0.5,0.8,0.02,1,0,0:01:27.166812,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E874D4F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E874C217B8>,<function arithmetic_crossover at 0x000001E874BCF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E874C21950>
+0.3575883575883576,0.32154882154882153,3,300,16,0.5,0.8,0.02,1,0,0:01:27.227674,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000014FDF26F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000014FDF1417B8>,<function arithmetic_crossover at 0x0000014FDF0EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000014FDF141950>
+0.5093555093555093,0.43097643097643096,0,300,16,0.5,0.8,0.02,1,0,0:01:27.294502,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001A48773F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A4876117B8>,<function arithmetic_crossover at 0x000001A4875BF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001A487611950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.4885654885654886,0.42592592592592593,2,200,25,0.5,1,0.02,1,0,0:01:37.186006,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000024CEE2DF278>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000024CEE1B17B8>,<function arithmetic_crossover at 0x0000024CEE15F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000024CEE1B1950>
+0.5956340956340956,0.5218855218855218,1,200,25,0.5,1,0.02,1,0,0:01:38.506475,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000016DCACCF278>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000016DCABA17B8>,<function arithmetic_crossover at 0x0000016DCAB4F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000016DCABA1950>
+0.4584199584199584,0.41919191919191917,4,200,25,0.5,1,0.02,1,0,0:01:39.182663,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E966D1F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E966BF17B8>,<function arithmetic_crossover at 0x000001E966B9F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E966BF1950>
+0.4085239085239085,0.3333333333333333,0,200,25,0.5,1,0.02,1,0,0:01:39.543729,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002099E3BF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002099E2917B8>,<function arithmetic_crossover at 0x000002099E23F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002099E291950>
+0.5291060291060291,0.46296296296296297,3,200,25,0.5,1,0.02,1,0,0:01:39.578604,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000020C30B5F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000020C30A317B8>,<function arithmetic_crossover at 0x0000020C309DF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000020C30A31950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.4677754677754678,0.4292929292929293,4,125,40,0.5,1,0.02,1,0,0:01:27.493935,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001D8A307F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001D8A2F517B8>,<function arithmetic_crossover at 0x000001D8A2EFF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001D8A2F51950>
+0.48336798336798337,0.4377104377104377,0,125,40,0.5,1,0.02,1,0,0:01:27.809092,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000026A6F85F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000026A6F7317B8>,<function arithmetic_crossover at 0x0000026A6F6DF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000026A6F731950>
+0.4812889812889813,0.41245791245791247,2,125,40,0.5,1,0.02,1,0,0:01:27.819064,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001C4434FF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001C4433D17B8>,<function arithmetic_crossover at 0x000001C44337F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001C4433D1950>
+0.4979209979209979,0.4208754208754209,3,125,40,0.5,1,0.02,1,0,0:01:28.457355,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000018DF99CF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000018DF98A17B8>,<function arithmetic_crossover at 0x0000018DF984F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000018DF98A1950>
+0.46465696465696466,0.4478114478114478,1,125,40,0.5,1,0.02,1,0,0:01:28.756589,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001FCBA6CF128>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FCBA5A17B8>,<function arithmetic_crossover at 0x000001FCBA54F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001FCBA5A1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.48440748440748443,0.4377104377104377,2,125,40,0.2,1,0.02,1,0,0:01:31.036458,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001973387F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000197337517B8>,<function arithmetic_crossover at 0x00000197336FF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000019733751950>
+0.5332640332640333,0.4882154882154882,0,125,40,0.2,1,0.02,1,0,0:01:31.626877,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000023C6F9FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000023C6F8D17B8>,<function arithmetic_crossover at 0x0000023C6F87F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000023C6F8D1950>
+0.4875259875259875,0.4393939393939394,1,125,40,0.2,1,0.02,1,0,0:01:31.778470,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000029B8ABBF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000029B8AA917B8>,<function arithmetic_crossover at 0x0000029B8AA3F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000029B8AA91950>
+0.3898128898128898,0.3569023569023569,4,125,40,0.2,1,0.02,1,0,0:01:32.046787,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001209E20F278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001209E0E17B8>,<function arithmetic_crossover at 0x000001209E08F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001209E0E1950>
+0.5696465696465697,0.4882154882154882,3,125,40,0.2,1,0.02,1,0,0:01:32.136516,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001A121A5F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A1219317B8>,<function arithmetic_crossover at 0x000001A1218DF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001A121931950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.48440748440748443,0.39730639730639733,0,200,25,0.2,1,0.02,1,0,0:01:35.254174,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000252F10EF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000252F0FC17B8>,<function arithmetic_crossover at 0x00000252F0F6F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000252F0FC1950>
+0.446985446985447,0.36363636363636365,3,200,25,0.2,1,0.02,1,0,0:01:36.487874,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001B9CAD6F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001B9CAC417B8>,<function arithmetic_crossover at 0x000001B9CABEF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001B9CAC41950>
+0.4573804573804574,0.4074074074074074,4,200,25,0.2,1,0.02,1,0,0:01:37.236871,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001CC6729F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001CC671717B8>,<function arithmetic_crossover at 0x000001CC6711F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001CC67171950>
+0.5228690228690228,0.46464646464646464,1,200,25,0.2,1,0.02,1,0,0:01:37.471244,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002124C80F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002124C6E17B8>,<function arithmetic_crossover at 0x000002124C68F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002124C6E1950>
+0.48544698544698545,0.4713804713804714,2,200,25,0.2,1,0.02,1,0,0:01:37.520112,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001899FD2F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001899FC017B8>,<function arithmetic_crossover at 0x000001899FBAF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001899FC01950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5353430353430353,0.4882154882154882,3,300,16,0.2,1,0.03,1,0,0:01:34.081311,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000022B15FBF278>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000022B15E917B8>,<function arithmetic_crossover at 0x0000022B15E3F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000022B15E91950>
+0.5582120582120582,0.4882154882154882,0,300,16,0.2,1,0.03,1,0,0:01:35.458627,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000018116CAF2B0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000018116B817B8>,<function arithmetic_crossover at 0x0000018116B2F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000018116B81950>
+0.47193347193347196,0.43434343434343436,2,300,16,0.2,1,0.03,1,0,0:01:35.592270,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000022A7A52F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000022A7A4017B8>,<function arithmetic_crossover at 0x0000022A7A3AF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000022A7A401950>
+0.4106029106029106,0.35353535353535354,1,300,16,0.2,1,0.03,1,0,0:01:35.838609,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000206CF4FF160>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000206CF3D17B8>,<function arithmetic_crossover at 0x00000206CF37F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000206CF3D1950>
+0.4802494802494803,0.4377104377104377,4,300,16,0.2,1,0.03,1,0,0:01:36.195654,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000258E29CF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000258E28A17B8>,<function arithmetic_crossover at 0x00000258E284F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000258E28A1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.47297297297297297,0.40404040404040403,2,300,16,0.2,1,0.05,1,1,0:01:30.968639,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000027D7450F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000027D743E17B8>,<function arithmetic_crossover at 0x0000027D7438F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000027D743E1950>
+0.4698544698544699,0.4074074074074074,0,300,16,0.2,1,0.05,1,1,0:01:31.159127,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E57CFDF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E57CEB17B8>,<function arithmetic_crossover at 0x000001E57CE5F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E57CEB1950>
+0.525987525987526,0.45454545454545453,4,300,16,0.2,1,0.05,1,1,0:01:31.718635,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E9486FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E9485D17B8>,<function arithmetic_crossover at 0x000001E94857F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E9485D1950>
+0.49480249480249483,0.4377104377104377,3,300,16,0.2,1,0.05,1,1,0:01:31.814378,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000021D29EFF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000021D29DD17B8>,<function arithmetic_crossover at 0x0000021D29D7F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000021D29DD1950>
+0.5956340956340956,0.5387205387205387,1,300,16,0.2,1,0.05,1,1,0:01:32.576372,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000019E6B9CF198>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000019E6B8A17B8>,<function arithmetic_crossover at 0x0000019E6B84F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000019E6B8A1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.4781704781704782,0.4175084175084175,3,200,25,0.2,1,0.05,1,1,0:01:35.987214,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000022177EFF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000022177DD17B8>,<function arithmetic_crossover at 0x0000022177D7F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000022177DD1950>
+0.44490644490644493,0.4393939393939394,0,200,25,0.2,1,0.05,1,1,0:01:36.524776,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000027FFC59F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000027FFC4717B8>,<function arithmetic_crossover at 0x0000027FFC41F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000027FFC471950>
+0.38461538461538464,0.3552188552188552,4,200,25,0.2,1,0.05,1,1,0:01:36.503830,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001FF7477F278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FF746517B8>,<function arithmetic_crossover at 0x000001FF745FF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001FF74651950>
+0.4802494802494803,0.43602693602693604,1,200,25,0.2,1,0.05,1,1,0:01:37.368517,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000026C59C0D240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000026C59AE17B8>,<function arithmetic_crossover at 0x0000026C59A8F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000026C59AE1950>
+0.47505197505197505,0.4006734006734007,2,200,25,0.2,1,0.05,1,1,0:01:37.381515,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000230DDFAF278>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000230DDE817B8>,<function arithmetic_crossover at 0x00000230DDE2F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000230DDE81950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.40436590436590436,0.3434343434343434,2,300,16,0.2,1,0.05,1,2,0:01:37.870175,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001A1716FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A1715D17B8>,<function arithmetic_crossover at 0x000001A1715830D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001A1715D1950>
+0.5083160083160083,0.46464646464646464,4,300,16,0.2,1,0.05,1,2,0:01:38.366845,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002C3BE2FF2B0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002C3BE1D17B8>,<function arithmetic_crossover at 0x000002C3BE17F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002C3BE1D1950>
+0.48232848232848236,0.40404040404040403,1,300,16,0.2,1,0.05,1,2,0:01:38.497498,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002D0D866F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002D0D85417B8>,<function arithmetic_crossover at 0x000002D0D84EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002D0D8541950>
+0.5675675675675675,0.5,0,300,16,0.2,1,0.05,1,2,0:01:38.773759,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000204EC8CF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000204EC7A17B8>,<function arithmetic_crossover at 0x00000204EC74F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000204EC7A1950>
+0.5291060291060291,0.43602693602693604,3,300,16,0.2,1,0.05,1,2,0:01:39.609519,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002128888F198>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000212887617B8>,<function arithmetic_crossover at 0x00000212887130D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000021288761950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5956340956340956,0.5387205387205387,1,300,16,0.2,1,0.1,1,1,0:01:30.901817,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001BAADCFF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001BAADBD17B8>,<function arithmetic_crossover at 0x000001BAADB7F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001BAADBD1950>
+0.4698544698544699,0.4074074074074074,0,300,16,0.2,1,0.1,1,1,0:01:31.681730,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000012EDCFDF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000012EDCEB17B8>,<function arithmetic_crossover at 0x0000012EDCE5F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000012EDCEB1950>
+0.49480249480249483,0.4377104377104377,3,300,16,0.2,1,0.1,1,1,0:01:32.912438,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000024284F2F198>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000024284E017B8>,<function arithmetic_crossover at 0x0000024284DB30D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000024284E01950>
+0.47297297297297297,0.40404040404040403,2,300,16,0.2,1,0.1,1,1,0:01:32.949351,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000260E4D8F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000260E4C617B8>,<function arithmetic_crossover at 0x00000260E4C0F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000260E4C61950>
+0.525987525987526,0.45454545454545453,4,300,16,0.2,1,0.1,1,1,0:01:33.133854,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000227FD97F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000227FD8517B8>,<function arithmetic_crossover at 0x00000227FD7FF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000227FD851950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5426195426195426,0.4831649831649832,1,300,16,0.1,1,0.1,1,1,0:01:33.915754,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001E98C32F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001E98C2017B8>,<function arithmetic_crossover at 0x000001E98C1AF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001E98C201950>
+0.5405405405405406,0.4713804713804714,4,300,16,0.1,1,0.1,1,1,0:01:34.502185,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001D0F691F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001D0F67F17B8>,<function arithmetic_crossover at 0x000001D0F679F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001D0F67F1950>
+0.44282744282744285,0.38215488215488214,2,300,16,0.1,1,0.1,1,1,0:01:34.935028,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000171762CF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000171761A17B8>,<function arithmetic_crossover at 0x000001717614F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000171761A1950>
+0.47193347193347196,0.4006734006734007,0,300,16,0.1,1,0.1,1,1,0:01:35.038752,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001D624F3F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001D624E117B8>,<function arithmetic_crossover at 0x000001D624DBF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001D624E11950>
+0.5135135135135135,0.4797979797979798,3,300,16,0.1,1,0.1,1,1,0:01:35.372888,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000017B42FDF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000017B42EB17B8>,<function arithmetic_crossover at 0x0000017B42E5F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000017B42EB1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.4698544698544699,0.4074074074074074,0,300,16,0.2,1,0.15,1,1,0:01:33.377195,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001D95F1CF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001D95F0A17B8>,<function arithmetic_crossover at 0x000001D95F04F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001D95F0A1950>
+0.47297297297297297,0.40404040404040403,2,300,16,0.2,1,0.15,1,1,0:01:33.346276,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000019A683FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000019A682D17B8>,<function arithmetic_crossover at 0x0000019A6827F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000019A682D1950>
+0.49480249480249483,0.4377104377104377,3,300,16,0.2,1,0.15,1,1,0:01:33.327330,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001CF394CF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001CF393A17B8>,<function arithmetic_crossover at 0x000001CF3934F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001CF393A1950>
+0.525987525987526,0.45454545454545453,4,300,16,0.2,1,0.15,1,1,0:01:34.098264,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000291F005F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000291EFF317B8>,<function arithmetic_crossover at 0x00000291EFEDF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000291EFF31950>
+0.5956340956340956,0.5387205387205387,1,300,16,0.2,1,0.15,1,1,0:01:34.425389,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001F5C81EF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001F5C80C17B8>,<function arithmetic_crossover at 0x000001F5C806F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001F5C80C1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.47297297297297297,0.40404040404040403,2,300,16,0.2,1,0.3,1,1,0:01:39.373154,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002A4AB49F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002A4AB3717B8>,<function arithmetic_crossover at 0x000002A4AB31F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002A4AB371950>
+0.49480249480249483,0.4377104377104377,3,300,16,0.2,1,0.3,1,1,0:01:40.599872,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000015F6700F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000015F66EE17B8>,<function arithmetic_crossover at 0x0000015F66E8F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000015F66EE1950>
+0.5956340956340956,0.5387205387205387,1,300,16,0.2,1,0.3,1,1,0:01:40.778395,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001C59040F128>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001C5902E17B8>,<function arithmetic_crossover at 0x000001C59028F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001C5902E1950>
+0.4698544698544699,0.4074074074074074,0,300,16,0.2,1,0.3,1,1,0:01:40.893088,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000205F977F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000205F96517B8>,<function arithmetic_crossover at 0x00000205F96030D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000205F9651950>
+0.525987525987526,0.45454545454545453,4,300,16,0.2,1,0.3,1,1,0:01:41.579254,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002AF1786F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002AF177417B8>,<function arithmetic_crossover at 0x000002AF176EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002AF17741950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5852390852390852,0.5168350168350169,1,400,12,0.2,1,0.15,1,1,0:01:37.062337,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001527275F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000152726317B8>,<function arithmetic_crossover at 0x00000152725DF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000015272631950>
+0.5083160083160083,0.4393939393939394,2,400,12,0.2,1,0.15,1,1,0:01:37.675695,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000211EA1DF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000211EA0B17B8>,<function arithmetic_crossover at 0x00000211EA05F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000211EA0B1950>
+0.5446985446985447,0.4764309764309764,4,400,12,0.2,1,0.15,1,1,0:01:37.955944,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001919804F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000019197F217B8>,<function arithmetic_crossover at 0x0000019197ECF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000019197F21950>
+0.4386694386694387,0.4107744107744108,3,400,12,0.2,1,0.15,1,1,0:01:39.150754,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001A42E56F278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001A42E4417B8>,<function arithmetic_crossover at 0x000001A42E3EF0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001A42E441950>
+0.49480249480249483,0.42592592592592593,0,400,12,0.2,1,0.15,1,1,0:01:39.555698,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002A10918F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002A1090617B8>,<function arithmetic_crossover at 0x000002A10900F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002A109061950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.4490644490644491,0.39730639730639733,1,116,43,0.2,1,0.3,1,1,0:01:30.960659,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000290A6FAF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000290A6E817B8>,<function arithmetic_crossover at 0x00000290A6E2F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000290A6E81950>
+0.47193347193347196,0.4377104377104377,4,116,43,0.2,1,0.3,1,1,0:01:31.363583,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002C97B5FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002C97B4D17B8>,<function arithmetic_crossover at 0x000002C97B47F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002C97B4D1950>
+0.4781704781704782,0.367003367003367,0,116,43,0.2,1,0.3,1,1,0:01:32.270159,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002EC201BF278>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002EC200917B8>,<function arithmetic_crossover at 0x000002EC2003F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002EC20091950>
+0.4896049896049896,0.42424242424242425,2,116,43,0.2,1,0.3,1,1,0:01:33.692349,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000019D390CF198>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000019D38FA17B8>,<function arithmetic_crossover at 0x0000019D38F4F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000019D38FA1950>
+0.40124740124740127,0.37542087542087543,3,116,43,0.2,1,0.3,1,1,0:01:33.733242,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002861510F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000028614FE17B8>,<function arithmetic_crossover at 0x0000028614F8F0D0>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000028614FE1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.47401247401247404,0.4158249158249158,2,300,16,0.2,1,0.15,1,1,0:01:33.816022,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000027A3C48F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000027A3C3617B8>,<function geometric_crossover at 0x0000027A3C30F158>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x0000027A3C361950>
+0.5145530145530145,0.4764309764309764,4,300,16,0.2,1,0.15,1,1,0:01:34.366548,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000246D51FF240>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000246D50D17B8>,<function geometric_crossover at 0x00000246D507F158>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x00000246D50D1950>
+0.4656964656964657,0.4107744107744108,1,300,16,0.2,1,0.15,1,1,0:01:34.627850,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002E572E7F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002E572D517B8>,<function geometric_crossover at 0x000002E572CFF158>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002E572D51950>
+0.4896049896049896,0.398989898989899,3,300,16,0.2,1,0.15,1,1,0:01:34.635829,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001FC8C77F208>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001FC8C6517B8>,<function geometric_crossover at 0x000001FC8C5FF158>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000001FC8C651950>
+0.5301455301455301,0.4377104377104377,0,300,16,0.2,1,0.15,1,1,0:01:34.820335,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000002E4F33EF1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x000002E4F32C17B8>,<function geometric_crossover at 0x000002E4F326F158>,<function parametrized_swap_mutation.<locals>.swap_mutation at 0x000002E4F32C1950>
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
+0.5301455301455301,0.4377104377104377,0,300,16,0.2,1,0.15,1,1,0:01:34.814353,<ga_growpop.GeneticAlgorithmGrowPop object at 0x0000018724EBF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x0000018724D917B8>,<function geometric_crossover at 0x0000018724D3F158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x0000018724D91950>
+0.4656964656964657,0.4107744107744108,1,300,16,0.2,1,0.15,1,1,0:01:35.072661,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001474B41F240>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001474B2F17B8>,<function geometric_crossover at 0x000001474B29F158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x000001474B2F1950>
+0.47401247401247404,0.4158249158249158,2,300,16,0.2,1,0.15,1,1,0:01:35.257169,<ga_growpop.GeneticAlgorithmGrowPop object at 0x000001B73A90F198>,<function boltzmann_selection.<locals>.tournament_selection at 0x000001B73A7E17B8>,<function geometric_crossover at 0x000001B73A78F158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x000001B73A7E1950>
+0.4896049896049896,0.398989898989899,3,300,16,0.2,1,0.15,1,1,0:01:36.031095,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000162A2DBF208>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000162A2C917B8>,<function geometric_crossover at 0x00000162A2C3F158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x00000162A2C91950>
+0.5145530145530145,0.4764309764309764,4,300,16,0.2,1,0.15,1,1,0:01:36.377170,<ga_growpop.GeneticAlgorithmGrowPop object at 0x00000284AB84F1D0>,<function boltzmann_selection.<locals>.tournament_selection at 0x00000284AB7217B8>,<function geometric_crossover at 0x00000284AB6CF158>,<function parametrized_random_member_mutation_fast.<locals>.random_member_mutation at 0x00000284AB721950>

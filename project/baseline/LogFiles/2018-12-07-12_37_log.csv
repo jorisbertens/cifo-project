@@ -1,0 +1,7 @@
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,0,0.23076923076923078,0.2946058091286307,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,0.0005653972773925382
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,1,0.24324324324324326,0.2987551867219917,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,0.009390049811113226
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,2,0.2525987525987526,0.2946058091286307,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,0.006977945971232552
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,3,0.2588357588357588,0.2987551867219917,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,-0.00421265094226194
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,4,0.2661122661122661,0.2987551867219917,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,-0.00424981348898603
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,5,0.2817047817047817,0.2946058091286307,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,0.004508846478798172
+<class 'problems.ANNOP.ANNOP'>,2131307351352,algorithms.ga_elitism_worst_removal,6,0.2920997920997921,0.2946058091286307,50,best_selection,two_point_crossover,1,random_member_mutation,None,None,1,0.011350828058171593
