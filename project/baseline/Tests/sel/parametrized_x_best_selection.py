@@ -65,7 +65,7 @@ X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, 
 validation_p = .2
 validation_threshold = .07
 ''' number '''
-num = 10
+num = 4
 ''' number '''
 
 # Genetic Algorithm setup

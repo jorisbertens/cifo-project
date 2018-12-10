@@ -10,7 +10,7 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
+import utils as uls
 import crossovers as cross
 import selections as sel
 import mutations as mut

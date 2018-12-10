@@ -36,11 +36,11 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../../TestLog/" + os.path.basename(__file__) + "_log.csv"
+file_path = os.path.basename(__file__) + "_illy_base_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+file_name= os.path.basename(__file__) + "_log.csv"
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
@@ -63,21 +63,19 @@ X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, 
 # setup benchmarks
 validation_p = .2
 validation_threshold = .07
-''' PLEASE CHECK SETUP!!!!! '''
-
 
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
-search_space =[-5,5]####?
+seeds_per_run = [0,1,2,3,4]#is fixed
+n_genes = [10]                                     #to change
+p_cs = [.5]#is fixed
+p_ms = [0.9]#is fixed
+radiuses= [0.2]#is fixed
+pressures = [0.2]                              #change
+elite_counts = [0]#is na
 
-seeds_per_run = [0,1,2,3,4]
-n_genes = [280]
-p_cs = [0.8]
-p_ms = [1]
-radiuses= [0.4]
-pressures = [1]
-elite_counts = [6]
-p=[0.3]
+
+
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -118,11 +116,11 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # * including reproduction
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
-    sel_algo = sel.boltzmann_selection(pressure, n_gen)
-    cross_algo = cross.arithmetic_crossover
-    mut_algo = mut.parametrized_random_member_mutation(p, search_space)
+    sel_algo = sel.parametrized_tournament_selection(pressure)
+    cross_algo = cross.one_point_crossover
+    mut_algo = mut.parametrized_ball_mutation(radius)
 
-    alg = GeneticAlgorithmGrowPop(ann_op_i, random_state, pop_size, sel_algo,
+    alg = GeneticAlgorithm(ann_op_i, random_state, 20, sel_algo,
                       cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
@@ -162,7 +160,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count)
+    pool = multiprocessing.Pool(2)
     results = pool.starmap(algo_run, possible_values)
-
-
