@@ -72,8 +72,8 @@ validation_threshold = .07
 # Genetic Algorithm setup
 seeds_per_run = [0,1,2,3,4]
 n_genes = [100,200,300]
-controls = [2,3]
-update_rates = [0.8, 0.85, 0.9]
+controls = [1,2,3]
+update_rates = [0.7, 0.8, 0.9]
 radiuses = [0.005, 0.01,0.015]
 
 
@@ -114,7 +114,7 @@ def algo_run(seed, n_gen, control, update_rate, radius):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    mut_algo = mut.parametrized_random_member_mutation(radius, [-2,2])
+    mut_algo = mut.parametrized_random_member_mutation(radius, [-4,4])
     alg = SimulatedAnnealing(ann_op_i, random_state, pop_size, mut_algo, control, update_rate)
     alg.initialize()
     # initialize search algorithms
