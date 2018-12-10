@@ -1,6 +1,6 @@
 import logging
 
-from utils.utils import bit_flip
+from utils import bit_flip
 from algorithms.random_search import RandomSearch
 from solutions.solution import Solution
 
