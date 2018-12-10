@@ -119,7 +119,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     mut_algo = mut.parametrized_ball_mutation(radius)
 
     alg = GeneticAlgorithmGrowPop(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m,2)
+                      cross_algo, p_c, mut_algo, p_m,0)
     alg.initialize()
 
     # initialize search algorithms
