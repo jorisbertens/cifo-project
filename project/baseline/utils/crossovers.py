@@ -112,3 +112,10 @@ def parameterized_random_crossover(swap_p):
         crossover_algo = random_state.choice(crossovers)
         return crossover_algo(p1_r, p2_r, random_state)
     return random_crossover
+
+def arithmetic_threesome_crossover(p1_r, p2_r, p3_r, random_state):
+    off1_r = (p1_r + p2_r)/2
+    off2_r = (p1_r + p3_r)/2
+    off3_r = (p2_r + p3_r)/2
+    return off1_r, off2_r, off3_r
+
