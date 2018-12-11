@@ -37,8 +37,16 @@ def parametrized_random_member_mutation(p, search_space):
             new_points[index] = random_state.uniform(low=search_space[0], high=search_space[1])
         return new_points
     return random_member_mutation
-def parametrized_biased_random_member_mutation(p, search_space):
-    return 0
+
+def parametrized_gaussian_member_mutation(p, mean, std):
+    def gaussian_member_mutation(point, random_state):
+
+        indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
+        new_points = point.copy()
+        for index in indexes:
+            new_points[index] = random_state.normal(mean, std)
+        return new_points
+    return gaussian_member_mutation
 
 def parametrized_swap_mutation(p):
     def swap_mutation(point, random_state):

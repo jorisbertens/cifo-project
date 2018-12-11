@@ -10,10 +10,10 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
-import utils.crossovers as cross
-import utils.selections as sel
-import utils.mutations as mut
+import utils as uls
+import crossovers as cross
+import selections as sel
+import mutations as mut
 
 from problems.ANNOP import ANNOP
 from ANN.ANN import ANN, softmax, sigmoid
@@ -70,11 +70,11 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-seeds_per_run = [2]
-n_genes = [100,150,200]
-controls = [2,3]
-update_rates = [0.85,0.9,0.92]
-radiuses = [0.009,0.01,0.011]
+seeds_per_run = [0,1,2,3,4]
+n_genes = [100,200,300]
+controls = [1,2,3]
+update_rates = [0.7, 0.8, 0.9]
+radiuses = [0.005, 0.01,0.015]
 
 
 def algo_run(seed, n_gen, control, update_rate, radius):
@@ -114,8 +114,7 @@ def algo_run(seed, n_gen, control, update_rate, radius):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    mut_algo = mut.parametrized_swap_mutation(radius)
-
+    mut_algo = mut.parametrized_random_member_mutation(radius, [-4,4])
     alg = SimulatedAnnealing(ann_op_i, random_state, pop_size, mut_algo, control, update_rate)
     alg.initialize()
     # initialize search algorithms
@@ -153,5 +152,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(1)
+    pool = multiprocessing.Pool(core_count-1)
     results = pool.starmap(algo_run, possible_values)

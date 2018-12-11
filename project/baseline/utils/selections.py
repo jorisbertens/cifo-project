@@ -48,7 +48,7 @@ def rank_selection(population, minimization, random_state, fitness_sharing=False
         current += i
         if current >= pick:
             return ind
-
+# TODO stochastic_universal_sampling
 def stochastic_universal_sampling():
     return 0
 
@@ -74,14 +74,14 @@ def roulette_selection(population, minimization, random_state, fitness_sharing=F
         if current > pick:
             return ind
 
-
+# TODO change name and maybe implement real boltzman
 def boltzmann_selection(pressure, n_gen):
     gen = 0
     def tournament_selection(population, minimization, random_state, fitness_sharing=False):
         nonlocal  gen
         fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
 
-        factor = pressure - ((pressure / 2) * (gen/(n_gen*len(population))))
+        factor = pressure - ((pressure / 2) * (gen/(n_gen* len(population))))
         gen = gen + 1
         tournament_pool_size = int(len(population) * factor)
         tournament_pool = random_state.choice(population, size=tournament_pool_size, replace=False)
