@@ -68,11 +68,10 @@ seeds_per_run = [2]
 n_genes = [100,200,300,500]
 p_cs = [0.5,0.7,0.9]
 p_ms = [0.5,0.7,0.9]
-radiuses= [0.07,0.05,0.03,0.01]
-pressures = [0.5,1,2]
+radiuses= [0.5,1,2]
+pressures = [0.07,0.05,0.03,0.01]
 elite_counts = [3]
 
-#0.6268191268191268,0.5454545454545454,2,100,50,1,1,3,1,3,0:03:47.689362,<algorithms.ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x7f8fc59a0fd0>,<function boltzmann_selection.<locals>.tournament_selection at 0x7f8fe80ca0d0>,<function parametrized_two_point_crossover.<locals>.two_point_crossover at 0x7f8fc5c50bf8>,<function parametrized_random_member_mutation.<locals>.random_member_mutation at 0x7f8fc5c50c80>
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
