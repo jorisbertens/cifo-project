@@ -1,6 +1,9 @@
 import numpy as np
 
 def parametrized_ball_mutation(radius):
+    '''
+       For each weight in the network it generates a new weigth between coordinate - radius and coordinate - radius
+    '''
     def ball_mutation(point, random_state):
         return np.array([random_state.uniform(low=coordinate - radius, high=coordinate + radius) for coordinate in point])
     return ball_mutation
@@ -8,6 +11,10 @@ def parametrized_ball_mutation(radius):
 
 
 def parametrized_ball_mutation_with_boundries(radius, search_space):
+    '''
+       For each weight in the network it generates a new weigth between coordinate - radius and coordinate - radius
+       In case new value is outside the search space it is then reset to the boundary of the search space
+    '''
     def ball_mutation(point, random_state):
         result = []
         for coordinate in point:
@@ -19,6 +26,10 @@ def parametrized_ball_mutation_with_boundries(radius, search_space):
     return ball_mutation
 
 def parametrized_random_member_mutation_fast(p, search_space):
+    '''
+        Selects a random subset of the weights with size: length of weights * p
+        and replaces all the points with a single uniform number generated within the search space
+    '''
     def random_member_mutation(point, random_state):
 
         indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
@@ -29,6 +40,9 @@ def parametrized_random_member_mutation_fast(p, search_space):
 
 def parametrized_random_member_mutation(p, search_space):
     '''
+        Selects a random subset of the weights with size: length of weights * p
+        and replaces all the points with uniform numbers generated within the search space
+
         https://www.researchgate.net/deref/http%3A%2F%2Fwww.ijcai.org%2FProceedings%2F89-1%2FPapers%2F122.pdf
     '''
     def random_member_mutation(point, random_state):
@@ -42,7 +56,8 @@ def parametrized_random_member_mutation(p, search_space):
 
 def parametrized_gaussian_mutation(p, mean, std):
     '''
-    https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)
+        This operator adds a unit Gaussian distributed random value to the chosen genes.
+        https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)
     '''
     def gaussian_mutation(point, random_state):
 
@@ -54,6 +69,9 @@ def parametrized_gaussian_mutation(p, mean, std):
     return gaussian_mutation
 
 def parametrized_swap_mutation(p):
+    '''
+        Randomly swaps length of weights * p values in the weights list
+    '''
     def swap_mutation(point, random_state):
         size = int(( len(point) * p ) / 2)
         indexes1 = random_state.randint(low = 0,high = len(point), size = size)
@@ -66,8 +84,11 @@ def parametrized_swap_mutation(p):
         return new_points
     return swap_mutation
 
-def parametrized_shrink_mutation(p, radius):
+def parametrized_shrink_mutation(p, std):
     '''
+    This operator adds a random number taken from a Gaussian distribution with mean equal to the original
+    value of each decision variable characterizing the entry parent vector.
+
     https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)
     '''
     def shrink_mutation(point, random_state):
@@ -75,19 +96,6 @@ def parametrized_shrink_mutation(p, radius):
         indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
         new_points = point.copy()
         for index in indexes:
-            new_points[index] = random_state.normal(new_points[index], radius)
+            new_points[index] = random_state.normal(new_points[index], std)
         return new_points
     return shrink_mutation
-
-def parameterized_random_mutation(ball_radius, random_member_p, swap_p, search_space):
-    def random_mutation(point, random_state):
-        mutations = [
-            parametrized_ball_mutation(ball_radius),
-            parametrized_ball_mutation_with_boundries(ball_radius, search_space),
-            parametrized_random_member_mutation_fast(random_member_p, search_space),
-            parametrized_random_member_mutation(random_member_p, search_space),
-            parametrized_swap_mutation(swap_p)
-        ]
-        mutation_algo = random_state.choice(mutations)
-        return mutation_algo(point, random_state)
-    return random_mutation

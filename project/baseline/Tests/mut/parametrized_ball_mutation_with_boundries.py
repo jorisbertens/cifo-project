@@ -18,21 +18,6 @@ import mutations as mut
 from ANNOP import ANNOP
 from ANN import ANN, softmax, sigmoid
 from genetic_algorithm import GeneticAlgorithm
-from ga_2pop import GeneticAlgorithm2Pop
-from ga_dmr import GeneticAlgorithmDMR
-from ga_pr import GeneticAlgorithmProgressRate
-from ga_pr_random import GeneticAlgorithmProgressRateRandom
-from ga_mating_pool import GeneticAlgorithmMatingPool
-from ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
-from ga_eval import GeneticAlgorithmEval
-from ga_elitism import GeneticAlgorithmElitism
-from ga_elitism_random import GeneticAlgorithmElitismRandom
-from ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
-from ga_2pop_random import GeneticAlgorithm2Random
-from ga_dc import GeneticAlgorithmDeterministicCrowding
-from ga_drop_worst import GeneticAlgorithmDropWorst
-from ga_growpop import GeneticAlgorithmGrowPop
-from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1

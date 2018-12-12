@@ -41,8 +41,8 @@ class GeneticAlgorithmGrowPopElitism(RandomSearch):
                     off1, off2 = self._crossover(p1, p2)
 
                 if self._random_state.uniform() < self.p_m:
-                    off1 = self._mutation_high(off1)
-                    off2 = self._mutation_low(off2)
+                    off1 = self._mutation(off1)
+                    off2 = self._mutation(off2)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
@@ -80,6 +80,7 @@ class GeneticAlgorithmGrowPopElitism(RandomSearch):
 
                 if self._random_state.uniform() < self.p_m:
                     off1 = self._mutation(off1)
+                    off2 = self._mutation(off2)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
