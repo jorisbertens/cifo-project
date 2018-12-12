@@ -18,6 +18,11 @@ class PSO(RandomSearch):
         self.best_solution = self._get_current_best_particle(self.swarm)
 
     def search(self, n_iterations, report=False, log=False, dplot=None):
+
+        if log:
+            log_event = [self.problem_instance.__class__, id(self._random_state), __name__]
+            logger = logging.getLogger(','.join(list(map(str, log_event))))
+
         if dplot is not None:
             dplot.background_plot(self.problem_instance.search_space, self.problem_instance.fitness_function)
 
@@ -37,6 +42,12 @@ class PSO(RandomSearch):
 
             if report:
                 self._verbose_reporter_inner(self.best_solution, iteration)
+
+            if log:
+                log_event = [iteration, i.fitness, i.validation_fitness if hasattr(i, 'validation_fitness') else None,
+                             self.neighborhood_size, self.neighborhood_function.__name__,
+                             self.control, self.update_rate]
+                logger.info(','.join(list(map(str, log_event))))
 
             if dplot is not None:
                 _iterative_plot()
