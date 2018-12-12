@@ -10,28 +10,22 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
-import utils.crossovers as cross
-import utils.selections as sel
-import utils.mutations as mut
+import utils as uls
 
 
 from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
-from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.simulated_annealing import SimulatedAnnealing
+from ANN import ANN, softmax, sigmoid
+from algorithms.random_search import RandomSearch
 
 
 # setup logger
-file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv")
+file_path =  "../../TestLog/other_algos/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_example_lf_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv"
+file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
-header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
+header_string = "Seed,N_gen,Swarm_size,Social,Cognitive,Inertia,Pressure,Fitness,UnseenAccuracy,Time"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
 
@@ -50,31 +44,26 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [3]
 validation_p = .2
 validation_threshold = .07
 
-# Genetic Algorithm setup
-n_genes = [ x for x in range(100,270,20) ]
-p_cs = [x*0.1 for x in range(2, 11, 2) ]
-p_ms = [x*0.1 for x in range(1, 7, 2)]
-radiuses = [x*0.1 for x in range(2, 11, 2)]
-pressures = [x*0.1 for x in range(2, 11, 2)]
+# PSO setup
+seeds_per_run = [x for x in range(5)]
+
+socials = [1.]
+cognitves = [1.]
+intertias = [.1]
+n_gens = [100]
 
 
-# Simulated Annealing setup
-#ns = ps
-control = [2]
-update_rate = [0.9]
-
-
-def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
+def algo_run(seed, n_gen, social ,cognitve, intertia):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
-    pop_size = int(5000/n_gen)
-    if pop_size > 50:
+    swarm_size = int(5000/n_gen)
+    if swarm_size > 50:
         with open(file_name, "a") as myfile:
+            print("Invalid parameters")
             myfile.write("Invalid parameters" + "\n")
         return 0
     #++++++++++++++++++++++++++
@@ -96,7 +85,6 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     #++++++++++++++++++++++++++
     ann_op_i = ANNOP(search_space=(-2, 2, n_weights), fitness_function=ann_i.stimulate,
                      minimization=False, validation_threshold=validation_threshold)
-
     #++++++++++++++++++++++++++
     # THE SEARCH
     # restrictions:
@@ -105,8 +93,8 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
+    alg = RandomSearch(ann_op_i, random_state)
+
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
@@ -119,7 +107,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
+        [str(seed), str(n_gen), str(swarm_size) ,str(swarm_size), str(social), str(cognitve), str(intertia),
          str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
     # Write result to a file
     with open(file_name, "a") as myfile:
@@ -129,12 +117,14 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     print(result_string)
 
 if __name__ ==  '__main__':
-    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+    possible_values = list(itertools.product(*[seeds_per_run,n_gens,socials,cognitves,intertias]))
     core_count = multiprocessing.cpu_count()
     print("All possible combinations generated:")
     print(possible_values)
     print("Number of cpu cores: "+str(core_count))
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count)
+    pool = multiprocessing.Pool(core_count-1)
     results = pool.starmap(algo_run, possible_values)
+
+

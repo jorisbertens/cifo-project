@@ -2,6 +2,8 @@ import numpy as np
 from functools import reduce
 import operator
 
+# Selection algorithms
+
 def parametrized_tournament_selection(pressure):
     def tournament_selection(population, minimization, random_state, fitness_sharing=False):
         fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
@@ -48,6 +50,7 @@ def rank_selection(population, minimization, random_state, fitness_sharing=False
         current += i
         if current >= pick:
             return ind
+
 # TODO stochastic_universal_sampling
 def stochastic_universal_sampling():
     return 0
