@@ -7,7 +7,7 @@ from solutions.solution import Solution
 import mutations as mut
 
 
-class GeneticAlgorithmGrowPop(RandomSearch):
+class GeneticAlgorithmGrowPopElitism(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)
@@ -79,8 +79,7 @@ class GeneticAlgorithmGrowPop(RandomSearch):
                     off1, off2 = self._crossover(p1, p2)
 
                 if self._random_state.uniform() < self.p_m:
-                    off1 = self._mutation_high(off1)
-                    off2 = self._mutation_low(off2)
+                    off1 = self._mutation(off1)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
@@ -118,16 +117,6 @@ class GeneticAlgorithmGrowPop(RandomSearch):
         off1, off2 = self.crossover(p1.representation, p2.representation, self._random_state)
         off1, off2 = Solution(off1), Solution(off2)
         return off1, off2
-
-    def _mutation_high(self, individual):
-        mutant =  mut.parametrized_random_member_mutation(0.02, (-2,2))(individual.representation, self._random_state)
-        mutant = Solution(mutant)
-        return mutant
-
-    def _mutation_low(self, individual):
-        mutant =  mut.parametrized_random_member_mutation(0.005, (-2,2))(individual.representation, self._random_state)
-        mutant = Solution(mutant)
-        return mutant
 
 
     def _mutation(self, individual):
