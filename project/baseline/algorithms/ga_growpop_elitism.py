@@ -7,9 +7,9 @@ from solutions.solution import Solution
 import mutations as mut
 
 
-class GeneticAlgorithmGrowPop(RandomSearch):
+class GeneticAlgorithmGrowPopElitism(RandomSearch):
     def __init__(self, problem_instance, random_state, population_size,
-                 selection, crossover, p_c, mutation, p_m):
+                 selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)
         self.population_size = 2
         self.max_pop_size = population_size
@@ -18,6 +18,7 @@ class GeneticAlgorithmGrowPop(RandomSearch):
         self.p_c = p_c
         self.mutation = mutation
         self.p_m = p_m
+        self.elite_number = elite_number
 
     def initialize(self):
         self.population = self._generate_random_valid_solutions()
@@ -40,8 +41,8 @@ class GeneticAlgorithmGrowPop(RandomSearch):
                     off1, off2 = self._crossover(p1, p2)
 
                 if self._random_state.uniform() < self.p_m:
-                    off1 = self._mutation(off1)
-                    off2 = self._mutation(off2)
+                    off1 = self._mutation_high(off1)
+                    off2 = self._mutation_low(off2)
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
@@ -52,13 +53,21 @@ class GeneticAlgorithmGrowPop(RandomSearch):
                 offsprings.pop()
 
             offsprings.extend(self._get_x_elites(self.population, 1))
+            elite=self._get_elite(offsprings)
+
+            diversities.append(self._phenotypic_diversity_shift(offsprings))
+            print("Pop size " + str(len(offsprings)))
+            print("Fitness: "+str(elite.fitness))
+            print("Diversity: "+str(sum(diversities) / len(diversities)))
+            print()
 
             self.population = offsprings
 
+        print("Done")
         elite = self.best_solution
         pop_size=len(self.population)
         n_iterations = int(int((5000 - pop_size*(pop_size+1)/2 )) // pop_size)
-        print("Done:" + str(n_iterations))
+        print(n_iterations)
         for iteration in range(n_iterations):
             offsprings = []
 
@@ -71,8 +80,6 @@ class GeneticAlgorithmGrowPop(RandomSearch):
 
                 if self._random_state.uniform() < self.p_m:
                     off1 = self._mutation(off1)
-                    off2 = self._mutation(off2)
-
 
                 if not (hasattr(off1, 'fitness') and hasattr(off2, 'fitness')):
                     self.problem_instance.evaluate(off1)
@@ -81,6 +88,9 @@ class GeneticAlgorithmGrowPop(RandomSearch):
 
             while len(offsprings) > pop_size:
                 offsprings.pop()
+
+            offsprings.extend(self._get_x_elites(self.population, self.elite_number))
+
 
             elite_offspring = self._get_elite(offsprings)
             elite = self._get_best(elite, elite_offspring)

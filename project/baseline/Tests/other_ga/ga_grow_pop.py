@@ -21,14 +21,12 @@ from genetic_algorithm import GeneticAlgorithm
 from ga_2pop import GeneticAlgorithm2Pop
 from ga_dmr import GeneticAlgorithmDMR
 from ga_pr import GeneticAlgorithmProgressRate
-from ga_pr_random import GeneticAlgorithmProgressRateRandom
 from ga_mating_pool import GeneticAlgorithmMatingPool
 from ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
 from ga_eval import GeneticAlgorithmEval
 from ga_elitism import GeneticAlgorithmElitism
 from ga_elitism_random import GeneticAlgorithmElitismRandom
 from ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
-from ga_2pop_random import GeneticAlgorithm2Random
 from ga_dc import GeneticAlgorithmDeterministicCrowding
 from ga_drop_worst import GeneticAlgorithmDropWorst
 from ga_growpop import GeneticAlgorithmGrowPop
@@ -36,11 +34,11 @@ from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path =  "../../TestLog/" + os.path.basename(__file__) + "_log.csv"
+file_path =  "../../TestLog/other_algo/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
+file_name= "trahlog.csv"
 
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
@@ -119,7 +117,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     mut_algo = mut.parametrized_ball_mutation(radius)
 
     alg = GeneticAlgorithmGrowPop(ann_op_i, random_state, pop_size, sel_algo,
-                      cross_algo, p_c, mut_algo, p_m,0)
+                      cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
 
     # initialize search algorithms
@@ -159,5 +157,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(2)
+    pool = multiprocessing.Pool(core_count)
     results = pool.starmap(algo_run, possible_values)

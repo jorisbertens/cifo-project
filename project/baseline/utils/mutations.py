@@ -5,6 +5,16 @@ def parametrized_ball_mutation(radius):
         return np.array([random_state.uniform(low=coordinate - radius, high=coordinate + radius) for coordinate in point])
     return ball_mutation
 
+def parametrized_random_member_gaussian_ball_mutation(p, radius):
+    def random_member_gaussian_ball_mutation(point, random_state):
+
+        indexes = random_state.randint(low = 0,high = len(point), size = int(len(point) * p ))
+        new_points = point.copy()
+        for index in indexes:
+            new_points[index] = random_state.normal(new_points[index], radius)
+        return new_points
+    return random_member_gaussian_ball_mutation
+
 def parametrized_ball_mutation_with_boundries(radius, search_space):
     def ball_mutation(point, random_state):
         result = []

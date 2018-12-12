@@ -10,28 +10,42 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
-import utils.crossovers as cross
-import utils.selections as sel
-import utils.mutations as mut
+import utils as uls
+import crossovers as cross
+import selections as sel
+import mutations as mut
 
-
-from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
-from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.simulated_annealing import SimulatedAnnealing
-
+from ANNOP import ANNOP
+from ANN import ANN, softmax, sigmoid
+from genetic_algorithm import GeneticAlgorithm
+from ga_2pop import GeneticAlgorithm2Pop
+from ga_dmr import GeneticAlgorithmDMR
+from ga_pr import GeneticAlgorithmProgressRate
+from ga_pr_random import GeneticAlgorithmProgressRateRandom
+from ga_mating_pool import GeneticAlgorithmMatingPool
+from ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
+from ga_eval import GeneticAlgorithmEval
+from ga_elitism import GeneticAlgorithmElitism
+from ga_elitism_random import GeneticAlgorithmElitismRandom
+from ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
+from ga_2pop_random import GeneticAlgorithm2Random
+from ga_dc import GeneticAlgorithmDeterministicCrowding
+from ga_drop_worst import GeneticAlgorithmDropWorst
+from ga_growpop import GeneticAlgorithmGrowPop
+from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
+from stady_state_ga import SSGeneticAlgorithm
+from ga_fitness_sharing import GeneticAlgorithmFitnessSharing
 
 # setup logger
-file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv")
+# !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
+file_path =  "../../TestLog/other_algo/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_example_lf_" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv"
+file_name= "_TARSHlog.csv"
 
-header_string = "Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time"
+
+header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
 
@@ -50,25 +64,20 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [1]
 validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-n_genes = [100,120,140]
-p_cs = [x*0.1 for x in range(2, 11, 2) ]
-p_ms = [x*0.1 for x in range(1, 7, 2)]
-radiuses = [x*0.1 for x in range(2, 11, 2)]
-pressures = [x*0.1 for x in range(2, 11, 2)]
+# !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
+seeds_per_run = [0,1,2,3,4]
+n_genes = [180]#is fixed
+p_cs = [1]#is fixed
+p_ms = [0.5]#is fixed
+radiuses= [0.6]#is fixed
+pressures = [0.8]  ###change
+elite_counts = [2]#is na
 
-
-# Simulated Annealing setup
-#ns = ps
-control = [2]
-update_rate = [0.9]
-
-
-def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
     start_time = datetime.datetime.now()
 
@@ -77,6 +86,7 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
         with open(file_name, "a") as myfile:
             myfile.write("Invalid parameters" + "\n")
         return 0
+
     #++++++++++++++++++++++++++
     # THE ANN
     # restrictions:
@@ -105,9 +115,15 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    alg = GeneticAlgorithm(ann_op_i, random_state, pop_size, sel.parametrized_tournament_selection(pressure),
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
+    #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
+    sel_algo = sel.parametrized_tournament_selection(pressure)
+    cross_algo = cross.one_point_crossover
+    mut_algo = mut.parametrized_ball_mutation(radius)
+
+    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
+
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
     alg.search(n_iterations=n_gen, report=False, log=True)
@@ -119,22 +135,31 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure):
     time_elapsed = datetime.datetime.now() - start_time
     # Create result string
     result_string = ",".join(
-        [str(seed), str(n_gen), str(pop_size), str(p_c), str(p_m), str(radius), str(pressure),
-         str(alg.best_solution.fitness), str(accuracy),str(time_elapsed)])
+        [str(alg.best_solution.fitness), str(accuracy),
+         str(seed), str(n_gen), str(pop_size),
+         str(p_c), str(p_m), str(radius), str(pressure), str(elite_count),
+         str(time_elapsed),
+         str(alg), str(sel_algo), str(cross_algo), str(mut_algo)
+         ])
     # Write result to a file
     with open(file_name, "a") as myfile:
         myfile.write(result_string + "\n")
     # Output result to terminal
-    print(header_string)
     print(result_string)
+    if alg.best_solution.fitness > 0.7:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+
 
 if __name__ ==  '__main__':
-    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures]))
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures,elite_counts]))
     core_count = multiprocessing.cpu_count()
     print("All possible combinations generated:")
     print(possible_values)
+    print(len(possible_values))
     print("Number of cpu cores: "+str(core_count))
+    print()
+    print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count-2)
+    pool = multiprocessing.Pool(2)
     results = pool.starmap(algo_run, possible_values)
