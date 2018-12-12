@@ -10,12 +10,12 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
+import utils as uls
 
-import utils.mutations as mut
+import mutations as mut
 
 from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
+from ANN import ANN, softmax, sigmoid
 from algorithms.simulated_annealing import SimulatedAnnealing
 
 
