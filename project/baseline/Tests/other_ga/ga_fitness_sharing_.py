@@ -33,6 +33,8 @@ from ga_dc import GeneticAlgorithmDeterministicCrowding
 from ga_drop_worst import GeneticAlgorithmDropWorst
 from ga_growpop import GeneticAlgorithmGrowPop
 from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
+from stady_state_ga import SSGeneticAlgorithm
+from ga_fitness_sharing import GeneticAlgorithmFitnessSharing
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
@@ -73,7 +75,7 @@ p_cs = [1]#is fixed
 p_ms = [0.5]#is fixed
 radiuses= [0.6]#is fixed
 pressures = [0.8]  ###change
-elite_counts = [3]#is na
+elite_counts = [2]#is na
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -118,9 +120,10 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     cross_algo = cross.one_point_crossover
     mut_algo = mut.parametrized_ball_mutation(radius)
 
-    alg = GeneticAlgorithmProgressRate(ann_op_i, random_state, pop_size, sel_algo,
+    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
                       cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
+
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
     alg.search(n_iterations=n_gen, report=False, log=True)

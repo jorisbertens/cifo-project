@@ -32,18 +32,17 @@ from algorithms.ga_drop_worst import GeneticAlgorithmDropWorst
 from algorithms.ga_growpop_elitism import GeneticAlgorithmGrowPopElitism
 from algorithms.ga_single_elite_start import GeneticAlgorithmSingleEliteStart
 from algorithms.ga_fitness_sharing import GeneticAlgorithmFitnessSharing
-# setup logger
-file_path =  "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv")
+file_path = os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= "LogFiles/" + "custom_file" + str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv"
+file_name= os.path.basename(__file__) + "_log_custom.csv"
+
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
+
 
 
 # ++++++++++++++++++++++++++
