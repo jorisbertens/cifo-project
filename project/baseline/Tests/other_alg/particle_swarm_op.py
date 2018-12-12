@@ -10,13 +10,13 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
-import utils.crossovers as cross
-import utils.selections as sel
-import utils.mutations as mut
+import utils as uls
+#import utils.crossovers as cross
+#import utils.selections as sel
+#import utils.mutations as mut
 
 from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
+from ANN import ANN, softmax, sigmoid
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from algorithms.pso import PSO
 
