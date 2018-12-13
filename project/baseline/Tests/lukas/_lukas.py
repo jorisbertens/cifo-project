@@ -21,26 +21,28 @@ from genetic_algorithm import GeneticAlgorithm
 from ga_2pop import GeneticAlgorithm2Pop
 from ga_dmr import GeneticAlgorithmDMR
 from ga_pr import GeneticAlgorithmProgressRate
-from ga_pr_random import GeneticAlgorithmProgressRateRandom
+#from ga_pr_random import GeneticAlgorithmProgressRateRandom
 from ga_mating_pool import GeneticAlgorithmMatingPool
 from ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
 from ga_eval import GeneticAlgorithmEval
 from ga_elitism import GeneticAlgorithmElitism
 from ga_elitism_random import GeneticAlgorithmElitismRandom
 from ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
-from ga_2pop_random import GeneticAlgorithm2Random
+#from ga_2pop_random import GeneticAlgorithm2Random
 from ga_dc import GeneticAlgorithmDeterministicCrowding
 from ga_drop_worst import GeneticAlgorithmDropWorst
-from ga_growpop_elitism import GeneticAlgorithmGrowPop
+#from ga_growpop_elitism import GeneticAlgorithmGrowPop
 from ga_single_elite_start import GeneticAlgorithmSingleEliteStart
+from ga_fitness_sharing import GeneticAlgorithmFitnessSharing
 
 # setup logger
 # !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-file_path = os.path.basename(__file__) + "_illy_base_log.csv"
+file_path =  os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= os.path.basename(__file__) + "_log.csv"
+file_name=  os.path.basename(__file__) + "_log.csv"
+
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
@@ -63,19 +65,17 @@ X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, 
 # setup benchmarks
 validation_p = .2
 validation_threshold = .07
-
+#####check up #########
 # Genetic Algorithm setup
 # !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
-seeds_per_run = [0,1,2,3,4]#is fixed
-n_genes = [10]                                     #to change
-p_cs = [.5]#is fixed
-p_ms = [0.9]#is fixed
-radiuses= [0.2]#is fixed
-pressures = [0.2]                              #change
-elite_counts = [0]#is na
-
-
-
+seeds_per_run = [0,1,2,3,4,5,6,7,8,9]
+n_genes = [312]
+p_cs = [1]
+p_ms = [1]
+radiuses= [0.013]
+pressures = [1]
+elite_counts = [1]
+std = [2.8]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -116,11 +116,11 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # * including reproduction
     #++++++++++++++++++++++++++
     #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
-    sel_algo = sel.parametrized_tournament_selection(pressure)
-    cross_algo = cross.one_point_crossover
-    mut_algo = mut.parametrized_ball_mutation(radius)
+    sel_algo = sel.boltzmann_selection(pressure, n_gen)
+    cross_algo = cross.geometric_crossover
+    mut_algo = mut.parametrized_shrink_mutation(radius, std)
 
-    alg = GeneticAlgorithm(ann_op_i, random_state, 20, sel_algo,
+    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
                       cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
@@ -160,5 +160,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(2)
+    pool = multiprocessing.Pool(core_count-2)
     results = pool.starmap(algo_run, possible_values)
