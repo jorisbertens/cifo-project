@@ -8,6 +8,16 @@ import mutations as mut
 
 
 class GeneticAlgorithmGrowPopFitnessSharing(RandomSearch):
+    '''
+    Combines growing population and fitness sharing:
+
+    In this variation of a GA two populations evolve independently from each other where there is only one interaction
+    between the two populations, which is the exchange of both populations elites.
+
+    Fitness sharing is used to maintain diversity within the population. It first measures the individuals distances to the others,
+    normalizes all distances, then an inversion is used to finally calculate the sharing coefficient.
+    This sharing coefficient is used to calculate the diversity biased fitness (Grefenstette, 1987).
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)
