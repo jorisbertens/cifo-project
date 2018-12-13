@@ -5,6 +5,10 @@ import operator
 # Selection algorithms
 
 def parametrized_tournament_selection(pressure):
+    '''
+    Chooses random individuals into a tournament pool,
+    where the fittest individual will be selected to be a parent (Mitchell, 1999; Jebari & Madiadi, 2013)
+    '''
     def tournament_selection(population, minimization, random_state, fitness_sharing=False):
         fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
 
@@ -19,19 +23,31 @@ def parametrized_tournament_selection(pressure):
     return tournament_selection
 
 def random_selection(population, minimization, random_state, fitness_sharing=False):
+    '''
+    Chooses random individuals of the population to be parents
+    '''
     return random_state.choice(population)
 
 def best_selection(population, minimization, random_state, fitness_sharing=False):
+    '''
+    Returns as parents the elite in the population. It perverts the concept of Genetic algorithms and  approximates to a neighborhood based algorithm
+    '''
     fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
     return sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)[0]
 
 def parameterized_x_best_selection(num):
+    '''
+    selects one individual among the best x ones
+    '''
     def best_x_selection(population, minimization, random_state, fitness_sharing=False):
         fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
         return random_state.choice(sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)[:num])
     return best_x_selection
 
 def parameterized_best_or_random_selection(p):
+    '''
+    selects the best or a random individual based on a given probability
+    '''
     def best_or_random_selection(population, minimization, random_state, fitness_sharing=False):
         if random_state.uniform(0,1) < p:
             fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
@@ -40,6 +56,9 @@ def parameterized_best_or_random_selection(p):
     return best_or_random_selection
 
 def rank_selection(population, minimization, random_state, fitness_sharing=False):
+    '''
+    Calculates a new fitness value based on their rank comparing with the others and performs a roulette-wheel-selection after (Mitchell, 1999)
+    '''
     fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
     sorted_pop = sorted(population, key=operator.attrgetter(fitness_name), reverse=minimization)
     length = len(sorted_pop)
@@ -51,11 +70,17 @@ def rank_selection(population, minimization, random_state, fitness_sharing=False
         if current >= pick:
             return ind
 
-# TODO stochastic_universal_sampling
+
 def stochastic_universal_sampling():
+    '''
+    not implemented due to time issues
+    '''
     return 0
 
 def roulette_selection(population, minimization, random_state, fitness_sharing=False):
+    '''
+    Selects individuals to be parents based on their fitness proportion (Mitchell, 1999; Jebari & Madiadi, 2013)
+    '''
     fitness_name = "fitness" if not fitness_sharing else 'custom_fitness'
 
     sorted_pop = sorted(population, key=operator.attrgetter(fitness_name), reverse=not minimization)
@@ -77,8 +102,13 @@ def roulette_selection(population, minimization, random_state, fitness_sharing=F
         if current > pick:
             return ind
 
-# TODO change name and maybe implement real boltzman
-def boltzmann_selection(pressure, n_gen):
+
+def increasing_tournament_size_selection(pressure, n_gen):
+    '''
+    Selection pressure is gradually increasing over the number of generations,
+    which means that in the beginning the probability for every individual to be chosen is high and lowers with the number of generations.
+    Inspired by Boltzmann selection (Mitchell, 1999)
+    '''
     gen = 0
     def tournament_selection(population, minimization, random_state, fitness_sharing=False):
         nonlocal  gen
