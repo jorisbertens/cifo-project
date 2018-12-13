@@ -50,7 +50,7 @@ flat_images = np.array([image.flatten() for image in digits.images])
 X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
 # setup benchmarks
-seeds_per_run = [0]
+seeds = [0, 1, 2, 3, 4]
 validation_p = .2
 validation_threshold = .07
 
