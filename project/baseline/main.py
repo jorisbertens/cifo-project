@@ -1,152 +1,135 @@
 import os
 import datetime
+import multiprocessing
+import itertools
 
 import logging
 import numpy as np
-import matplotlib.pyplot as plt
+import pickle
 
 from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-import utils.utils as uls
-import utils.crossovers as cross
-import utils.selections as sel
-import utils.mutations as mut
+import utils as uls
+import crossovers as cross
+import selections as sel
+import mutations as mut
 
-from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
-from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.simulated_annealing import SimulatedAnnealing
-
+from ANNOP import ANNOP
+from ANN import ANN, softmax, sigmoid
+from ga_fitness_sharing import GeneticAlgorithmFitnessSharing
 
 # setup logger
-file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "LogFiles/" + (str(datetime.datetime.now().date()) + "-" + str(datetime.datetime.now().hour) + \
-            "_" + str(datetime.datetime.now().minute) + "_log.csv"))
+file_path =  "best_solution_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
-#++++++++++++++++++++++++++
+# ++++++++++++++++++++++++++
 # THE DATA
 # restrictions:
 # - MNIST digits (8*8)
 # - 33% for testing
 # - flattened input images
-#++++++++++++++++++++++++++
-# import data
+# ++++++++++++++++++++++++++
 digits = datasets.load_digits()
 flat_images = np.array([image.flatten() for image in digits.images])
 
-print(flat_images.shape)
-print(digits.target_names)
-
-make_plots = True
-
-if make_plots:
-    n_images = 25
-    plt.figure(figsize=(10, 10))
-    for i in range(n_images):
-        plt.subplot(5, 5, i+1)
-        plt.xticks([])
-        plt.yticks([])
-        plt.grid(False)
-        plt.imshow(digits.images[i], cmap=plt.cm.binary)
-        plt.xlabel("Value: %d" % digits.target_names[digits.target[i]], fontsize=12)
-    plt.suptitle('Example of the training data',  fontsize=30)
-    plt.show()
-
-# setup random state
-seed = 0
-random_state = uls.get_random_state(seed)
-
 # split data
-X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=random_state)
+X_train, X_test, y_train, y_test = train_test_split(flat_images, digits.target, test_size=0.33, random_state=0)
 
-#++++++++++++++++++++++++++
-# THE ANN
-# restrictions:
-# - 2 h.l. with sigmoid a.f.
-# - softmax a.f. at output
-# - 20% for validation
-#++++++++++++++++++++++++++
-# ann's ingridients
-hl1 = 10
-hl2 = 10
-hidden_architecture = np.array([[hl1, sigmoid], [hl2, sigmoid]])
-n_weights = X_train.shape[1]*hl1*hl2*len(digits.target_names)
-validation_p = 0.2
-# create ann
-ann_i = ANN(hidden_architecture, softmax, accuracy_score,
-                   (X_train, y_train), random_state, validation_p, digits.target_names)
+# setup benchmarks
+validation_p = .2
+validation_threshold = .07
 
-#++++++++++++++++++++++++++
-# THE PROBLEM INSTANCE
-#++++++++++++++++++++++++++
-validation_threshold = 0.07
-ann_op_i = ANNOP(search_space=(-2, 2, n_weights), fitness_function=ann_i.stimulate,
-                 minimization=False, validation_threshold=validation_threshold)
 
-#++++++++++++++++++++++++++
-# THE OPTIMIZATION
-# restrictions:
-# - 5000 f.e./run
-# - 50 f.e./generation
-# - use at least 5 runs for benchmarks
-#++++++++++++++++++++++++++
-n_gen = 10
-ps = 20
-p_c = .5
-p_m = .9
-radius = .2
-pressure = .2
-ga = GeneticAlgorithm(ann_op_i, random_state, ps, sel.parametrized_tournament_selection(pressure),
-                      cross.one_point_crossover, p_c, mut.parametrized_ball_mutation(radius), p_m)
-ga.initialize()
-ga.search(n_gen, False, True)
+# Genetic Algorithm setup
+seeds_per_run = [0,1,2,3,4]
+n_genes = [312]
+p_cs = [1]
+p_ms = [1]
+radiuses= [0.013]
+pressures = [1]
+elite_counts = [1]
+std = [2.81]
 
-ga.best_solution.print_()
-print("Training fitness of the best solution: %.2f" % ga.best_solution.fitness)
-print("Validation fitness of the best solution: %.2f" % ga.best_solution.validation_fitness)
+def save_object(representation, fullpath):
+    with open(fullpath, 'wb') as output:
+        pickle.dump(representation, output, pickle.HIGHEST_PROTOCOL)
 
-sa = SimulatedAnnealing(ann_op_i, random_state, ps, mut.parametrized_ball_mutation(radius), 2, .9)
-sa.initialize()
-sa.search(n_gen, True, True)
 
-sa.best_solution.print_()
-print("Training fitness of the best solution: %.2f" % sa.best_solution.fitness)
-print("Validation fitness of the best solution: %.2f" % sa.best_solution.validation_fitness)
+def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
+    random_state = uls.get_random_state(seed)
+    start_time = datetime.datetime.now()
 
-#++++++++++++++++++++++++++
-# TEST
-#++++++++++++++++++++++++++
-ann_i._set_weights(ga.best_solution.representation)
-y_pred = ann_i.stimulate_with(X_test, False)
-print("Unseen Accuracy of the best solution: %.2f" % accuracy_score(y_test, y_pred))
+    pop_size = int(5000/n_gen)
+    if pop_size > 50:
+        return 0
 
-if make_plots:
-    n_images = 25
-    images = X_test[0:n_images].reshape((n_images, 8, 8))
-    f = plt.figure(figsize=(10, 10))
-    for i in range(n_images):
-        sub = f.add_subplot(5, 5, i + 1)
-        sub.imshow(images[i], cmap=plt.get_cmap("Greens") if y_pred[i] == y_test[i] else plt.get_cmap("Reds"))
-        plt.xticks([])
-        plt.yticks([])
-        sub.set_title('y^: %i, y: %i' % (y_pred[i], y_test[i]))
-    f.suptitle('Testing classifier on unseen data')
-    plt.show()
+    #++++++++++++++++++++++++++
+    # THE ANN
+    # restrictions:
+    # - 2 h.l.
+    # - Softmax a.f. at output
+    # - 20%, out of remaining 67%, for validation
+    #++++++++++++++++++++++++++
+    # ann's architecture
+    hidden_architecture = np.array([[10, sigmoid], [10, sigmoid]])
+    n_weights = X_train.shape[1]*10*10*len(digits.target_names)
+    # create ann
+    ann_i = ANN(hidden_architecture, softmax, accuracy_score, (X_train, y_train), random_state, validation_p, digits.target_names)
 
-ann_i._set_weights(sa.best_solution.representation)
-y_pred = ann_i.stimulate_with(X_test, False)
-print("Unseen Accuracy of the best solution: %.2f" % accuracy_score(y_test, y_pred))
-if make_plots:
-    n_images = 25
-    images = X_test[0:n_images].reshape((n_images, 8, 8))
-    f = plt.figure(figsize=(10, 10))
-    for i in range(n_images):
-        sub = f.add_subplot(5, 5, i + 1)
-        sub.imshow(images[i], cmap=plt.get_cmap("Greens") if y_pred[i] == y_test[i] else plt.get_cmap("Reds"))
-        plt.xticks([])
-        plt.yticks([])
-        sub.set_title('y^: %i, y: %i' % (y_pred[i], y_test[i]))
-    f.suptitle('Testing classifier on unseen data')
-    plt.show()
+    #++++++++++++++++++++++++++
+    # THE PROBLEM INSTANCE
+    # - optimization of ANN's weights is a COP
+    #++++++++++++++++++++++++++
+    ann_op_i = ANNOP(search_space=(-2, 2, n_weights), fitness_function=ann_i.stimulate,
+                     minimization=False, validation_threshold=validation_threshold)
+
+    #++++++++++++++++++++++++++
+    # THE SEARCH
+    # restrictions:
+    # - 5000 offsprings/run max*
+    # - 50 offsprings/generation max*
+    # - use at least 5 runs for your benchmarks
+    # * including reproduction
+    #++++++++++++++++++++++++++
+    sel_algo = sel.increasing_tournament_size_selection(pressure, n_gen)
+    cross_algo = cross.geometric_crossover
+    mut_algo = mut.parametrized_shrink_mutation(radius, std)
+
+    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
+                      cross_algo, p_c, mut_algo, p_m)
+    alg.initialize()
+    # initialize search algorithms
+    alg.search(n_iterations=n_gen, report=False, log=True)
+
+    ############# Evaluate unseen fitness ##################
+    ann_i._set_weights(alg.best_solution.representation)
+    y_pred = ann_i.stimulate_with(X_test, False)
+    accuracy = accuracy_score(y_test, y_pred)
+    time_elapsed = datetime.datetime.now() - start_time
+    # Create result string
+    result_string = ",".join(
+        [str(alg.best_solution.fitness), str(accuracy),
+         str(seed), str(n_gen), str(pop_size),
+         str(p_c), str(p_m), str(radius), str(pressure), str(elite_count),
+         str(time_elapsed),
+         str(alg), str(sel_algo), str(cross_algo), str(mut_algo)
+         ])
+    # Output very good result to terminal
+    print('Seed: ' + str(seed) + ' Accuracy: ' + str(accuracy))
+    if alg.best_solution.fitness > 0.7:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!yey!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+
+if __name__ ==  '__main__':
+    possible_values = list(itertools.product(*[seeds_per_run,n_genes,p_cs,p_ms,radiuses,pressures,elite_counts]))
+    core_count = multiprocessing.cpu_count()
+    print("All possible combinations generated:")
+    print(possible_values)
+    print(len(possible_values))
+    print("Number of cpu cores: "+str(core_count))
+    print()
+    ####### Magic appens here ########
+    pool = multiprocessing.Pool(core_count)
+    results = pool.starmap(algo_run, possible_values)
