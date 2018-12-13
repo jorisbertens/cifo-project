@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def one_point_crossover(p1_r, p2_r, random_state):
     '''
     One random point is chosen to cut the individuals and the parts are shuffled to create the offsprings (Mitchell, 1999).
@@ -27,7 +26,11 @@ def two_point_crossover(p1_r, p2_r, random_state):
     off2_r = np.concatenate((p2_r[0:cxpoint1], p1_r[cxpoint1:cxpoint2], p2_r[cxpoint2:size]))
     return off1_r, off2_r
 
+
 def parametrized_two_point_crossover(n):
+    '''
+    Two random points are chosen to cut the individuals and the parts are shuffled to create the offsprings (Mitchell, 1999)
+    '''
     def two_point_crossover(p1_r, p2_r, random_state):
         size = min(len(p1_r), len(p2_r))
         off1_r = p1_r.copy()
@@ -48,19 +51,32 @@ def parametrized_two_point_crossover(n):
         return off1_r, off2_r
     return two_point_crossover
 
-# TODO cycle_crossover
+
 def cycle_crossover(p1_r, p2_r, random_state):
+    '''
+    not implemented due to time issues
+    '''
     return 0
 
-# TODO ordered_crossover
+
 def ordered_crossover(p1_r, p2_r, random_state):
+    '''
+    not implemented due to time issues
+    '''
     return 0
 
-# TODO partially_matched_crossover
+
 def partially_matched_crossover(p1_r, p2_r, random_state):
+    '''
+    not implemented due to time issues
+    '''
     return 0
+
 
 def parameterized_uniformSwap(p):
+    '''
+    swapping alleles between parents for every allele with a given probability
+    '''
     def uniformSwap(p1_r, p2_r, random_state):
         off1_r = p1_r.copy()
         off2_r = p2_r.copy()
@@ -75,30 +91,29 @@ def parameterized_uniformSwap(p):
 
 
 def arithmetic_crossover(p1_r, p2_r, random_state):
+    '''
+    Commonly used for integer representations,works by taking the weighted average of the two parents (Tutorialspoint, 2018)
+    '''
     off1_r = (p1_r + p2_r)/2
     return off1_r, off1_r.copy()
 # TODO is it not okay to have only one ? i think thats what its all about !!!
 
+
 def geometric_crossover(p1_r, p2_r, random_state):
+    '''
+    Generates an offspring that is closer to the global optimum than the furthest parent by taking each allele
+    either from the first or second parent with a given probability (Moraglio & Poli, 2006; Vanneschi, 2018)
+    '''
     random_array = random_state.uniform(size=len(p1_r))
     off1_r = ((p1_r * random_array)+ ( p2_r * (1 - random_array)))
     off2_r = ((p1_r * (1 - random_array))+ ( p2_r * random_array))
     return off1_r, off2_r
 
 
-def parameterized_random_crossover(swap_p):
-    def random_crossover(p1_r, p2_r, random_state):
-        crossovers = [
-            arithmetic_crossover,
-            parameterized_uniformSwap(swap_p),
-            one_point_crossover,
-            two_point_crossover
-        ]
-        crossover_algo = random_state.choice(crossovers)
-        return crossover_algo(p1_r, p2_r, random_state)
-    return random_crossover
-
 def arithmetic_threesome_crossover(p1_r, p2_r, p3_r, random_state):
+    '''
+    The idea was to create one offspring but to maintain the population size an extra parent was needed
+    '''
     off1_r = (p1_r + p2_r)/2
     off2_r = (p1_r + p3_r)/2
     off3_r = (p2_r + p3_r)/2

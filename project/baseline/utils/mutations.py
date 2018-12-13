@@ -2,7 +2,7 @@ import numpy as np
 
 def parametrized_ball_mutation(radius):
     '''
-       For each weight in the network it generates a new weigth between coordinate - radius and coordinate - radius
+       For each weight in the network it generates a new weigth between point - radius and point + radius
     '''
     def ball_mutation(point, random_state):
         return np.array([random_state.uniform(low=coordinate - radius, high=coordinate + radius) for coordinate in point])

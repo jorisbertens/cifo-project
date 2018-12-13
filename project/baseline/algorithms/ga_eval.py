@@ -59,7 +59,9 @@ class GeneticAlgorithmEval(RandomSearch):
             if log:
                 log_event = [iteration, elite.fitness, elite.validation_fitness if hasattr(off2, 'validation_fitness') else None,
                              self.population_size, self.selection.__name__, self.crossover.__name__, self.p_c,
-                             self.mutation.__name__, None, None, self.p_m, self._phenotypic_diversity_shift(offsprings)]
+                             self.mutation.__name__, None, None,self.p_m, self._phenotypic_diversity_shift(offsprings),
+                             diversity.phenotypic_entropy(self.population), diversity.genotypic_entropy(self.population),
+                             diversity.phenotypic_variance(self.population), diversity.genotypic_variance(self.population)]
                 logger.info(','.join(list(map(str, log_event))))
 
             if True:

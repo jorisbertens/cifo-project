@@ -2,13 +2,13 @@ import logging
 import numpy as np
 from functools import reduce
 
-from algorithms.random_search import RandomSearch
-from solutions.solution import Solution
+from random_search import RandomSearch
+from solution import Solution
 
 
-class GeneticAlgorithmDMR(RandomSearch):
+class GeneticAlgorithmOnesInitialization(RandomSearch):
     '''
-    An adaptive genetic algorithm that decreases the mutation rate over time (Lin et al., 2003)
+    Sets all initialized solution representations as ones
     '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
@@ -21,7 +21,7 @@ class GeneticAlgorithmDMR(RandomSearch):
         self.p_m = p_m
 
     def initialize(self):
-        self.population = self._generate_random_valid_solutions()
+        self.population = self._generate_ones_valid_solutions()
         self.best_solution = self._get_elite(self.population)
 
     def search(self, n_iterations, report=False, log=False):
@@ -33,6 +33,7 @@ class GeneticAlgorithmDMR(RandomSearch):
 
         for iteration in range(n_iterations):
             offsprings = []
+            print(elite.fitness)
 
             while len(offsprings) < len(self.population):
                 off1, off2 = p1, p2 = [
@@ -41,7 +42,6 @@ class GeneticAlgorithmDMR(RandomSearch):
                 if self._random_state.uniform() < self.p_c:
                     off1, off2 = self._crossover(p1, p2)
 
-                self.p_m = 1/(2 + (((len(self.population) - 2)/n_iterations) * iteration))
                 if self._random_state.uniform() < self.p_m:
                     off1 = self._mutation(off1)
                     off2 = self._mutation(off2)
@@ -91,5 +91,15 @@ class GeneticAlgorithmDMR(RandomSearch):
 
     def _generate_random_valid_solutions(self):
         solutions = np.array([self._generate_random_valid_solution()
+                              for i in range(self.population_size)])
+        return solutions
+
+    def _generate_ones_valid_solution(self):
+        solution = Solution(np.ones(self.problem_instance.search_space[2]))
+        self.problem_instance.evaluate(solution)
+        return solution
+
+    def _generate_ones_valid_solutions(self):
+        solutions = np.array([self._generate_ones_valid_solution()
                               for i in range(self.population_size)])
         return solutions

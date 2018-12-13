@@ -1,2 +1,0 @@
-Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
-0.4397089397089397,0.37373737373737376,2,300,16,0.6,0.9,0.2,3,3,0:03:01.482558,<algorithms.ga_fitness_sharing.GeneticAlgorithmFitnessSharing object at 0x1a1639df98>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x1a160dbea0>,<function two_point_crossover at 0x1a1608bd90>,<function parametrized_random_member_gaussian_ball_mutation.<locals>.random_member_gaussian_ball_mutation at 0x1a160dbf28>

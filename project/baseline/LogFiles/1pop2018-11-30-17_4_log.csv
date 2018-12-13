@@ -1,5 +1,0 @@
-Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
-Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
-Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
-Seed,N_gen,PS,PC,PM,radius,Pressure,Fitness,UnseenAccuracy,Time
-0,250,20,0.7,0.7,0.05,2,0.5051975051975052,0.4831649831649832,0:09:20.611241,<function arithmetic_crossover at 0x000002516E3EDB70>

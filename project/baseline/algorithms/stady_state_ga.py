@@ -7,6 +7,10 @@ from solutions.solution import Solution
 
 
 class SSGeneticAlgorithm(RandomSearch):
+    '''
+    The two best individuals out of the two parents and two children are added back into the population
+    (https://www.cs.unm.edu/~neal.holts/dga/optimizationAlgorithms/steadyStateGA.html)
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

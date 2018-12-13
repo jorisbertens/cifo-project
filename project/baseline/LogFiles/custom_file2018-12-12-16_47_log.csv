@@ -1,2 +1,0 @@
-Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut
-0.11122661122661123,0.09259259259259259,2,300,16,0.6,0.9,0.2,3,3,0:02:00.245920,<algorithms.ga_elitism_worst_removal.GeneticAlgorithmElitismWorstRemoval object at 0x1a19c03978>,<function parametrized_tournament_selection.<locals>.tournament_selection at 0x1a199387b8>,<function two_point_crossover at 0x1a198e7d90>,<function parametrized_random_member_gaussian_ball_mutation.<locals>.random_member_gaussian_ball_mutation at 0x1a19938840>

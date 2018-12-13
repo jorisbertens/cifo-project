@@ -7,6 +7,11 @@ from solution import Solution
 
 
 class GeneticAlgorithmFitnessSharing(RandomSearch):
+    '''
+    Fitness sharing is used to maintain diversity within the population. It first measures the individuals distances to the others,
+    normalizes all distances, then an inversion is used to finally calculate the sharing coefficient.
+    This sharing coefficient is used to calculate the diversity biased fitness (Grefenstette, 1987)
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

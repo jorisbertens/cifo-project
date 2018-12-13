@@ -7,6 +7,10 @@ from solutions.solution import Solution
 
 
 class GeneticAlgorithmProgressRate(RandomSearch):
+    '''
+    An adaptive genetic algorithm that automatically adjusts the probability of crossover and mutation over the number of generations.
+    The approach takes the interaction between crossover and mutation into account (Lin et al., 2003)
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)
