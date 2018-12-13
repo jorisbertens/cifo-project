@@ -2,6 +2,9 @@ import numpy as np
 
 
 def one_point_crossover(p1_r, p2_r, random_state):
+    '''
+    One random point is chosen to cut the individuals and the parts are shuffled to create the offsprings (Mitchell, 1999).
+    '''
     len_ = len(p1_r)
     point = random_state.randint(len_)
     off1_r = np.concatenate((p1_r[0:point], p2_r[point:len_]))
@@ -9,6 +12,9 @@ def one_point_crossover(p1_r, p2_r, random_state):
     return off1_r, off2_r
 
 def two_point_crossover(p1_r, p2_r, random_state):
+    '''
+    Two random points are chosen to cut the individuals and the parts are shuffled to create the offsprings (Mitchell, 1999).
+    '''
     size = min(len(p1_r), len(p2_r))
     cxpoint1 = random_state.randint(1, size)
     cxpoint2 = random_state.randint(1, size - 1)

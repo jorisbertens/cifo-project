@@ -99,7 +99,7 @@ def algo_run(seed, n_gen, social ,cognitve, intertia):
     alg.initialize()
     # initialize search algorithms
     ########Search   ############################ LOG \/ ########################
-    alg.search(n_iterations=n_gen, report=True, log=True)
+    alg.search(n_iterations=n_gen, report=False, log=True)
 
     ############# Evaluate unseen fitness ##################
     ann_i._set_weights(alg.best_solution.representation)
@@ -125,5 +125,5 @@ if __name__ ==  '__main__':
     print("Number of cpu cores: "+str(core_count))
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count-1)
+    pool = multiprocessing.Pool(1)
     results = pool.starmap(algo_run, possible_values)

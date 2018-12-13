@@ -27,5 +27,5 @@ class ANNOP(Continuous):
             return len(solution.representation), True
 
     def sample_search_space(self, random_state):
-        return Solution(random_state.uniform(low=0, high=1,
+        return Solution(random_state.uniform(low=self.search_space[0], high=self.search_space[1],
                                              size=self.search_space[2]))
