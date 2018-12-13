@@ -7,6 +7,10 @@ from solution import Solution
 
 
 class GeneticAlgorithm2Pop(RandomSearch):
+    '''
+    In this variation of a GA two populations evolve independently from each other
+    where there is only one interaction between the two populations, which is the exchange of both populations elites
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_count=2):
         RandomSearch.__init__(self, problem_instance, random_state)
