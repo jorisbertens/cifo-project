@@ -92,7 +92,12 @@ class GeneticAlgorithmNormalInitialization(RandomSearch):
         return solutions
 
     def _generate_normal_valid_solution(self):
-        solution = Solution(self._random_state.normal(0,self.problem_instance.search_space[1], size=self.problem_instance.search_space[2]))
+        representation = []
+        while len(representation) < self.problem_instance.search_space[2]:
+            s = self._random_state.normal()
+            if self.problem_instance.search_space[0] <= s <= self.problem_instance.search_space[1]:
+                representation.append(s)
+        solution = Solution(representation)
         self.problem_instance.evaluate(solution)
         return solution
 
