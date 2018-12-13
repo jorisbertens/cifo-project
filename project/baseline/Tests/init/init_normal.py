@@ -15,34 +15,21 @@ import crossovers as cross
 import selections as sel
 import mutations as mut
 
-from problems.ANNOP import ANNOP
-from ANN.ANN import ANN, softmax, sigmoid
-from algorithms.genetic_algorithm import GeneticAlgorithm
-from algorithms.ga_2pop import GeneticAlgorithm2Pop
-from algorithms.ga_dmr import GeneticAlgorithmDMR
-from algorithms.ga_pr import GeneticAlgorithmProgressRate
-from algorithms.ga_mating_pool import GeneticAlgorithmMatingPool
-from algorithms.ga_2pop_separate_c_m import GeneticAlgorithm2PopSeparateCM
-from algorithms.ga_eval import GeneticAlgorithmEval
-from algorithms.ga_elitism import GeneticAlgorithmElitism
-from algorithms.ga_elitism_random import GeneticAlgorithmElitismRandom
-from algorithms.ga_elitism_worst_removal import GeneticAlgorithmElitismWorstRemoval
-from algorithms.ga_dc import GeneticAlgorithmDeterministicCrowding
-from algorithms.ga_drop_worst import GeneticAlgorithmDropWorst
-from algorithms.ga_growpop_elitism import GeneticAlgorithmGrowPopElitism
-from algorithms.ga_single_elite_start import GeneticAlgorithmSingleEliteStart
-from algorithms.ga_fitness_sharing import GeneticAlgorithmFitnessSharing
-file_path = os.path.basename(__file__) + "_log.csv"
+from ANNOP import ANNOP
+from ANN import ANN, softmax, sigmoid
+from genetic_algorithm import GeneticAlgorithm
+from ga_normal_initialization import GeneticAlgorithmNormalInitialization
+# setup logger
+# !!!!!!!!!!!!!!!!!!!!!Change file name !!!!!!!!!!!!!!!!!!!!!!!!!!!1
+file_path =  "../../TestLog/init/" + os.path.basename(__file__) + "_log.csv"
 logging.basicConfig(filename=file_path, level=logging.DEBUG, format='%(name)s,%(message)s')
 
 
-file_name= os.path.basename(__file__) + "_log_custom.csv"
-
+file_name= "../../LogFiles/" + os.path.basename(__file__) + "_log.csv"
 
 header_string = "Fitness,UnseenAccuracy,Seed,N_gen,PS,PC,PM,radius,Pressure,elite_count,Time,alg,sel,cross,mut"
 with open(file_name, "a") as myfile:
     myfile.write(header_string + "\n")
-
 
 
 # ++++++++++++++++++++++++++
@@ -63,14 +50,16 @@ validation_p = .2
 validation_threshold = .07
 
 # Genetic Algorithm setup
-seeds_per_run = [2]
-n_genes = [500]
-p_cs = [0.5,0.7,0.9]
-p_ms = [0.5,0.7,0.9]
-radiuses= [0.5,1,2]
-pressures = [0.07,0.05,0.03,0.01]
-elite_counts = [3]
+# !!!!!!!!!!!!!!!!!!! Baseline parameters !!!!!!!!!!!!!!!!!!!
+search_space =[-2,2]####?
 
+seeds_per_run = [0,1,2,3,4]
+n_genes = [180]
+p_cs = [1]
+p_ms = [0.5]
+radiuses = [0.6]
+pressures = [0.8]
+elite_counts = [0]
 
 def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     random_state = uls.get_random_state(seed)
@@ -110,11 +99,12 @@ def algo_run(seed, n_gen, p_c, p_m, radius, pressure, elite_count):
     # - use at least 5 runs for your benchmarks
     # * including reproduction
     #++++++++++++++++++++++++++
-    sel_algo = sel.boltzmann_selection(1, n_gen)
-    cross_algo = cross.two_point_crossover
-    mut_algo = mut.parametrized_random_member_gaussian_ball_mutation(pressure, radius)
+    #!!!!!!!!!!!!!!!!!!!!!!!!! Baseline Parameters !!!!!!!!!!!!!!!!!!!
+    sel_algo = sel.parametrized_tournament_selection(pressure)
+    cross_algo = cross.one_point_crossover
+    mut_algo = mut.parametrized_ball_mutation(radius) ####?
 
-    alg = GeneticAlgorithmFitnessSharing(ann_op_i, random_state, pop_size, sel_algo,
+    alg = GeneticAlgorithmNormalInitialization(ann_op_i, random_state, pop_size, sel_algo,
                       cross_algo, p_c, mut_algo, p_m)
     alg.initialize()
     # initialize search algorithms
@@ -154,5 +144,5 @@ if __name__ ==  '__main__':
     print(header_string)
 
     ####### Magic appens here ########
-    pool = multiprocessing.Pool(core_count-1)
+    pool = multiprocessing.Pool(2)
     results = pool.starmap(algo_run, possible_values)

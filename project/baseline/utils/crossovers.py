@@ -85,19 +85,6 @@ def geometric_crossover(p1_r, p2_r, random_state):
     off2_r = ((p1_r * (1 - random_array))+ ( p2_r * random_array))
     return off1_r, off2_r
 
-
-def parameterized_random_crossover(swap_p):
-    def random_crossover(p1_r, p2_r, random_state):
-        crossovers = [
-            arithmetic_crossover,
-            parameterized_uniformSwap(swap_p),
-            one_point_crossover,
-            two_point_crossover
-        ]
-        crossover_algo = random_state.choice(crossovers)
-        return crossover_algo(p1_r, p2_r, random_state)
-    return random_crossover
-
 def arithmetic_threesome_crossover(p1_r, p2_r, p3_r, random_state):
     off1_r = (p1_r + p2_r)/2
     off2_r = (p1_r + p3_r)/2
