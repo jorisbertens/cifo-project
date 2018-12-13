@@ -7,6 +7,10 @@ from solutions.solution import Solution
 
 
 class GeneticAlgorithmElitismWorstRemoval(RandomSearch):
+    '''
+    Elitism is an addition to many selection methods that forces the genetic algorithm
+    to retain a defined number of best individuals at each generation. Here the worst "elite" is excluded from being part of the next population
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)

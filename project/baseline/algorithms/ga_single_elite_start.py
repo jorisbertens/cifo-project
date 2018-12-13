@@ -8,6 +8,9 @@ import mutations as mut
 
 
 class GeneticAlgorithmSingleEliteStart(RandomSearch):
+    '''
+    Initialization with a single elite that then breeds the whole population
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)

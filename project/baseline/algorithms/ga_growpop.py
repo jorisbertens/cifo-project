@@ -8,6 +8,11 @@ import mutations as mut
 
 
 class GeneticAlgorithmGrowPop(RandomSearch):
+    '''
+    Starting with a population of two and growing till a population of the maximum population value (5000/n_gen),
+    where the population grows by one over every generation.
+    It was based on the on-the-fly population size adjustment discussed in Eiben et al. (2018)
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

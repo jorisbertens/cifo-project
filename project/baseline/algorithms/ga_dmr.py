@@ -7,6 +7,9 @@ from solutions.solution import Solution
 
 
 class GeneticAlgorithmDMR(RandomSearch):
+    '''
+    An adaptive genetic algorithm that decreases the mutation rate over time (Lin et al., 2003)
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

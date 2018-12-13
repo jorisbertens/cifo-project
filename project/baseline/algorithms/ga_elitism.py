@@ -8,6 +8,10 @@ import mutations as mut
 
 
 class GeneticAlgorithmElitism(RandomSearch):
+    '''
+    Elitism is an addition to many selection methods that forces the genetic algorithm
+    to retain a defined number of best individuals at each generation
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)

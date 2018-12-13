@@ -7,6 +7,9 @@ from solution import Solution
 
 
 class GeneticAlgorithmZerosInitialization(RandomSearch):
+    '''
+    Sets all initialized solution representations as zeros
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

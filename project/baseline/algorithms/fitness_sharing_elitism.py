@@ -8,6 +8,17 @@ import mutations as mut
 
 
 class GeneticAlgorithmFitnessSharingElitism(RandomSearch):
+    '''
+    Combines fitness sharing and elitism:
+
+    Fitness sharing is used to maintain diversity within the population.
+    It first measures the individuals distances to the others, normalizes all distances,
+    then an inversion is used to finally calculate the sharing coefficient.
+    This sharing coefficient is used to calculate the diversity biased fitness (Grefenstette, 1987)
+
+    Elitism is an addition to many selection methods that forces the genetic algorithm
+    to retain a defined number of best individuals at each generation.
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number):
         RandomSearch.__init__(self, problem_instance, random_state)

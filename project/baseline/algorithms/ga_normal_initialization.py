@@ -7,6 +7,9 @@ from solution import Solution
 
 
 class GeneticAlgorithmNormalInitialization(RandomSearch):
+    '''
+    Returns a value following a normal distribution with mean at 0 bounded by the search space.
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

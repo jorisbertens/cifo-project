@@ -7,6 +7,9 @@ from solution import Solution
 
 
 class GeneticAlgorithmOnesInitialization(RandomSearch):
+    '''
+    Sets all initialized solution representations as ones
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)

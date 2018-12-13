@@ -8,6 +8,15 @@ import mutations as mut
 
 
 class GeneticAlgorithmGrowPopElitism(RandomSearch):
+    '''
+    Combines growing population with elitism:
+
+    Elitism is an addition to many selection methods that forces the genetic algorithm
+    to retain a defined number of best individuals at each generation.
+
+    In this variation of a GA two populations evolve independently from each other where there is only one interaction
+    between the two populations, which is the exchange of both populations elites.
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m, elite_number=3):
         RandomSearch.__init__(self, problem_instance, random_state)

@@ -7,6 +7,10 @@ from solutions.solution import Solution
 
 
 class GeneticAlgorithmElitismRandom(RandomSearch):
+    '''
+    Elitism is an addition to many selection methods that forces the genetic algorithm
+    to retain a defined number of best individuals at each generation. Here an elite and a random member are added to the next population
+    '''
     def __init__(self, problem_instance, random_state, population_size,
                  selection, crossover, p_c, mutation, p_m):
         RandomSearch.__init__(self, problem_instance, random_state)
